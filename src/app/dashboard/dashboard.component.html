@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-sm-4">
+    <div class="card dashboard-card card-under-process">
+      <div class="card-body">
+        <h5 class="card-title">No. of proposal under process</h5>
+        <p class="card-text">8</p>
+        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card dashboard-card card-approved">
+      <div class="card-body">
+        <h5 class="card-title">No. of proposal under approved</h5>
+        <p class="card-text">5</p>
+        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card dashboard-card card-under-approval">
+      <div class="card-body">
+        <h5 class="card-title">No. of proposal under approval</h5>
+        <p class="card-text">10</p>
+        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row" style="margin-top: 10px;">
+  <div class="col-sm-4" *ngIf="isAdmin2">
+    <div class="card dashboard-card card-under-approval">
+      <div class="card-body">
+        <h5 class="card-title">No. of proposal under approval 2</h5>
+        <p class="card-text">10</p>
+        <a href="javascript:void(0)" (click)="openList()" class="btn btn-primary">Go to list</a>
+      </div>
+    </div>
+  </div>
+</div>

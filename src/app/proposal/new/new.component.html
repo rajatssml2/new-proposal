@@ -1,0 +1,41 @@
+<div>
+    <div class="sub-header">
+        <h5>New Proposal</h5>
+    </div>
+    <form class="row g-3" [formGroup]="proposalForm" (ngSubmit)="submit(proposalForm)">
+        <div class="col-md-12">
+          <label for="purpose" class="form-label">Purpose</label>
+          <textarea formControlName="purpose" class="form-control" id="purpose" [readonly]="isReadOnly"></textarea>
+        </div>
+        <div class="col-md-6">
+          <label for="category" class="form-label">Category</label>
+          <select formControlName="category" class="form-select" name="category" id="category" [attr.disabled]="isReadOnly">
+            <option selected>Choose...</option>
+            <option value="pot hole fix">pot hole fix</option>
+            <option value="village road">village road</option>
+            <option value="construction">construction</option>
+          </select>
+        </div>
+        <div class="col-6">
+          <label for="upload" class="form-label">Upload</label>
+          <input formControlName="upload" type="file" id="upload" [attr.disabled]="isReadOnly" [readonly]="isReadOnly" (change)="onFileChange($event)" class="form-control" id="customFile" />
+          <span *ngIf="isDownloadIconShow" class="download-proposal-icon" (click)="onDownloadFile()"> <i class="fa fa-download"></i> </span>
+        </div>
+       
+        <div class="col-6">
+          <label for="remarks" class="form-label">Remarks</label>
+          <input formControlName="remarks" type="text" [readonly]="isReadOnly" class="form-control" id="remarks" placeholder="Remarks ....">
+        </div>
+        <div class="col-md-6">
+          <label for="sentto" class="form-label">Sent to</label>
+          <select formControlName="sentTo" class="form-select" name="sentto" id="sentto" [attr.disabled]="isReadOnly">
+            <option selected>Choose...</option>
+            <option value="pot hole fix">State transport manager</option>
+          </select>
+        </div>
+        
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary" style="float: right;">Submit</button>
+        </div>
+      </form>
+</div>

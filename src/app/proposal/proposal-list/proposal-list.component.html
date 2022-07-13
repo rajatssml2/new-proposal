@@ -1,0 +1,26 @@
+
+<div>
+    <div class="sub-header">
+        <h5>Proposal List</h5>
+    </div>
+    <div *ngIf="proposalList && proposalList.length>0">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Proposal number</th>
+                <th scope="col">Purpose</th>
+                <th scope="col">Submitted for approval on</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let proposal of proposalList">
+                <th scope="row">#{{proposal.id}}</th>
+                <td>{{proposal.purpose}}</td>
+                <td>{{date}}</td>
+                <td><button class="btn btn-primary" (click)="onView(proposal)">view</button></td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>

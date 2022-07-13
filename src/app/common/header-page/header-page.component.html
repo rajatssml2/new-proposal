@@ -1,0 +1,48 @@
+<div class="header-container">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+     
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <li><a [routerLink]="['/dashboard']" class="nav-link px-2 link-dark">Home</a></li>
+        <li><a href="#" class="nav-link px-2 link-dark">About us</a></li>
+        <li><a href="#" class="nav-link px-2 link-dark">Contact us</a></li>
+        <li>
+            <div class="dropdown">
+                <a class=" nav-link px-2 link-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                    Proposal
+                </a>
+              
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <li><a class="dropdown-item" [routerLink]="['/new-proposal']">New proposal</a></li>
+                  <li><a class="dropdown-item" href="#">View proposal</a></li>
+                </ul>
+              </div>
+            <!-- <div class="dropdown text-end">
+                <a href="#" class="nav-link px-2 link-dark" id="dropdownProposal" data-bs-toggle="dropdown" aria-expanded="true">
+                    Proposal
+                </a>
+                <ul class="dropdown-menu text-small" aria-labelledby="dropdownProposal" data-popper-placement="bottom-start" style="position: absolute; inset: 0px auto auto 0px; margin: 7px; transform: translate(-36px, 34px);">
+                  <li><a class="dropdown-item" href="#">New proposal</a></li>
+                  <li><a class="dropdown-item" href="#">View proposal</a></li>
+                </ul>
+              </div> -->
+        </li>
+      </ul>
+
+      <!-- <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+        <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+      </form> -->
+
+      <div class="dropdown text-end">
+        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="true">
+          <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+        </a>
+        <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" data-popper-placement="bottom-start" style="position: absolute; inset: 0px auto auto 0px; margin: 7px; transform: translate(-36px, 34px);">
+          <li><a class="dropdown-item" href="#">New project...</a></li>
+          <li><a class="dropdown-item" href="#">Settings</a></li>
+          <li><a class="dropdown-item" href="#">Profile</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="javascript:void(0)" (click)="onLogOut()">Sign out</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
