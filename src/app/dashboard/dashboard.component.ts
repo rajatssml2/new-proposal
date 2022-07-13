@@ -6,12 +6,12 @@ import { Router } from '@angular/router'
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  isAdmin2 :any = false;
+  loginUser :any = '';
 
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.isAdmin2 = localStorage.getItem('isAdmin2');
+    this.loginUser = localStorage.getItem('loginUser');
   }
   openList() {
     this.router.navigate(['proposal-list'])

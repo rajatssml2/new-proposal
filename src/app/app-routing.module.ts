@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LoginComponent } from './login/login.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { AuthGuard } from './_services/auth.guard';
@@ -8,6 +9,10 @@ import { AuthGuard } from './_services/auth.guard';
 const routes: Routes = [
   {
     path: '',
+    component: LandingPageComponent
+  },
+  {
+    path: 'login',
     component: LoginComponent
   },
   {

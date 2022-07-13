@@ -1,8 +1,8 @@
-<div>
+<div style="padding: 80px;">
     <div class="sub-header">
         <h5>New Proposal</h5>
     </div>
-    <form class="row g-3" [formGroup]="proposalForm" (ngSubmit)="submit(proposalForm)">
+    <form class="row g-3" [formGroup]="proposalForm">
         <div class="col-md-12">
           <label for="purpose" class="form-label">Purpose</label>
           <textarea formControlName="purpose" class="form-control" id="purpose" [readonly]="isReadOnly"></textarea>
@@ -11,9 +11,9 @@
           <label for="category" class="form-label">Category</label>
           <select formControlName="category" class="form-select" name="category" id="category" [disabled]="isReadOnly">
             <option selected>Choose...</option>
-            <option value="pot hole fix">pot hole fix</option>
-            <option value="village road">village road</option>
-            <option value="construction">construction</option>
+            <option value="Potholes fix">Potholes fix</option>
+            <option value="Village road construction">Village road construction</option>
+            <option value="Flood area road repair">Flood area road repair</option>
           </select>
         </div>
         <div class="col-6">
@@ -30,12 +30,21 @@
           <label for="sentto" class="form-label">Sent to</label>
           <select formControlName="sentTo" class="form-select" name="sentto" id="sentto" [disabled]="isReadOnly">
             <option selected>Choose...</option>
-            <option value="pot hole fix">State transport manager</option>
+            <option value="State transport manage">State transport manager</option>
           </select>
         </div>
-        
-        <div class="col-12">
-          <button type="submit" class="btn btn-primary" style="float: right;">Submit</button>
+
+        <div class="d-flex gap-2 col-2 mx-auto">
+          <button class="btn btn-primary" type="button" *ngIf="loginUser=='state_officer'" (click)="submit()">Submit</button>
+          <button class="btn btn-success" type="button" *ngIf="loginUser=='state_manager'" (click)="onApproveByStateManager()">Approve</button>
+          <button class="btn btn-success" type="button" *ngIf="loginUser=='morth_manager'" (click)="onSendToIVA()">Send to IVA</button>
+          <button class="btn btn-warning" type="button" *ngIf="loginUser=='state_manager' || loginUser=='morth_manager'">Send for modification</button>
+          <button class="btn btn-danger" type="button" *ngIf="loginUser=='state_manager' || loginUser=='morth_manager'">Reject</button>
+          <button class="btn btn-secondary" type="button" (click)="onCancel()">Cancel</button>
         </div>
+        
+        <!-- <div class="col-12">
+          <button type="submit" class="btn btn-primary" style="float: right;">Submit</button>
+        </div> -->
       </form>
 </div>

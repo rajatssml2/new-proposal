@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import {UserService} from "../../_services/user.service";
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-header-page',
@@ -8,10 +9,23 @@ import { Router } from '@angular/router'
   styleUrls: ['./header-page.component.css']
 })
 export class HeaderPageComponent implements OnInit {
+  isLoggedIn = 'false'
+  isSticky=false;
+  @HostListener('window:scroll', ['$event'])
+  checkScroll() {
+    console.log("window.pageYOffset=",window.pageYOffset)
+    this.isSticky = window.pageYOffset >= 110;
+  }
 
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
+    let isLogin = localStorage.getItem('isLoggedIn');
+    
+    if(isLogin) {
+      this.isLoggedIn = isLogin
+    }
+    console.log("isLogin=",this.isLoggedIn)
   }
 
   onLogOut() {

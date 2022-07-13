@@ -12,6 +12,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderPageComponent } from './common/header-page/header-page.component';
 import { FooterPageComponent } from './common/footer-page/footer-page.component';
 import { NewComponent } from './proposal/new/new.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import { NgImageSliderModule } from 'ng-image-slider';
 
 @NgModule({
   declarations: [
@@ -22,12 +24,14 @@ import { NewComponent } from './proposal/new/new.component';
     DashboardComponent,
     HeaderPageComponent,
     FooterPageComponent,
-    NewComponent
+    NewComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgImageSliderModule
   ],
   exports: [
     HeaderPageComponent,

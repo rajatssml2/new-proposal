@@ -11,3 +11,6 @@
 .card-under-approval {
     background-color: yellow;
 }
+.card-body-d {
+    height: 200px;
+}

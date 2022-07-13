@@ -28,13 +28,28 @@ export class LoginComponent implements OnInit {
     }
     
 
-    if(obj.username=='admin1' && obj.password=='123456') {
+    if(obj.username=='state_officer' && obj.password=='123456') {
       this.userService.onLogin(obj);
+      localStorage.setItem("isLoggedIn", 'true');
+      localStorage.setItem('loginUser', 'state_officer');
       this.router.navigate(['/dashboard'])
-    } else if(obj.username=='admin2' && obj.password=='123456') {
+    } else if(obj.username=='state_manager' && obj.password=='123456') {
       this.userService.onLogin(obj);
+      localStorage.setItem("isLoggedIn", 'true');
+      localStorage.setItem('loginUser', 'state_manager');
       this.router.navigate(['/dashboard'])
-    } else {
+    } else if(obj.username=='morth_manager' && obj.password=='123456') {
+      this.userService.onLogin(obj);
+      localStorage.setItem("isLoggedIn", 'true');
+      localStorage.setItem('loginUser', 'morth_manager');
+      this.router.navigate(['/dashboard'])
+    }
+    else if(obj.username=='iva' && obj.password=='123456') {
+      this.userService.onLogin(obj);
+      localStorage.setItem("isLoggedIn", 'true');
+      localStorage.setItem('loginUser', 'iva');
+      this.router.navigate(['/dashboard'])
+    }else {
       Swal.fire("", "Invalid credential", "info");
     }
 

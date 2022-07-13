@@ -1,5 +1,5 @@
 
-<div>
+<div style="padding: 80px;">
     <div class="sub-header">
         <h5>Proposal List</h5>
     </div>
@@ -10,6 +10,7 @@
                 <th scope="col">Proposal number</th>
                 <th scope="col">Purpose</th>
                 <th scope="col">Submitted for approval on</th>
+                <th scope="col">Status</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
@@ -18,6 +19,7 @@
                 <th scope="row">#{{proposal.id}}</th>
                 <td>{{proposal.purpose}}</td>
                 <td>{{date}}</td>
+                <td>{{proposal.status}}</td>
                 <td><button class="btn btn-primary" (click)="onView(proposal)">view</button></td>
               </tr>
             </tbody>
