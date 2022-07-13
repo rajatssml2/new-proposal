@@ -25,11 +25,11 @@ export class NewComponent implements OnInit {
     this.proposalForm = this.fb.group({
       id: ['', Validators.required],
       purpose: ['', Validators.required],
-      category: ['', [Validators.required]],
-      upload: new FormControl(''),
+      category: [{value: '', disabled: false}, [Validators.required]],
+      upload: [{value: '', disabled: false}],
       fileSource: new FormControl('', [Validators.required]),
       remarks: ['', [Validators.required]],
-      sentTo: ['', [Validators.required]]
+      sentTo: [{value: '', disabled: false}, [Validators.required]]
     });
     let params:any = this.route.snapshot.paramMap.get('items');
     params = JSON.parse(params)
@@ -52,6 +52,9 @@ export class NewComponent implements OnInit {
         this.isDownloadIconShow = true;
         this.fileSrc = val[0].fileSource;
         this.isReadOnly = true;
+        this.proposalForm.controls.category.disable();
+        this.proposalForm.controls.upload.disable();
+        this.proposalForm.controls.sentTo.disable();
       }
   }
   onDownloadFile() {

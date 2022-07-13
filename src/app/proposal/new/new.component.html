@@ -9,7 +9,7 @@
         </div>
         <div class="col-md-6">
           <label for="category" class="form-label">Category</label>
-          <select formControlName="category" class="form-select" name="category" id="category" [attr.disabled]="isReadOnly">
+          <select formControlName="category" class="form-select" name="category" id="category" [disabled]="isReadOnly">
             <option selected>Choose...</option>
             <option value="pot hole fix">pot hole fix</option>
             <option value="village road">village road</option>
@@ -18,7 +18,7 @@
         </div>
         <div class="col-6">
           <label for="upload" class="form-label">Upload</label>
-          <input formControlName="upload" type="file" id="upload" [attr.disabled]="isReadOnly" [readonly]="isReadOnly" (change)="onFileChange($event)" class="form-control" id="customFile" />
+          <input formControlName="upload" type="file" id="upload" [disabled]="isReadOnly" [readonly]="isReadOnly" (change)="onFileChange($event)" class="form-control" id="customFile" />
           <span *ngIf="isDownloadIconShow" class="download-proposal-icon" (click)="onDownloadFile()"> <i class="fa fa-download"></i> </span>
         </div>
        
@@ -28,7 +28,7 @@
         </div>
         <div class="col-md-6">
           <label for="sentto" class="form-label">Sent to</label>
-          <select formControlName="sentTo" class="form-select" name="sentto" id="sentto" [attr.disabled]="isReadOnly">
+          <select formControlName="sentTo" class="form-select" name="sentto" id="sentto" [disabled]="isReadOnly">
             <option selected>Choose...</option>
             <option value="pot hole fix">State transport manager</option>
           </select>
