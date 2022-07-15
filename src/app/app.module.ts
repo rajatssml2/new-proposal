@@ -14,6 +14,7 @@ import { FooterPageComponent } from './common/footer-page/footer-page.component'
 import { NewComponent } from './proposal/new/new.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { NgImageSliderModule } from 'ng-image-slider';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { NgImageSliderModule } from 'ng-image-slider';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    NgImageSliderModule
+    NgImageSliderModule,
+    NgChartsModule
   ],
   exports: [
     HeaderPageComponent,

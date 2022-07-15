@@ -17,8 +17,11 @@ export class NewComponent implements OnInit {
   fileSrc: any;
   isReadOnly = false;
   loginUser:any='';
+  currentUrl: any = ''
 
   constructor(private fb: FormBuilder, private route: ActivatedRoute, private router: Router) {
+    this.currentUrl = this.router.url;
+    console.log(this.currentUrl);
     
    }
 
