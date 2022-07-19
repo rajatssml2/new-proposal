@@ -14,3 +14,19 @@
 .card-body-d {
     height: 200px;
 }
+
+.card-text {
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.card-text-dash {
+    font-size: 20px;
+    font-weight: 600;
+    color: black;
+    text-align: center;
+}
+.small-box-dash .inner {
+    text-align: center;
+}
