@@ -30,11 +30,12 @@ export class NewComponent implements OnInit {
       id: ['', Validators.required],
       purpose: ['', Validators.required],
       category: [{value: '', disabled: false}, [Validators.required]],
-      upload: [{value: '', disabled: false}],
+      upload: [{value: '', disabled: false}, [Validators.required]],
       fileSource: new FormControl('', [Validators.required]),
-      remarks: ['', [Validators.required]],
+      remarks: [''],
       sentTo: [{value: '', disabled: false}, [Validators.required]],
-      status: ['']
+      status: [''],
+      submittedOn: ['']
     });
     let lUser = localStorage.getItem('loginUser');
     this.loginUser = lUser;
@@ -50,7 +51,7 @@ export class NewComponent implements OnInit {
           id: val[0].id,
           purpose: val[0].purpose,
           remarks: val[0].remarks,
-          sentTo: val[0].sentTo,
+          // sentTo: val[0].sentTo,
           // upload: val[0].upload,
           category: val[0].category,
           fileSource: val[0].fileSource
@@ -61,7 +62,7 @@ export class NewComponent implements OnInit {
         this.isReadOnly = true;
         this.proposalForm.controls.category.disable();
         this.proposalForm.controls.upload.disable();
-        this.proposalForm.controls.sentTo.disable();
+        // this.proposalForm.controls.sentTo.disable();
         let lUser = localStorage.getItem('loginUser');
         this.loginUser = lUser;
       }
@@ -103,12 +104,14 @@ export class NewComponent implements OnInit {
   }
 
   submit(){
+    if(!this.proposalForm.valid) return;
     let num = Math.floor(Math.random() * 1000000);
 
     this.proposalForm.patchValue({
 
       id: num,
-      status: 'Submitted by state officer'
+      status: 'Submitted by state officer',
+      submittedOn: new Date().toLocaleDateString()
 
     });
 
@@ -120,7 +123,8 @@ export class NewComponent implements OnInit {
     arr.push()
     localStorage.setItem("proposalData", JSON.stringify(arr))
     Swal.fire({
-      title: 'Data saved successfully',
+      icon: 'success',
+      title: 'Proposal submitted successfully',
       text: 'Proposal id: '+num,
       showDenyButton: false,
       showCancelButton: false,
@@ -152,6 +156,8 @@ export class NewComponent implements OnInit {
   }
 
   onSendToIVA() {
+    console.log("this.proposalForm=",this.proposalForm)
+    if(!this.proposalForm.valid) return;
     let val:any = localStorage.getItem('proposalData');
     val = JSON.parse(val);
     val[0].status = 'Pending with IVA';

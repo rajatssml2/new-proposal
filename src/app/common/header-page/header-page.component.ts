@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class HeaderPageComponent implements OnInit {
   isLoggedIn = 'false'
   isSticky=false;
+  loginUser: any = ''
   @HostListener('window:scroll', ['$event'])
   checkScroll() {
     console.log("window.pageYOffset=",window.pageYOffset)
@@ -21,9 +22,13 @@ export class HeaderPageComponent implements OnInit {
 
   ngOnInit(): void {
     let isLogin = localStorage.getItem('isLoggedIn');
+    let loginUser = localStorage.getItem('loginUser');
     
     if(isLogin) {
       this.isLoggedIn = isLogin
+    }
+    if(loginUser) {
+      this.loginUser = loginUser
     }
     console.log("isLogin=",this.isLoggedIn)
   }

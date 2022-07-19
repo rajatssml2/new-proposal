@@ -703,7 +703,7 @@
                       
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                           <li><a class="dropdown-item" [routerLink]="['/new-proposal']">New proposal</a></li>
-                          <li><a class="dropdown-item" href="#">View proposal</a></li>
+                          <li><a class="dropdown-item" *ngIf="loginUser!='state_officer'" [routerLink]="['/proposal-list']">View proposal</a></li>
                         </ul>
                       </div>
                 </li>

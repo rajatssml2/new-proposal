@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -15,7 +15,8 @@ import { NewComponent } from './proposal/new/new.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { NgChartsModule } from 'ng2-charts';
-
+import { ProposalModule } from './proposal/proposal.module'
+// import { LoaderComponent } from './loader/loader.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,13 +34,17 @@ import { NgChartsModule } from 'ng2-charts';
     AppRoutingModule,
     ReactiveFormsModule,
     NgImageSliderModule,
-    NgChartsModule
+    NgChartsModule,
+    ProposalModule
   ],
   exports: [
     HeaderPageComponent,
     FooterPageComponent
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ],
 })
 export class AppModule { }

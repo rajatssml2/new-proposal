@@ -80,3 +80,8 @@ color: white;
 .links a{
 margin-left: 4px;
 }
+.login-with-img {
+    height: 50px;
+    width: 50px;
+    border-radius: 10px;
+}
