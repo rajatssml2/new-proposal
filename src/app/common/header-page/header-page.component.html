@@ -141,8 +141,8 @@
         <div class="header-info">
           <ul>
             <li>
-              <a [routerLink]="'dashboard-analytic'" target="_blank" rel="noopener noreferrer"><img
-                  title="dashboard" src="https://morth.nic.in/sites/all/themes/morth/images/dashboardicon_icon.png"></a>
+              <a [routerLink]="'dashboard-analytic'" target="_blank" rel="noopener noreferrer">
+                <img style="height: 70px; width: 70px;" title="dashboard" src="../../../assets/images/dashboard2.png"></a>
             </li>
             <li>
               <a target="_blank" href="http://gandhi.gov.in/" rel="noopener noreferrer"><img
@@ -716,7 +716,7 @@
                   <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
                 </a>
                 <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" data-popper-placement="bottom-start" style="position: absolute; inset: 0px auto auto 0px; margin: 7px; transform: translate(-36px, 34px);">
-                  <li><a class="dropdown-item" href="#">New project...</a></li>
+                  <li><a class="dropdown-item" href="javascript:void(0)">{{loginUserName}}</a></li>
                   <li><a class="dropdown-item" href="#">Settings</a></li>
                   <li><a class="dropdown-item" href="#">Profile</a></li>
                   <li><hr class="dropdown-divider"></li>

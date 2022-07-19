@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute,Router } from '@angular/router'
 import * as FileSaver from 'file-saver';
 import Swal from 'sweetalert2';
@@ -18,6 +18,7 @@ export class NewComponent implements OnInit {
   isReadOnly = false;
   loginUser:any='';
   currentUrl: any = ''
+  submitted = false;
 
   constructor(private fb: FormBuilder, private route: ActivatedRoute, private router: Router) {
     this.currentUrl = this.router.url;
@@ -25,13 +26,17 @@ export class NewComponent implements OnInit {
     
    }
 
+   get f(){
+    return this.proposalForm.controls;
+  }
+
   ngOnInit(): void {
     this.proposalForm = this.fb.group({
-      id: ['', Validators.required],
+      id: [''],
       purpose: ['', Validators.required],
       category: [{value: '', disabled: false}, [Validators.required]],
       upload: [{value: '', disabled: false}, [Validators.required]],
-      fileSource: new FormControl('', [Validators.required]),
+      fileSource: new FormControl(''),
       remarks: [''],
       sentTo: [{value: '', disabled: false}, [Validators.required]],
       status: [''],
@@ -65,6 +70,10 @@ export class NewComponent implements OnInit {
         // this.proposalForm.controls.sentTo.disable();
         let lUser = localStorage.getItem('loginUser');
         this.loginUser = lUser;
+        if(this.loginUser == 'morth_manager') {
+           this.proposalForm.controls.sentTo.disable();
+           this.proposalForm.controls.remarks.disable();
+        }
       }
   }
   onDownloadFile() {
@@ -104,7 +113,10 @@ export class NewComponent implements OnInit {
   }
 
   submit(){
+    this.submitted = true;
+    console.log(this.proposalForm)
     if(!this.proposalForm.valid) return;
+
     let num = Math.floor(Math.random() * 1000000);
 
     this.proposalForm.patchValue({
@@ -137,10 +149,10 @@ export class NewComponent implements OnInit {
     })
   }
 
-  onApproveByStateManager() {
+  onApproveByMorthManager() {
     let val:any = localStorage.getItem('proposalData');
     val = JSON.parse(val);
-    val[0].status = 'Approved by state manager';
+    val[0].status = 'Approved';
     localStorage.setItem("proposalData", JSON.stringify(val))
     Swal.fire({
       title: 'Proposal approved successfully',
@@ -156,14 +168,40 @@ export class NewComponent implements OnInit {
   }
 
   onSendToIVA() {
-    console.log("this.proposalForm=",this.proposalForm)
+    this.submitted = true;
+    console.log(this.proposalForm)
     if(!this.proposalForm.valid) return;
+
     let val:any = localStorage.getItem('proposalData');
     val = JSON.parse(val);
-    val[0].status = 'Pending with IVA';
+    val[0].status = 'Verified by state manager';
     localStorage.setItem("proposalData", JSON.stringify(val))
     Swal.fire({
+      icon: 'success',
       title: 'Proposal sent to IVA successfully',
+      showDenyButton: false,
+      showCancelButton: false,
+      confirmButtonText: 'Ok'
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        this.router.navigate(['dashboard'])
+      }
+    })
+  }
+
+  onSendToMorthManager() {
+    this.submitted = true;
+    console.log(this.proposalForm)
+    if(!this.proposalForm.valid) return;
+
+    let val:any = localStorage.getItem('proposalData');
+    val = JSON.parse(val);
+    val[0].status = 'Verified by IVA';
+    localStorage.setItem("proposalData", JSON.stringify(val))
+    Swal.fire({
+      icon: 'success',
+      title: 'Proposal sent to Morth Manager successfully',
       showDenyButton: false,
       showCancelButton: false,
       confirmButtonText: 'Ok'

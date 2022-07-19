@@ -26,7 +26,7 @@ export class ProposalListComponent implements OnInit {
         "fileSource":"",
         "remarks":"",
         "sentTo":"",
-        "status":"Submitted by state officer",
+        "status": lUser=='iva' ? "Verified by state manager"  : lUser=='morth_manager' ? "Verified by IVA" : "Submitted by state officer",
         submittedOn: '5/20/2022'
       },
       {
@@ -37,7 +37,7 @@ export class ProposalListComponent implements OnInit {
         "fileSource":"",
         "remarks":"",
         "sentTo":"",
-        "status":"Submitted by state officer",
+        "status":lUser=='iva' ? "Verified by state manager"  : lUser=='morth_manager' ? "Verified by IVA" : "Submitted by state officer",
         submittedOn: '4/10/2022'
       }
     ]

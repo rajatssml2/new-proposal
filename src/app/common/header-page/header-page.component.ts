@@ -11,10 +11,10 @@ import { Router } from '@angular/router';
 export class HeaderPageComponent implements OnInit {
   isLoggedIn = 'false'
   isSticky=false;
-  loginUser: any = ''
+  loginUser: any = '';
+  loginUserName='';
   @HostListener('window:scroll', ['$event'])
   checkScroll() {
-    console.log("window.pageYOffset=",window.pageYOffset)
     this.isSticky = window.pageYOffset >= 110;
   }
 
@@ -29,6 +29,15 @@ export class HeaderPageComponent implements OnInit {
     }
     if(loginUser) {
       this.loginUser = loginUser
+    }
+    if(this.loginUser=='state_officer') {
+      this.loginUserName = 'State Officer'
+    } else if(this.loginUser=='state_manager') {
+      this.loginUserName = 'State Manager'
+    } else if(this.loginUser=='iva') {
+      this.loginUserName = 'IVA'
+    } else if(this.loginUser=='morth_manager') {
+      this.loginUserName = 'Morth Manager'
     }
     console.log("isLogin=",this.isLoggedIn)
   }
