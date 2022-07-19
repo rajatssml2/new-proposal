@@ -15,8 +15,10 @@ import { NewComponent } from './proposal/new/new.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { NgChartsModule } from 'ng2-charts';
-import { ProposalModule } from './proposal/proposal.module'
+import { ProposalModule } from './proposal/proposal.module';
+import { NgxEchartsModule } from 'ngx-echarts';
 // import { LoaderComponent } from './loader/loader.component';
+import { DashboardAnalyticComponent } from './dashboard-analytic/dashboard-analytic.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +29,8 @@ import { ProposalModule } from './proposal/proposal.module'
     HeaderPageComponent,
     FooterPageComponent,
     NewComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    DashboardAnalyticComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,11 @@ import { ProposalModule } from './proposal/proposal.module'
     ReactiveFormsModule,
     NgImageSliderModule,
     NgChartsModule,
-    ProposalModule
+    ProposalModule,
+    
+    NgxEchartsModule.forRoot({
+      echarts: () => import('echarts')
+    })
   ],
   exports: [
     HeaderPageComponent,
