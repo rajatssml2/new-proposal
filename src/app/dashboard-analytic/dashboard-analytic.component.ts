@@ -10,7 +10,11 @@ import { EChartsOption } from 'echarts';
 export class DashboardAnalyticComponent implements OnInit {
   title = 'ng2-charts-demo';
   isChartDrill = false;
+  isChartDrill21 = false;
+  isChartDrill31 = false;
+  isChartDrill41 = false;
   chartOption: any = {
+    color: 'green',
     title: {
       text: ' Road Engineerning ',
       // subtext: 'eCharts for the win!',
@@ -39,6 +43,7 @@ export class DashboardAnalyticComponent implements OnInit {
   };
 
   chartOption2:EChartsOption = {
+    color: 'green',
     title: {
       text: 'Vehicle safety and road engineering',
       // subtext: 'eCharts for the win!',
@@ -65,7 +70,9 @@ export class DashboardAnalyticComponent implements OnInit {
       },
     ],
   };
+
   chartOption3:EChartsOption = {
+    color: 'green',
     title: {
       text: 'Enforcement of rules',
       // subtext: 'eCharts for the win!',
@@ -93,6 +100,7 @@ export class DashboardAnalyticComponent implements OnInit {
     ],
   };
   chartOption4:EChartsOption = {
+    color: 'green',
     title: {
       text: 'Post crash care',
       // subtext: 'eCharts for the win!',
@@ -168,6 +176,143 @@ export class DashboardAnalyticComponent implements OnInit {
     ]
   };
   chartOption11: any = {
+    color: 'green',
+    dataset: {
+      source: [
+        ['amount', 'product'],
+        [10,  'Traning of officials'],
+        [15, 'Black spot mitigation'],
+        [5,'Corrective measure'],
+        [25, 'Implement IRAD'],
+        [40, 'IRR/RSA']
+      ]
+    },
+    grid: { containLabel: true },
+    xAxis: { name: 'amount',
+    axisLabel : {
+      formatter: '{value}Cr'
+    }, 
+    },
+    yAxis: { type: 'category',
+      name: 'Parameters'
+    },
+    // visualMap: {
+    //   orient: 'horizontal',
+    //   left: 'center',
+    //   min: 10,
+    //   max: 100,
+    //   text: ['High Score', 'Low Score'],
+    //   // Map the score column to color
+    //   dimension: 0,
+    //   inRange: {
+    //     color: ['#65B581', '#FFCE34', '#FD665F']
+    //   }
+    // },
+    series: [
+      {
+        type: 'bar',
+        encode: {
+          // Map the "amount" column to X axis.
+          x: 'amount',
+          // Map the "product" column to Y axis
+          y: 'product'
+        }
+      }
+    ]
+  };
+
+  chartOption21: any = {
+    color: 'green',
+    dataset: {
+      source: [
+        ['amount', 'product'],
+        [10,  'Traning of officials'],
+        [15, 'Black spot mitigation'],
+        [5,'Corrective measure'],
+        [25, 'Implement IRAD'],
+        [40, 'IRR/RSA']
+      ]
+    },
+    grid: { containLabel: true },
+    xAxis: { name: 'amount',
+    axisLabel : {
+      formatter: '{value}Cr'
+    }, 
+    },
+    yAxis: { type: 'category',
+      name: 'Parameters'
+    },
+    // visualMap: {
+    //   orient: 'horizontal',
+    //   left: 'center',
+    //   min: 10,
+    //   max: 100,
+    //   text: ['High Score', 'Low Score'],
+    //   // Map the score column to color
+    //   dimension: 0,
+    //   inRange: {
+    //     color: ['#65B581', '#FFCE34', '#FD665F']
+    //   }
+    // },
+    series: [
+      {
+        type: 'bar',
+        encode: {
+          // Map the "amount" column to X axis.
+          x: 'amount',
+          // Map the "product" column to Y axis
+          y: 'product'
+        }
+      }
+    ]
+  };
+  chartOption31: any = {
+    color: 'green',
+    dataset: {
+      source: [
+        ['amount', 'product'],
+        [10,  'Traning of officials'],
+        [15, 'Black spot mitigation'],
+        [5,'Corrective measure'],
+        [25, 'Implement IRAD'],
+        [40, 'IRR/RSA']
+      ]
+    },
+    grid: { containLabel: true },
+    xAxis: { name: 'amount',
+    axisLabel : {
+      formatter: '{value}Cr'
+    }, 
+    },
+    yAxis: { type: 'category',
+      name: 'Parameters'
+    },
+    // visualMap: {
+    //   orient: 'horizontal',
+    //   left: 'center',
+    //   min: 10,
+    //   max: 100,
+    //   text: ['High Score', 'Low Score'],
+    //   // Map the score column to color
+    //   dimension: 0,
+    //   inRange: {
+    //     color: ['#65B581', '#FFCE34', '#FD665F']
+    //   }
+    // },
+    series: [
+      {
+        type: 'bar',
+        encode: {
+          // Map the "amount" column to X axis.
+          x: 'amount',
+          // Map the "product" column to Y axis
+          y: 'product'
+        }
+      }
+    ]
+  };
+  chartOption41: any = {
+    color: 'green',
     dataset: {
       source: [
         ['amount', 'product'],
@@ -220,6 +365,15 @@ export class DashboardAnalyticComponent implements OnInit {
 
   onChartEvent1(event: any, val: any) {
     this.isChartDrill = !this.isChartDrill;
+  }
+  onChartEvent21(event: any, val: any) {
+    this.isChartDrill21 = !this.isChartDrill21;
+  }
+  onChartEvent31(event: any, val: any) {
+    this.isChartDrill31 = !this.isChartDrill31;
+  }
+  onChartEvent41(event: any, val: any) {
+    this.isChartDrill41 = !this.isChartDrill41;
   }
 
   ngAfterViewInit() {

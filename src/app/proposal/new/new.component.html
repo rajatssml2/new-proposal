@@ -15,9 +15,6 @@
           <label for="category" class="form-label">Category <span class="asterisk">*</span></label>
           <select formControlName="category" class="form-select" name="category" id="category" [disabled]="isReadOnly">
             <option selected>Choose...</option>
-            <option value="Potholes fix">Potholes fix</option>
-            <option value="Village road construction">Village road construction</option>
-            <option value="Flood area road repair">Flood area road repair</option>
             <option value="Contract document">Contract document</option>
             <option value="Bidding document">Bidding document</option>
             <option value="Training document">Training document</option>
@@ -36,6 +33,31 @@
             <div *ngIf="f.upload.errors.required">Upload is required</div>
           </div>
         </div>
+        <div class="col-md-6">
+          <label for="fundType" class="form-label">Fund Type <span class="asterisk">*</span></label>
+          <select formControlName="fundType" class="form-select" name="fundType" id="fundType" [disabled]="isReadOnly">
+            <option value="">Choose...</option>
+            <option value="Road Engineering fund">Road Engineering fund</option>
+            <option value="Vehicle safety & Driver training fund">Vehicle safety & Driver training fund</option>
+            <option value="Enforcement Fund">Enforcement Fund</option>
+            <option value="Post crash care fund">Post crash care fund</option>
+          </select>
+          <div *ngIf="submitted && f.fundType.errors" class="not-valid">
+            <div *ngIf="f.fundType.errors.required">Fund Type is required</div>
+          </div>
+        </div>
+        <div class="col-6">
+          <label for="estimatedAmount" class="form-label">Estimated Amount</label>
+          <input formControlName="estimatedAmount" type="text" class="form-control" id="estimatedAmount" placeholder="Estimated Amount ....">
+        </div>
+        <div class="col-6">
+          <label for="startDate" class="form-label">Start Date</label>
+          <input formControlName="startDate" type="date" class="form-control" id="startDate" placeholder="Estimated Amount ....">
+        </div>
+        <div class="col-6">
+          <label for="endDate" class="form-label">End Date</label>
+          <input formControlName="endDate" type="date" class="form-control" id="endDate" placeholder="Estimated Amount ....">
+        </div>
        
         <div class="col-6">
           <label for="remarks" class="form-label">Remarks</label>
@@ -47,7 +69,7 @@
             <option value="" selected>Choose...</option>
             <option *ngIf="loginUser=='state_officer'" value="State transport manage">State transport manager</option>
             <option *ngIf="loginUser=='state_manager'" value="IVA">IVA</option>
-            <option *ngIf="loginUser=='iva'" value="Morth Manager">Morth Manager</option>
+            <option *ngIf="loginUser=='iva'" value="MoRTH Manager">MoRTH Manager</option>
           </select>
           <div *ngIf="submitted && f.sentTo.errors" class="not-valid">
             <div *ngIf="f.sentTo.errors.required">Sent To is required</div>
@@ -57,6 +79,35 @@
         </div> -->
         </div>
 
+        <div>
+          
+          <div class="add-btn">
+            <label class="form-label">Milestone</label>
+            <span *ngIf="loginUser=='state_officer'">
+              <button class="btn btn-secondary" (click)="AddRows()">Add</button>
+            </span>
+            
+          </div>
+          <div>
+            <ag-grid-angular 
+            style="width: 100%; height: 200px;" 
+            class="ag-theme-balham"
+            [rowData]="rowData" 
+            [columnDefs]="columnDefs"
+            [defaultColDef]="defaultColDef"
+            [enableSorting]="true" [animateRows]="true" [pagination]="true" [paginationPageSize]="10"   
+            [animateRows]="true" (gridReady)="onGridReady($event)" [editType]="editType"
+            (cellValueChanged)="onCellValueChanged($event)"
+            (rowValueChanged)="onRowValueChanged($event)"
+            (cellClicked)="onCellClicked($event)"
+            [frameworkComponents]="frameworkComponents"
+            suppressClickEdit>
+          </ag-grid-angular>
+          </div>
+          
+          
+        </div>
+
         <div class="d-flex gap-2 col-2 mx-auto">
           <button class="btn btn-primary" type="button" *ngIf="loginUser=='state_officer' || currentUrl == '/new-proposal'" (click)="submit()">Submit</button>
           <button class="btn btn-warning" type="button" *ngIf="loginUser=='state_officer' || currentUrl == '/new-proposal'">Save as draft</button>
@@ -64,7 +115,7 @@
           <button class="btn btn-success" type="button" *ngIf="loginUser=='state_manager' && currentUrl != '/new-proposal'" (click)="onSendToIVA()">Sent to IVA</button>
           <button class="btn btn-success" type="button" *ngIf="loginUser=='iva' && currentUrl != '/new-proposal'" (click)="onSendToMorthManager()">Sent to Morth Manager</button>
           <button class="btn btn-warning" type="button" *ngIf="(loginUser=='state_manager' || loginUser=='morth_manager' || loginUser=='iva') && currentUrl != '/new-proposal' ">Send for modification</button>
-          <button class="btn btn-danger" type="button"  *ngIf="(loginUser=='state_manager' || loginUser=='morth_manager' || loginUser=='iva') && currentUrl != '/new-proposal'">Reject</button>
+          <button class="btn btn-danger" type="button"  *ngIf="(loginUser=='state_manager' || loginUser=='morth_manager') && currentUrl != '/new-proposal'">Reject</button>
           <button class="btn btn-secondary" type="button" (click)="onCancel()">Cancel</button>
         </div>
         

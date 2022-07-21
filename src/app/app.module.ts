@@ -18,7 +18,9 @@ import { NgChartsModule } from 'ng2-charts';
 import { ProposalModule } from './proposal/proposal.module';
 import { NgxEchartsModule } from 'ngx-echarts';
 // import { LoaderComponent } from './loader/loader.component';
-import { DashboardAnalyticComponent } from './dashboard-analytic/dashboard-analytic.component'
+import { DashboardAnalyticComponent } from './dashboard-analytic/dashboard-analytic.component';
+import { AgGridModule } from 'ag-grid-angular';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,6 +41,7 @@ import { DashboardAnalyticComponent } from './dashboard-analytic/dashboard-analy
     NgImageSliderModule,
     NgChartsModule,
     ProposalModule,
+    AgGridModule,
     
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts')

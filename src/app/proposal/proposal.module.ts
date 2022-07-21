@@ -5,16 +5,21 @@ import { ProposalRoutingModule } from './proposal-routing.module';
 import { ProposalListComponent } from './proposal-list/proposal-list.component';
 import { LoaderComponent } from '../loader/loader.component';
 
+import { AgGridModule } from 'ag-grid-angular';
+import { RowEditComponent } from './row-edit/row-edit.component';
+
 
 
 @NgModule({
   declarations: [
     ProposalListComponent,
-    LoaderComponent
+    LoaderComponent,
+    RowEditComponent
   ],
   imports: [
     CommonModule,
-    ProposalRoutingModule
+    ProposalRoutingModule,
+    AgGridModule
     
   ],
   exports: [

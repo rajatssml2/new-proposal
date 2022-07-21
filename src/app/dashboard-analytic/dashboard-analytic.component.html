@@ -20,23 +20,35 @@
       <div>
         <label for="state">Select State</label>
         <select  class="form-select" name="state" id="state">
-          <option value="Delhi">Delhi</option>
-          <option value="Mumbai">Mumbai</option>
-          <option value="Kolkata">Kolkata</option>
+          <option value="Andhra Pradesh">Andhra Pradesh</option>
+          <option value="Asam">Asam</option>
+          <option value="Bihar">Bihar</option>
+          <option value="Gujrat">Gujrat</option>
+          <option value="Haryana">Haryana</option>
+          <option value="Karnataka">Karnataka</option>
+          <option value="Madhya Pradesh">Madhya Pradesh</option>
+          <option value="Rajasthan">Rajasthan</option>
+          <option value="Tamil Nadu">Tamil Nadu</option>
+          <option value="Telangana">Telangana</option>
+          <option value="Uttar Pradesh">Uttar Pradesh</option>
+          <option value="West Bengal">West Bengal</option>
         </select>
       </div>
-      <div echarts [options]="chartOption2" class="demo-chart"></div>
+      <i class="fa fa-arrow-left" aria-hidden="true" style="cursor: pointer;"  *ngIf="isChartDrill21" (click)="onChartEvent21($event, 'chartClick')">Back</i>
+      <div echarts [options]="chartOption2" class="demo-chart" *ngIf="!isChartDrill21" (chartClick)="onChartEvent21($event, 'chartClick')"></div>
+      <div echarts [options]="chartOption21" class="demo-chart" *ngIf="isChartDrill21" ></div>
 
     </div>
 
     <div class="col-sm-6" style="border: 1px solid;">
-      
-      <div echarts [options]="chartOption3" class="demo-chart"></div>
-
+      <i class="fa fa-arrow-left" aria-hidden="true" style="cursor: pointer;"  *ngIf="isChartDrill31" (click)="onChartEvent31($event, 'chartClick')">Back</i>
+      <div echarts [options]="chartOption3" class="demo-chart" *ngIf="!isChartDrill31" (chartClick)="onChartEvent31($event, 'chartClick')"></div>
+      <div echarts [options]="chartOption31" class="demo-chart" *ngIf="isChartDrill31" ></div>
     </div>
     <div class="col-sm-6" style="border: 1px solid;">
-      <div echarts [options]="chartOption4" class="demo-chart"></div>
-
+      <i class="fa fa-arrow-left" aria-hidden="true" style="cursor: pointer;"  *ngIf="isChartDrill41" (click)="onChartEvent41($event, 'chartClick')">Back</i>
+      <div echarts [options]="chartOption4" class="demo-chart" *ngIf="!isChartDrill41" (chartClick)="onChartEvent41($event, 'chartClick')"></div>
+      <div echarts [options]="chartOption41" class="demo-chart" *ngIf="isChartDrill41" ></div>
     </div>
 
   </div>

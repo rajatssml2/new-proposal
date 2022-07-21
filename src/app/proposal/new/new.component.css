@@ -8,3 +8,9 @@
 .asterisk {
     color: red;
 }
+.add-btn {
+    padding-bottom: 10px;
+}
+.add-btn span{
+    float: right;
+}

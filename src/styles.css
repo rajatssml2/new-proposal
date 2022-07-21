@@ -1,6 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Numans');
 
+@import "~ag-grid-community/dist/styles/ag-grid.css";
+@import "~ag-grid-community/dist/styles/ag-theme-balham.css";
 html,
 body {
 
@@ -13194,6 +13196,10 @@ form#views-exposed-form-Department-officer-page .form-item.form-type-select.form
 	width: 164px !important;
 }
 
+.ag-center-cols-container {
+	width: 100% !important;
+}
+
 
 
 .print-content .view-organisation- .customtable thead th:nth-child(1),
@@ -13481,51 +13487,15 @@ body .print-content {
 	color: #f9f9f9;
 }
 
-/* .customtable thead th:nth-child(1), .customtable thead th:nth-child(2){width:200px}
-
-.customtable thead th{font-size:13px}.customtable tbody td{word-break:break-all;font-size:13px}
-.customtable thead th:nth-child(3), .customtable thead th:nth-child(4){max-width:90px;width:90px;min-width:90px} */
-
-/* .view-id-Department_officer .table tbody tr td:nth-child(1) { */
-/* width: 18%; */
-/* } */
-/* .view-id-Department_officer .table tbody tr td:nth-child(2) { */
-/* width: 18%; */
-/* } */
-/* .view-id-Department_officer .table tbody tr td:nth-child(3) { */
-/* width: 10%; */
-/* } */
-/* .view-id-Department_officer .table tbody tr td:nth-child(4) { */
-/* width: 7%; */
-/* } */
-/* .view-id-Department_officer .table tbody tr td:nth-child(5) { */
-/* width: 18%; */
-/* } */
-/* .view-id-Department_officer .table tbody tr td:nth-child(6) { */
-/* width: 14%; */
-/* } */
-/* .view-id-Department_officer .table tbody tr td:nth-child(7) { */
-/* width: 15%; */
-/* } */
-
-/* .view-organisation- .table tbody tr td:nth-child(1) { */
-/* width: 17%; */
-/* } */
-/* .view-organisation- .table tbody tr td:nth-child(2) { */
-/* width: 17%; */
-/* } */
-/* .view-organisation- .table tbody tr td:nth-child(3) { */
-/* width: 10%; */
-/* } */
-/* .view-organisation- .table tbody tr td:nth-child(4) { */
-/* width: 2%; */
-/* } */
-/* .view-organisation- .table tbody tr td:nth-child(5) { */
-/* width: 16%; */
-/* } */
-/* .view-organisation- .table tbody tr td:nth-child(6) { */
-/* width: 10%; */
-/* } */
-/* .view-organisation- .table tbody tr td:nth-child(7){ */
-/* width: 22%; */
-/* } */
+.ag-header-cell-text {
+	font-size: 15px;
+    color: black;
+	width: 100%;
+}
+.ag-row {
+	height: 40px !important;
+	padding: 5px;
+}
+.ag-theme-balham .ag-ltr .ag-cell {
+	font-size: 16px;
+}
