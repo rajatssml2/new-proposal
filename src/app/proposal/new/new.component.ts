@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute,Router } from '@angular/router'
 import * as FileSaver from 'file-saver';
 import Swal from 'sweetalert2';
 declare var saveAs:any;
+// import {FileUploadComponent} from '../file-upload/file-upload.component'
 
 import {
   CellValueChangedEvent,
@@ -15,6 +16,7 @@ import {
   RowValueChangedEvent,
 } from 'ag-grid-community';
 import { RowEditComponent } from '../row-edit/row-edit.component';
+import { FileUploadComponent } from '../file-upload/file-upload.component';
 // import 'ag-grid-community/styles/ag-grid.css';
 // import 'ag-grid-community/styles/ag-theme-alpine.css';
 // import 'ag-grid-enterprise';
@@ -44,8 +46,12 @@ export class NewComponent implements OnInit {
   rowData: any;
   public defaultColDef: any;
   frameworkComponents: any;
+  public documentGrp: any;
+  public totalfiles: Array<File> =[];
+  public totalFileName = [];
+  public lengthCheckToaddMore =0;
 
-  constructor(private fb: FormBuilder, private route: ActivatedRoute, private router: Router) {
+  constructor(private fb: FormBuilder, private route: ActivatedRoute, private router: Router,private formBuilder: FormBuilder) {
     this.currentUrl = this.router.url;
     console.log(this.currentUrl);
     this.columnDefs = [
@@ -57,7 +63,7 @@ export class NewComponent implements OnInit {
           values: ['Milestone 1', 'Milestone 2', 'Milestone 3', 'Milestone 4', 'Milestone 5','Milestone 6','Milestone 7','Milestone 8','Milestone 9','Milestone 10'],
         },
       },
-      { field: 'percentage', editable: true, aggFunc: "sum",valueParser: "Number(newValue)"},
+      { field: 'percentage', headerName: "Percentage %", editable: true, aggFunc: "sum",valueParser: "Number(newValue)"},
       {
         headerName: "Actions",
         field: "action",
@@ -70,7 +76,6 @@ export class NewComponent implements OnInit {
     ];
     this.frameworkComponents = {
       rowEditCRenderer: RowEditComponent
-     
       };
       this.defaultColDef = {
         sortingOrder: ["asc", "desc"],
@@ -83,19 +88,7 @@ export class NewComponent implements OnInit {
             return false;
         }
     };
-
-    
-
-    
-  
-    // this.rowData = [
-    //   { make: 'Toyota', model: 'Celica', price: 35000 },
-    //   { make: 'Ford', model: 'Mondeo', price: 32000 },
-    //   { make: 'Porsche', model: 'Boxster', price: 72000 }
-    // ];
-    
    }
-
    checkActionColumn() {
     
     let user = localStorage.getItem('loginUser');
@@ -170,9 +163,121 @@ export class NewComponent implements OnInit {
     return this.proposalForm.controls;
   }
 
-  ngOnInit(): void {
+  createUploadDocuments(): FormGroup {
+    return this.formBuilder.group({
+      doc_name: '',
+      doc_description: '',
+      documentFile : File
+    });
+  }
+
+  get items() {
+    return this.documentGrp.get('items') as FormArray;
+  };
+
+  addItem(): void {
+
+
+//console.log("length is ",this.totalfiles.length);
+//console.log("lengthCheckToaddMore ", this.lengthCheckToaddMore);
+
+if(this.totalfiles.length!=0)
+if( this.items.value[0].doc_name != "" && this.items.value[0].doc_description != "" && ((this.lengthCheckToaddMore) === (this.totalfiles.length)) )
+{
+
+    this.items.insert(0, this.createUploadDocuments())
+     this.lengthCheckToaddMore=this.lengthCheckToaddMore+1;
+}
+  }
+
+  removeItem(index: number) {
+
+   this.totalfiles.splice(index);
+   this.totalFileName.splice(index);
+    this.items.removeAt(index);
+    this.lengthCheckToaddMore=this.lengthCheckToaddMore-1;
+   // console.log("name are ",this.totalFileName);
+
+  }
+
+  fileSelectionEvent (fileInput: any, oldIndex:any) {
+
+    //console.log("oldIndex is ", oldIndex);
+
+    if (fileInput.target.files && fileInput.target.files[0]) {
+      var reader = new FileReader();
+      reader.onload = (event: any) => {
+      }
+      if(oldIndex==0){
+        this.totalfiles.unshift((fileInput.target.files[0]))
+        // this.totalFileName.unshift(fileInput.target.files[0].name)
+      }else {
+        this.totalfiles[oldIndex]=(fileInput.target.files[0]);
+        // this.totalFileName[oldIndex]=fileInput.target.files[0].name
+      }
+
+      reader.readAsDataURL(fileInput.target.files[0]);
+    }
+
+    if(this.totalfiles.length == 1)
+    {
+      this.lengthCheckToaddMore=1;
+    }
+
+  }
+
+
+
+
+  public OnSubmit(formValue: any) {
+
+
+    let main_form: FormData = new FormData();
+
+    for(let j=0;j<this.totalfiles.length; j++)
+    {
+      console.log("the values is ",<File>this.totalfiles[j]);
+      console.log("the name is ",this.totalFileName[j]);
+
+      main_form.append(this.totalFileName[j],<File>this.totalfiles[j])
+    }
+    console.log(formValue.items)
+
+
+
+    //reverseFileNames=this.totalFileName.reverse();
+
+    let AllFilesObj: any= []
+
+    formValue.items.forEach((element:any, index:any) => { 
+
+      console.log("index is ",index);
+      console.log("element is ", element);
+
+      let eachObj=
+      {
+        'doc_name' : element.doc_name,
+        'doc_description' : element.doc_description,
+        'file_name' : this.totalFileName[index]
+      }
+      AllFilesObj.push(eachObj); 
+    });
+
+    //console.log("the Array data is ",AllFilesObj);
+    main_form.append("fileInfo",JSON.stringify(AllFilesObj))
 
     
+  }
+
+  ngOnInit(): void {
+
+    this.documentGrp = this.formBuilder.group({
+      doc_name: '',
+      doc_description: '',
+      documentFile:new FormControl(File),
+
+      items: this.formBuilder.array([this.createUploadDocuments()])
+    });
 
     this.proposalForm = this.fb.group({
       id: [''],
@@ -220,6 +325,7 @@ export class NewComponent implements OnInit {
         this.fileSrc = val[0].fileSource;
         this.isReadOnly = true;
         this.proposalForm.controls.category.disable();
+        this.proposalForm.controls.fundType.disable();
         this.proposalForm.controls.upload.disable();
         // this.proposalForm.controls.sentTo.disable();
         let lUser = localStorage.getItem('loginUser');

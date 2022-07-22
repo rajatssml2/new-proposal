@@ -1,0 +1,75 @@
+<div>
+    <div class="pull-right">
+        <button type="submit" class="btn btn-sm btn-secondary" title="Add More" style="margin-right: 10px;"
+            (click)="addItem()">Add More</button>
+
+            <button type="submit" class="btn btn-sm btn-success">Save</button>
+    </div>
+    <div class="container-fluid">
+        <section class="content">
+            <div id="main-form-content">
+                <form [formGroup]="documentGrp" (ngSubmit)="OnSubmit(documentGrp.value)" #uploadDocumentsForm="ngForm"
+                    ngNativeValidate>
+                    <div class="box box-solid box-primary">
+    
+                        <div class="box-body" formArrayName="items">
+    
+                            <div class="row">
+                                <div class="col-sm-12">
+    
+    
+                                    <div *ngFor="let item of items.controls; let i = index;">
+                                        <div [formGroupName]="i">
+                                            <table id="tbl-upload" class="table table-bordered">
+                                                <tbody>
+                                                    <tr *ngIf="i==0" class="active">
+                                                        <th>Category</th>
+                                                        <th>Upload</th>
+                                                        <th>&nbsp;</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="form-group required">
+                                                                <select formControlName="category" class="form-select" name="category" id="category" required>
+                                                                    <option selected>Choose...</option>
+                                                                    <option value="Contract document">Contract document</option>
+                                                                    <option value="Bidding document">Bidding document</option>
+                                                                    <option value="Training document">Training document</option>
+                                                                    <option value="Progress report">Progress report</option>
+                                                                    <option value="Planning/recommendation document">Planning/recommendation document</option>
+                                                                  </select>
+                                                                <div class="help-block"></div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group  required">
+    
+                                                                <input type="file" title="Browse Document"
+                                                                    (change)="fileSelectionEvent($event,i)" required="">
+                                                                <div class="help-block"></div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="remove" *ngIf=" i!=0 ">
+                                                            <a title="Remove" (click)="removeItem(i)"
+                                                                class="fa fa-minus-square fa-lg text-red"></a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--./col-->
+                            </div>
+                            <!--./row-->
+                        </div>
+                        <!--./box-body-->
+                        
+                    </div>
+                </form>
+            </div>
+    
+    
+        </section>
+    </div>
+</div>

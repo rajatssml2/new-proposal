@@ -7,23 +7,27 @@ import { LoaderComponent } from '../loader/loader.component';
 
 import { AgGridModule } from 'ag-grid-angular';
 import { RowEditComponent } from './row-edit/row-edit.component';
-
+import { FileUploadComponent } from './file-upload/file-upload.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     ProposalListComponent,
     LoaderComponent,
-    RowEditComponent
+    RowEditComponent,
+    FileUploadComponent
   ],
   imports: [
     CommonModule,
     ProposalRoutingModule,
-    AgGridModule
+    AgGridModule,
+    ReactiveFormsModule
     
   ],
   exports: [
-    LoaderComponent
+    LoaderComponent,
+    FileUploadComponent
   ]
 })
 export class ProposalModule { }

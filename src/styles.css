@@ -2024,6 +2024,9 @@ ol.list-num-count.list-outline-none>li:before {
 .bg-red {
 	background-color: #fb5455;
 }
+.bg-pink {
+	background: pink;
+}
 
 .bg-green {
 	background-color: #a5de5c;

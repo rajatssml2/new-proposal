@@ -1,75 +1,76 @@
-<div class="row" style="padding: 100px;">
-  <div class="col-md-4">
-    <div class="small-box small-box-dash bg-aqua">
-      <div class="inner">
-        <h4>Number of proposal under process</h4>
-        <p class="card-text-dash">3</p>
-      </div>
-
-    </div>
-  </div>
-  <!-- <div class="col-sm-4">
-    <div class="card dashboard-card card-under-process">
-      <div class="card-body card-body-d">
-        <h5 class="card-title">Number of proposal under process</h5>
-        <p class="card-text-dash">8</p>
-      </div>
+<div class="row" style="padding: 40px;">
+  <!-- <div class="col-md-12" style="margin-bottom: 15px;" *ngIf="loginUser=='state_officer' || loginUser=='state_manager'">
+    <div style="float: right; box-shadow: 0px 0px 10px 10px #728ca482;" class="col-md-3">
+      <img src="../../assets/images/bihar-road-map.jpg" alt="">
     </div>
   </div> -->
-  <div class="col-md-4">
-    <div class="small-box small-box-dash bg-yellow">
-      <div class="inner">
-        <h4>Number of proposal approved</h4>
-        <p class="card-text-dash">4</p>
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="small-box small-box-dash bg-aqua">
+            <div class="inner">
+              <h4>Road Engineering</h4>
+              <p class="card-text-dash">5Cr</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-inr"></i>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="small-box small-box-dash bg-yellow">
+            <div class="inner">
+              <h4>Vehicle safety and driver training</h4>
+              <p class="card-text-dash">4Cr</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-inr"></i>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="small-box small-box-dash bg-pink">
+            <div class="inner">
+              <h4>Enforcement of rules</h4>
+              <p class="card-text-dash">3Cr</p>
+              <!-- <a href="javascript:void(0)" (click)="openList()">
+                
+              </a> -->
+            </div>
+            <div class="icon">
+              <i class="fa fa-inr"></i>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="small-box small-box-dash bg-teal">
+            <div class="inner">
+              <h4>Post crash care</h4>
+              <p class="card-text-dash">2Cr</p>
+              <!-- <a href="javascript:void(0)" (click)="openList()">
+                
+              </a> -->
+            </div>
+            <div class="icon">
+              <i class="fa fa-inr"></i>
+            </div>
+          </div>
+        </div>
       </div>
-
+      
     </div>
+    <div class="col-md-6">
+      <div class="small-box small-box-dash">
+        <div class="inner">
+          <img [src]="(loginUser=='state_officer' || loginUser=='state_manager') ? '../../assets/images/bihar-road-map.jpg' : '../../assets/images/highway1.jpg'" alt="" style="width: 100%; height: 240%;" height="100%" width="100%">
+        </div>
+  
+      </div>
+    </div>
+  
+
+  
+  <div>
+    <app-dashboard-analytic></app-dashboard-analytic>
   </div>
-  <!-- <div class="col-sm-4">
-    <div class="card dashboard-card card-approved">
-      <div class="card-body card-body-d">
-        <h5 class="card-title">Number of proposal approved</h5>
-        <p class="card-text-dash">5</p>
-      </div>
-    </div>
-  </div> -->
-  <div class="col-md-4">
-    <div class="small-box small-box-dash bg-red">
-      <div class="inner">
-        <h4>Number of proposal under approval</h4>
-        <p class="card-text-dash">5</p>
-      </div>
-    </div>
-  </div>
-  <!-- <div class="col-sm-4">
-    <div class="card dashboard-card card-under-approval">
-      <div class="card-body card-body-d">
-        <h5 class="card-title">Number of proposal under approval</h5>
-        <p class="card-text-dash">10</p>
-      </div>
-    </div>
-  </div> -->
-
-  <div class="col-md-4" *ngIf="loginUser == 'state_manager' || loginUser == 'iva' || loginUser == 'morth_manager'" style="margin-top: 20px;">
-    <div class="small-box small-box-dash bg-teal">
-      <div class="inner">
-        <h4>Number of proposal under approval 2</h4>
-        <a href="javascript:void(0)" (click)="openList()">
-          <p class="card-text">3</p>
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- <div class="col-sm-4" *ngIf="loginUser == 'state_manager' || loginUser == 'morth_manager'" style="margin-top: 20px;">
-    <div class="card dashboard-card card-under-approval">
-      <div class="card-body card-body-d">
-        <h5 class="card-title">Number of proposal under approval 2</h5>
-
-        <a href="javascript:void(0)" (click)="openList()">
-          <p class="card-text-dash">10</p>
-        </a>
-      </div>
-    </div>
-  </div> -->
 </div>

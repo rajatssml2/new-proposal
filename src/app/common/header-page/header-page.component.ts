@@ -46,5 +46,8 @@ export class HeaderPageComponent implements OnInit {
     this.userService.onLogout();
     this.router.navigate(['/'])
   }
+  onClickBell() {
+    this.router.navigate(['/proposal-list'])
+  }
 
 }

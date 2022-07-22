@@ -11,28 +11,7 @@
             <div *ngIf="f.purpose.errors.required">Purpose is required</div>
           </div>
         </div>
-        <div class="col-md-6">
-          <label for="category" class="form-label">Category <span class="asterisk">*</span></label>
-          <select formControlName="category" class="form-select" name="category" id="category" [disabled]="isReadOnly">
-            <option selected>Choose...</option>
-            <option value="Contract document">Contract document</option>
-            <option value="Bidding document">Bidding document</option>
-            <option value="Training document">Training document</option>
-            <option value="Progress report">Progress report</option>
-            <option value="Planning/recommendation document">Planning/recommendation document</option>
-          </select>
-          <div *ngIf="submitted && f.category.errors" class="not-valid">
-            <div *ngIf="f.category.errors.required">Category is required</div>
-          </div>
-        </div>
-        <div class="col-6">
-          <label for="upload" class="form-label">Upload <span class="asterisk">*</span></label>
-          <input formControlName="upload" type="file" id="upload" [disabled]="isReadOnly" [readonly]="isReadOnly" (change)="onFileChange($event)" class="form-control" id="customFile" />
-          <span *ngIf="isDownloadIconShow" class="download-proposal-icon" (click)="onDownloadFile()"> <i class="fa fa-download"></i> </span>
-          <div *ngIf="submitted && f.upload.errors" class="not-valid">
-            <div *ngIf="f.upload.errors.required">Upload is required</div>
-          </div>
-        </div>
+        
         <div class="col-md-6">
           <label for="fundType" class="form-label">Fund Type <span class="asterisk">*</span></label>
           <select formControlName="fundType" class="form-select" name="fundType" id="fundType" [disabled]="isReadOnly">
@@ -48,45 +27,22 @@
         </div>
         <div class="col-6">
           <label for="estimatedAmount" class="form-label">Estimated Amount</label>
-          <input formControlName="estimatedAmount" type="text" class="form-control" id="estimatedAmount" placeholder="Estimated Amount ....">
+          <input formControlName="estimatedAmount" type="text" class="form-control" id="estimatedAmount" placeholder="Estimated Amount ...." [readonly]="isReadOnly" >
         </div>
         <div class="col-6">
           <label for="startDate" class="form-label">Start Date</label>
-          <input formControlName="startDate" type="date" class="form-control" id="startDate" placeholder="Estimated Amount ....">
+          <input formControlName="startDate" type="date" class="form-control" id="startDate" placeholder="Start Date" [readonly]="isReadOnly">
         </div>
         <div class="col-6">
           <label for="endDate" class="form-label">End Date</label>
-          <input formControlName="endDate" type="date" class="form-control" id="endDate" placeholder="Estimated Amount ....">
+          <input formControlName="endDate" type="date" class="form-control" id="endDate" placeholder="End Date" [readonly]="isReadOnly">
         </div>
-       
-        <div class="col-6">
-          <label for="remarks" class="form-label">Remarks</label>
-          <input formControlName="remarks" type="text" class="form-control" id="remarks" placeholder="Remarks ....">
-        </div>
-        <div class="col-md-6">
-          <label for="sentto" class="form-label">Sent to <span class="asterisk">*</span></label>
-          <select formControlName="sentTo" class="form-select" name="sentto" id="sentto">
-            <option value="" selected>Choose...</option>
-            <option *ngIf="loginUser=='state_officer'" value="State transport manage">State transport manager</option>
-            <option *ngIf="loginUser=='state_manager'" value="IVA">IVA</option>
-            <option *ngIf="loginUser=='iva'" value="MoRTH Manager">MoRTH Manager</option>
-          </select>
-          <div *ngIf="submitted && f.sentTo.errors" class="not-valid">
-            <div *ngIf="f.sentTo.errors.required">Sent To is required</div>
-          </div>
-          <!-- <div class="not-valid" *ngIf="proposalForm.get('sentTo').invalid || (proposalForm.get('sentTo').dirty || proposalForm.get('sentTo').touched)">
-            Sent to is required
-        </div> -->
-        </div>
-
         <div>
-          
           <div class="add-btn">
-            <label class="form-label">Milestone</label>
+            <label class="form-label">Proposal Milestone</label>
             <span *ngIf="loginUser=='state_officer'">
               <button class="btn btn-secondary" (click)="AddRows()">Add</button>
             </span>
-            
           </div>
           <div>
             <ag-grid-angular 
@@ -104,10 +60,56 @@
             suppressClickEdit>
           </ag-grid-angular>
           </div>
-          
+        </div>
+        <div>
+          <div class="add-btn">
+            <label class="form-label">Proposal Category</label>
+            
+          </div>
+          <app-file-upload></app-file-upload>
+          <!-- <div class="row">
+            <div class="col-md-6">
+              <label for="category" class="form-label">Category <span class="asterisk">*</span></label>
+              <select formControlName="category" class="form-select" name="category" id="category" [disabled]="isReadOnly">
+                <option selected>Choose...</option>
+                <option value="Contract document">Contract document</option>
+                <option value="Bidding document">Bidding document</option>
+                <option value="Training document">Training document</option>
+                <option value="Progress report">Progress report</option>
+                <option value="Planning/recommendation document">Planning/recommendation document</option>
+              </select>
+              <div *ngIf="submitted && f.category.errors" class="not-valid">
+                <div *ngIf="f.category.errors.required">Category is required</div>
+              </div>
+            </div>
+            <div class="col-6">
+              <label for="upload" class="form-label">Upload <span class="asterisk">*</span></label>
+              <input formControlName="upload" type="file" id="upload" [disabled]="isReadOnly" [readonly]="isReadOnly" (change)="onFileChange($event)" class="form-control" id="customFile" />
+              <span *ngIf="isDownloadIconShow" class="download-proposal-icon" (click)="onDownloadFile()"> <i class="fa fa-download"></i> </span>
+              <div *ngIf="submitted && f.upload.errors" class="not-valid">
+                <div *ngIf="f.upload.errors.required">Upload is required</div>
+              </div>
+            </div>
+          </div> -->
           
         </div>
-
+        
+        <div class="col-6">
+          <label for="remarks" class="form-label">Remarks</label>
+          <input formControlName="remarks" type="text" class="form-control" id="remarks" placeholder="Remarks ....">
+        </div>
+        <div class="col-md-6">
+          <label for="sentto" class="form-label">Sent to <span class="asterisk">*</span></label>
+          <select formControlName="sentTo" class="form-select" name="sentto" id="sentto">
+            <!-- <option value="" selected>Choose...</option> -->
+            <option *ngIf="loginUser=='state_officer'" value="State transport manage" selected>State transport manager</option>
+            <option *ngIf="loginUser=='state_manager'" value="IVA" selected>IVA</option>
+            <option *ngIf="loginUser=='iva'" value="MoRTH Manager" selected>MoRTH Manager</option>
+          </select>
+          <div *ngIf="submitted && f.sentTo.errors" class="not-valid">
+            <div *ngIf="f.sentTo.errors.required">Sent To is required</div>
+          </div>
+        </div>
         <div class="d-flex gap-2 col-2 mx-auto">
           <button class="btn btn-primary" type="button" *ngIf="loginUser=='state_officer' || currentUrl == '/new-proposal'" (click)="submit()">Submit</button>
           <button class="btn btn-warning" type="button" *ngIf="loginUser=='state_officer' || currentUrl == '/new-proposal'">Save as draft</button>

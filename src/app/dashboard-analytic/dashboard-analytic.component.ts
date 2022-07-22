@@ -14,7 +14,7 @@ export class DashboardAnalyticComponent implements OnInit {
   isChartDrill31 = false;
   isChartDrill41 = false;
   chartOption: any = {
-    color: 'green',
+    color: '#7596e1',
     title: {
       text: ' Road Engineerning ',
       // subtext: 'eCharts for the win!',
@@ -36,16 +36,16 @@ export class DashboardAnalyticComponent implements OnInit {
     },
     series: [
       {
-        data: [20, 30, 40,50,60],
+        data: this.getChart1Data(),
         type: 'bar',
       },
     ],
   };
 
   chartOption2:EChartsOption = {
-    color: 'green',
+    color: '#498c4e',
     title: {
-      text: 'Vehicle safety and road engineering',
+      text: 'Vehicle safety and driver training',
       // subtext: 'eCharts for the win!',
       left: 'center'
     },
@@ -65,14 +65,14 @@ export class DashboardAnalyticComponent implements OnInit {
     },
     series: [
       {
-        data: [5, 10, 20,25,30],
+        data: this.getChart2Data(),
         type: 'bar',
       },
     ],
   };
 
   chartOption3:EChartsOption = {
-    color: 'green',
+    color: '#d77c80',
     title: {
       text: 'Enforcement of rules',
       // subtext: 'eCharts for the win!',
@@ -94,13 +94,13 @@ export class DashboardAnalyticComponent implements OnInit {
     },
     series: [
       {
-        data: [10, 20,30,40],
+        data: this.getChart3Data(),
         type: 'bar',
       },
     ],
   };
   chartOption4:EChartsOption = {
-    color: 'green',
+    color: '#d1cb86',
     title: {
       text: 'Post crash care',
       // subtext: 'eCharts for the win!',
@@ -124,7 +124,7 @@ export class DashboardAnalyticComponent implements OnInit {
     },
     series: [
       {
-        data: [10, 20,30,40],
+        data: this.getChart4Data(),
         type: 'bar',
       },
     ],
@@ -356,6 +356,39 @@ export class DashboardAnalyticComponent implements OnInit {
       }
     ]
   };
+
+  getChart1Data() {
+    let lUser = localStorage.getItem('loginUser');
+    if(lUser == 'state_officer' || lUser == 'state_manager') {
+      return [5,7,10, 15, 20];
+    }else {
+      return [20, 30, 40, 50, 60];
+    }
+  }
+  getChart2Data() {
+    let lUser = localStorage.getItem('loginUser');
+    if(lUser == 'state_officer' || lUser == 'state_manager') {
+      return [5,10,15, 20];
+    }else {
+      return [10, 20, 40, 50, 60];
+    }
+  }
+  getChart3Data() {
+    let lUser = localStorage.getItem('loginUser');
+    if(lUser == 'state_officer' || lUser == 'state_manager') {
+      return [10, 15, 20, 30];
+    }else {
+      return [20, 25, 40, 50, 60];
+    }
+  }
+  getChart4Data() {
+    let lUser = localStorage.getItem('loginUser');
+    if(lUser == 'state_officer' || lUser == 'state_manager') {
+      return [15,20,30, 35, 40];
+    }else {
+      return [20, 30, 40, 50, 60];
+    }
+  }
 
   constructor() {
    }

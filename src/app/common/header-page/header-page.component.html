@@ -702,14 +702,60 @@
                         </a>
                       
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                          <li><a class="dropdown-item" [routerLink]="['/new-proposal']">New proposal</a></li>
+                          <li><a class="dropdown-item" [routerLink]="['/new-proposal']" *ngIf="loginUser!='iva' || loginUser!='morth_manager'">New proposal</a></li>
                           <li><a class="dropdown-item" *ngIf="loginUser!='state_officer'" [routerLink]="['/proposal-list']">View proposal</a></li>
                         </ul>
                       </div>
                 </li>
+                <li *ngIf="isLoggedIn=='true'">
+                  <div class="dropdown">
+                      <a class=" nav-link px-2 link-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                          Reports
+                      </a>
+                    
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <li><a class="dropdown-item" >Static report</a></li>
+                        <li><a class="dropdown-item">Dynamic report</a></li>
+                      </ul>
+                    </div>
+              </li>
+              <li *ngIf="isLoggedIn=='true'">
+                <div class="dropdown">
+                    <a class=" nav-link px-2 link-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                        Contracts
+                    </a>
+                  
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                      <li><a class="dropdown-item">Manage vendor</a></li>
+                      <li><a class="dropdown-item">View vendor</a></li>
+                    </ul>
+                  </div>
+            </li>
+            <li *ngIf="isLoggedIn=='true'">
+              <div class="dropdown">
+                  <a class=" nav-link px-2 link-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                      Fund Management
+                  </a>
+                
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <li><a class="dropdown-item">Manage fund</a></li>
+                    <li><a class="dropdown-item">View history</a></li>
+                  </ul>
+                </div>
+          </li>
+                  <!-- <li *ngIf="isLoggedIn=='true'">
+                    <div class="">
+                        <a class=" nav-link px-2 link-dark" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                            State: Bihar
+                        </a>
+                      </div>
+                  </li> -->
               </ul>
-        
-              
+              <div *ngIf="loginUser=='state_officer' || loginUser=='state_manager'">
+                <a class=" nav-link px-2 link-dark" style="color: white; font-size: 20px;" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                  State: Bihar
+              </a>
+              </div>
         
               <div class="dropdown text-end" *ngIf="isLoggedIn=='true'">
                 <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="true">
@@ -722,6 +768,9 @@
                   <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item" href="javascript:void(0)" (click)="onLogOut()">Sign out</a></li>
                 </ul>
+              </div>
+              <div class="" *ngIf="isLoggedIn=='true'" style="margin-left: 10px; cursor: pointer;" (click)="onClickBell()">
+                <i class="fa fa-bell" aria-hidden="true"></i>
               </div>
               <div class="" *ngIf="isLoggedIn=='false'">
                 <a href="javascript:void(0)" class="btn btn-primary" [routerLink]="'login'">
