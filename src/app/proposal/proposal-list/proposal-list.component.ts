@@ -60,8 +60,8 @@ export class ProposalListComponent implements OnInit {
       this.isLoading = false;
       if(index == 0) {
         Swal.fire({
-          icon: 'info',
-          title: 'Fund is available, current utilised amount is 20%',
+          icon: 'success',
+          text: 'Total Fund allocatted: INR 2,55,00,000.00, Fund utilised till date: INR 1,35,00,000.00, Fund is available',
           showDenyButton: false,
           showCancelButton: false,
           confirmButtonText: 'Ok'
@@ -71,8 +71,8 @@ export class ProposalListComponent implements OnInit {
         })
       } else {
         Swal.fire({
-          icon: 'info',
-          title: 'Fund is utilized',
+          icon: 'warning',
+          text: 'Total Fund allocatted: INR 3,55,00,000.00, Fund utilised till date: INR 3,55,00,000.00, Fund is utilized',
           showDenyButton: false,
           showCancelButton: false,
           confirmButtonText: 'Ok'

@@ -177,7 +177,7 @@ export class DashboardAnalyticComponent implements OnInit {
     ]
   };
   chartOption11: any = {
-    color: 'green',
+    color: '#6f42c1',
     dataset: {
       source: [
         ['amount', 'product'],
@@ -223,7 +223,7 @@ export class DashboardAnalyticComponent implements OnInit {
   };
 
   chartOption21: any = {
-    color: 'green',
+    color: '#198754',
     dataset: {
       source: [
         ['amount', 'product'],
@@ -268,7 +268,7 @@ export class DashboardAnalyticComponent implements OnInit {
     ]
   };
   chartOption31: any = {
-    color: 'green',
+    color: '#d63384',
     dataset: {
       source: [
         ['amount', 'product'],
@@ -313,7 +313,7 @@ export class DashboardAnalyticComponent implements OnInit {
     ]
   };
   chartOption41: any = {
-    color: 'green',
+    color: '#ffc107',
     dataset: {
       source: [
         ['amount', 'product'],
