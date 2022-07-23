@@ -50,6 +50,8 @@ export class NewComponent implements OnInit {
   public totalfiles: Array<File> =[];
   public totalFileName = [];
   public lengthCheckToaddMore =0;
+  proposalCategory: any;
+  categoryData: any;
 
   constructor(private fb: FormBuilder, private route: ActivatedRoute, private router: Router,private formBuilder: FormBuilder) {
     this.currentUrl = this.router.url;
@@ -155,7 +157,7 @@ export class NewComponent implements OnInit {
       var rowta={
           milestone:"", percentage:""
       }
-      this.gridApi.applyTransaction({add: [rowta],addIndex: 0})
+      this.gridApi.applyTransaction({add: [rowta],addIndex: (this.getAllRows() && this.getAllRows().length>0) ? this.getAllRows().length : 0})
       // this.gridOptions.api.refreshView();
   }
 
@@ -163,136 +165,18 @@ export class NewComponent implements OnInit {
     return this.proposalForm.controls;
   }
 
-  createUploadDocuments(): FormGroup {
-    return this.formBuilder.group({
-      doc_name: '',
-      doc_description: '',
-      documentFile : File
-    });
-  }
-
-  get items() {
-    return this.documentGrp.get('items') as FormArray;
-  };
-
-  addItem(): void {
-
-
-//console.log("length is ",this.totalfiles.length);
-//console.log("lengthCheckToaddMore ", this.lengthCheckToaddMore);
-
-if(this.totalfiles.length!=0)
-if( this.items.value[0].doc_name != "" && this.items.value[0].doc_description != "" && ((this.lengthCheckToaddMore) === (this.totalfiles.length)) )
-{
-
-    this.items.insert(0, this.createUploadDocuments())
-     this.lengthCheckToaddMore=this.lengthCheckToaddMore+1;
-}
-  }
-
-  removeItem(index: number) {
-
-   this.totalfiles.splice(index);
-   this.totalFileName.splice(index);
-    this.items.removeAt(index);
-    this.lengthCheckToaddMore=this.lengthCheckToaddMore-1;
-   // console.log("name are ",this.totalFileName);
-
-  }
-
-  fileSelectionEvent (fileInput: any, oldIndex:any) {
-
-    //console.log("oldIndex is ", oldIndex);
-
-    if (fileInput.target.files && fileInput.target.files[0]) {
-      var reader = new FileReader();
-      reader.onload = (event: any) => {
-      }
-      if(oldIndex==0){
-        this.totalfiles.unshift((fileInput.target.files[0]))
-        // this.totalFileName.unshift(fileInput.target.files[0].name)
-      }else {
-        this.totalfiles[oldIndex]=(fileInput.target.files[0]);
-        // this.totalFileName[oldIndex]=fileInput.target.files[0].name
-      }
-
-      reader.readAsDataURL(fileInput.target.files[0]);
-    }
-
-    if(this.totalfiles.length == 1)
-    {
-      this.lengthCheckToaddMore=1;
-    }
-
-  }
-
-
-
-
-  public OnSubmit(formValue: any) {
-
-
-    let main_form: FormData = new FormData();
-
-    for(let j=0;j<this.totalfiles.length; j++)
-    {
-      console.log("the values is ",<File>this.totalfiles[j]);
-      console.log("the name is ",this.totalFileName[j]);
-
-      main_form.append(this.totalFileName[j],<File>this.totalfiles[j])
-    }
-    console.log(formValue.items)
-
-
-
-    //reverseFileNames=this.totalFileName.reverse();
-
-    let AllFilesObj: any= []
-
-    formValue.items.forEach((element:any, index:any) => { 
-
-      console.log("index is ",index);
-      console.log("element is ", element);
-
-      let eachObj=
-      {
-        'doc_name' : element.doc_name,
-        'doc_description' : element.doc_description,
-        'file_name' : this.totalFileName[index]
-      }
-      AllFilesObj.push(eachObj); 
-    });
-
-    //console.log("the Array data is ",AllFilesObj);
-    main_form.append("fileInfo",JSON.stringify(AllFilesObj))
-
-    
-  }
-
   ngOnInit(): void {
-
-    this.documentGrp = this.formBuilder.group({
-      doc_name: '',
-      doc_description: '',
-      documentFile:new FormControl(File),
-
-      items: this.formBuilder.array([this.createUploadDocuments()])
-    });
-
     this.proposalForm = this.fb.group({
       id: [''],
       purpose: ['', Validators.required],
-      category: [{value: '', disabled: false}, [Validators.required]],
-      upload: [{value: '', disabled: false}, [Validators.required]],
-      fileSource: new FormControl(''),
       remarks: [''],
       sentTo: [{value: '', disabled: false}, [Validators.required]],
       status: [''],
       submittedOn: [''],
-      fundType: [''],
-      estimatedAmount: [''],
-      startDate: [new Date],
-      endDate: [new Date]
+      fundType: ['', [Validators.required]],
+      estimatedAmount: ['', [Validators.required]],
+      startDate: ['', [Validators.required]],
+      endDate: ['', [Validators.required]]
 
 
     });
@@ -312,8 +196,6 @@ if( this.items.value[0].doc_name != "" && this.items.value[0].doc_description !=
           remarks: val[0].remarks,
           // sentTo: val[0].sentTo,
           // upload: val[0].upload,
-          category: val[0].category,
-          fileSource: val[0].fileSource,
           estimatedAmount: val[0].estimatedAmount,
           startDate: val[0].startDate,
           endDate: val[0].endDate,
@@ -321,12 +203,13 @@ if( this.items.value[0].doc_name != "" && this.items.value[0].doc_description !=
   
         });
         this.rowData = this.getRowData(val[1].milestone)
+        this.categoryData = val[1].categoryData;
         this.isDownloadIconShow = true;
         this.fileSrc = val[0].fileSource;
         this.isReadOnly = true;
-        this.proposalForm.controls.category.disable();
+        // this.proposalForm.controls.category.disable();
         this.proposalForm.controls.fundType.disable();
-        this.proposalForm.controls.upload.disable();
+        // this.proposalForm.controls.upload.disable();
         // this.proposalForm.controls.sentTo.disable();
         let lUser = localStorage.getItem('loginUser');
         this.loginUser = lUser;
@@ -336,13 +219,13 @@ if( this.items.value[0].doc_name != "" && this.items.value[0].doc_description !=
         }
       }
   }
-  onDownloadFile() {
+  onDownloadFile(fileSrc: any, fileName: any) {
     // let ss = this.fileSrc.substring("data:image/".length, this.fileSrc.indexOf(";base64"))
     // console.log("ss=",ss)
     // const blob = new Blob([this.fileSrc], {type: ss});
     // FileSaver.saveAs(blob, 'sample');
-    let base64String = this.fileSrc;
-    this.downloadPdf(base64String,"sample");
+    let base64String = fileSrc;
+    this.downloadPdf(base64String, fileName);
   }
   downloadPdf(base64String: any, fileName: any) {
     const source = base64String;
@@ -371,11 +254,26 @@ if( this.items.value[0].doc_name != "" && this.items.value[0].doc_description !=
 
     }
   }
-
+  getCategrory(event: any) {
+    console.log("event==",event)
+    this.proposalCategory = event;
+  }
   submit(){
     let tableData = this.getAllRows();
     console.log("tableData=",tableData);
-    // return;
+    if(this.loginUser=='state_officer') {
+      this.proposalForm.patchValue({
+        sentTo: 'State transport manager'  
+      });
+    } else if(this.loginUser=='state_manager') {
+      this.proposalForm.patchValue({
+        sentTo: 'IVA'  
+      });
+    } else if(this.loginUser=='iva') {
+      this.proposalForm.patchValue({
+        sentTo: 'MoRTH Manager'  
+      });
+    }
     this.submitted = true;
     console.log(this.proposalForm)
     if(!this.proposalForm.valid) return;
@@ -398,27 +296,29 @@ if( this.items.value[0].doc_name != "" && this.items.value[0].doc_description !=
         return;
       }
     }
-
-    
-
+    if(!this.proposalCategory || this.proposalCategory.length==0) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Please add and save proposal category',
+        showDenyButton: false,
+        showCancelButton: false,
+        confirmButtonText: 'Ok'
+      }).then((result) => {
+        
+      })
+      return;
+    }
     let num = Math.floor(Math.random() * 1000000);
-
     this.proposalForm.patchValue({
-
       id: num,
       status: 'Submitted by state officer',
       submittedOn: new Date().toLocaleDateString()
-
     });
-
-    const formData = new FormData();
-
-    formData.append('upload', this.proposalForm.get('fileSource').value);
-    console.log(this.proposalForm,formData)
     let arr = [this.proposalForm.value];
     arr.push()
     let obj = {
-      milestone: tableData
+      milestone: tableData,
+      categoryData: this.proposalCategory
     }
     arr.push(obj)
     localStorage.setItem("proposalData", JSON.stringify(arr))
@@ -443,6 +343,7 @@ if( this.items.value[0].doc_name != "" && this.items.value[0].doc_description !=
     val[0].status = 'Approved';
     localStorage.setItem("proposalData", JSON.stringify(val))
     Swal.fire({
+      icon: 'success',
       title: 'Proposal approved successfully',
       showDenyButton: false,
       showCancelButton: false,
@@ -456,6 +357,11 @@ if( this.items.value[0].doc_name != "" && this.items.value[0].doc_description !=
   }
 
   onSendToIVA() {
+    if(this.loginUser=='state_manager') {
+      this.proposalForm.patchValue({
+        sentTo: 'IVA'
+      });
+    }
     this.submitted = true;
     console.log(this.proposalForm)
     if(!this.proposalForm.valid) return;
@@ -463,6 +369,8 @@ if( this.items.value[0].doc_name != "" && this.items.value[0].doc_description !=
     let val:any = localStorage.getItem('proposalData');
     val = JSON.parse(val);
     val[0].status = 'Verified by state manager';
+    val[0].remarks = this.proposalForm.value.remarks;
+    val[0].sentTo = this.proposalForm.value.sentTo;
     localStorage.setItem("proposalData", JSON.stringify(val))
     Swal.fire({
       icon: 'success',
@@ -479,6 +387,11 @@ if( this.items.value[0].doc_name != "" && this.items.value[0].doc_description !=
   }
 
   onSendToMorthManager() {
+    if(this.loginUser=='iva') {
+      this.proposalForm.patchValue({
+        sentTo: 'MoRTH Manager'  
+      });
+    }
     this.submitted = true;
     console.log(this.proposalForm)
     if(!this.proposalForm.valid) return;
@@ -486,6 +399,8 @@ if( this.items.value[0].doc_name != "" && this.items.value[0].doc_description !=
     let val:any = localStorage.getItem('proposalData');
     val = JSON.parse(val);
     val[0].status = 'Verified by IVA';
+    val[0].remarks = this.proposalForm.value.remarks;
+    val[0].sentTo = this.proposalForm.value.sentTo;
     localStorage.setItem("proposalData", JSON.stringify(val))
     Swal.fire({
       icon: 'success',

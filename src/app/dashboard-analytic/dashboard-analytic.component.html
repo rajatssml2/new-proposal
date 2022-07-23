@@ -10,7 +10,7 @@
 <div style="padding: 20px;">
   <div class="row">
     <div class="col-sm-6" style="border: 1px solid;">
-      <div>
+      <div *ngIf="loginUser=='iva' || loginUser=='morth_manager'">
         <label for="state">Select State</label>
         <select  class="form-select" name="state" id="state">
           <option value="All" selected>All</option>
@@ -36,7 +36,7 @@
     </div>
     <div class="col-sm-6" style="border: 1px solid;">
       
-      <div>
+      <div *ngIf="loginUser=='iva' || loginUser=='morth_manager'">
         <label for="state">Select State</label>
         <select  class="form-select" name="state" id="state">
           <option value="All" selected>All</option>
@@ -61,7 +61,7 @@
     </div>
 
     <div class="col-sm-6" style="border: 1px solid;">
-      <div>
+      <div *ngIf="loginUser=='iva' || loginUser=='morth_manager'">
         <label for="state">Select State</label>
         <select  class="form-select" name="state" id="state">
           <option value="All" selected>All</option>
@@ -84,7 +84,7 @@
       <div echarts [options]="chartOption31" class="demo-chart" *ngIf="isChartDrill31" ></div>
     </div>
     <div class="col-sm-6" style="border: 1px solid;">
-      <div>
+      <div *ngIf="loginUser=='iva' || loginUser=='morth_manager'">
         <label for="state">Select State</label>
         <select  class="form-select" name="state" id="state">
           <option value="All" selected>All</option>

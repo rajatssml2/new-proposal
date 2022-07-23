@@ -13,6 +13,7 @@ export class DashboardAnalyticComponent implements OnInit {
   isChartDrill21 = false;
   isChartDrill31 = false;
   isChartDrill41 = false;
+  loginUser: any = '';
   chartOption: any = {
     color: '#7596e1',
     title: {
@@ -393,7 +394,8 @@ export class DashboardAnalyticComponent implements OnInit {
   constructor() {
    }
   ngOnInit(): void {
-    
+    let lUser = localStorage.getItem('loginUser');
+    this.loginUser = lUser;
   }
 
   onChartEvent1(event: any, val: any) {

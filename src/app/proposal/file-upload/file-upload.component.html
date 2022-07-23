@@ -1,11 +1,16 @@
-<div>
-    <div class="pull-right">
+<div class="add-btn">
+    <label class="form-label">Proposal Category</label>
+    <span class="pull-right">
         <button type="submit" class="btn btn-sm btn-secondary" title="Add More" style="margin-right: 10px;"
             (click)="addItem()">Add More</button>
+    
+            <button type="submit" class="btn btn-sm btn-success" (click)="OnSubmit(documentGrp.value)">Save</button>
+    </span>
+  </div>
 
-            <button type="submit" class="btn btn-sm btn-success">Save</button>
-    </div>
-    <div class="container-fluid">
+<div>
+    
+    <div class="">
         <section class="content">
             <div id="main-form-content">
                 <form [formGroup]="documentGrp" (ngSubmit)="OnSubmit(documentGrp.value)" #uploadDocumentsForm="ngForm"
@@ -44,8 +49,8 @@
                                                         <td>
                                                             <div class="form-group  required">
     
-                                                                <input type="file" title="Browse Document"
-                                                                    (change)="fileSelectionEvent($event,i)" required="">
+                                                                <input type="file" title="Browse Document" formControlName="documentFile"
+                                                                    (change)="fileSelectionEvent($event,i)" required>
                                                                 <div class="help-block"></div>
                                                             </div>
                                                         </td>

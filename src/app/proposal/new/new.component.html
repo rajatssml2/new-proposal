@@ -26,16 +26,25 @@
           </div>
         </div>
         <div class="col-6">
-          <label for="estimatedAmount" class="form-label">Estimated Amount</label>
-          <input formControlName="estimatedAmount" type="text" class="form-control" id="estimatedAmount" placeholder="Estimated Amount ...." [readonly]="isReadOnly" >
+          <label for="estimatedAmount" class="form-label">Estimated Amount<span class="asterisk">*</span></label>
+          <input formControlName="estimatedAmount" type="text" class="form-control" id="estimatedAmount" placeholder="Estimated Amount ...." [readonly]="isReadOnly" required>
+          <div *ngIf="submitted && f.estimatedAmount.errors" class="not-valid">
+            <div *ngIf="f.estimatedAmount.errors.required">Estimated Amount is required</div>
+          </div>
         </div>
         <div class="col-6">
-          <label for="startDate" class="form-label">Start Date</label>
-          <input formControlName="startDate" type="date" class="form-control" id="startDate" placeholder="Start Date" [readonly]="isReadOnly">
+          <label for="startDate" class="form-label">Start Date<span class="asterisk">*</span></label>
+          <input formControlName="startDate" type="date" class="form-control" id="startDate" placeholder="Start Date" [readonly]="isReadOnly" required>
+          <div *ngIf="submitted && f.startDate.errors" class="not-valid">
+            <div *ngIf="f.startDate.errors.required">Start Date is required</div>
+          </div>
         </div>
         <div class="col-6">
-          <label for="endDate" class="form-label">End Date</label>
-          <input formControlName="endDate" type="date" class="form-control" id="endDate" placeholder="End Date" [readonly]="isReadOnly">
+          <label for="endDate" class="form-label">End Date<span class="asterisk">*</span></label>
+          <input formControlName="endDate" type="date" class="form-control" id="endDate" placeholder="End Date" [readonly]="isReadOnly" required>
+          <div *ngIf="submitted && f.endDate.errors" class="not-valid">
+            <div *ngIf="f.endDate.errors.required">End Date is required</div>
+          </div>
         </div>
         <div>
           <div class="add-btn">
@@ -61,12 +70,30 @@
           </ag-grid-angular>
           </div>
         </div>
-        <div>
+        <div *ngIf="loginUser !='state_officer'">
           <div class="add-btn">
             <label class="form-label">Proposal Category</label>
-            
           </div>
-          <app-file-upload></app-file-upload>
+
+          <table class="table" *ngIf="categoryData">
+            <thead>
+              <tr>
+                <th scope="col">Category</th>
+                <th scope="col">Uploaded File</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let category of categoryData">
+                
+                <td>{{category.category}}</td>
+                <td>{{category.file_name}} <i class="fa fa-download" (click)="onDownloadFile(category.fileSource, category.file_name)"></i></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div *ngIf="loginUser =='state_officer'">
+          
+          <app-file-upload (onCategoryPicked)="getCategrory($event)"></app-file-upload>
           <!-- <div class="row">
             <div class="col-md-6">
               <label for="category" class="form-label">Category <span class="asterisk">*</span></label>
@@ -99,16 +126,19 @@
           <input formControlName="remarks" type="text" class="form-control" id="remarks" placeholder="Remarks ....">
         </div>
         <div class="col-md-6">
-          <label for="sentto" class="form-label">Sent to <span class="asterisk">*</span></label>
-          <select formControlName="sentTo" class="form-select" name="sentto" id="sentto">
-            <!-- <option value="" selected>Choose...</option> -->
-            <option *ngIf="loginUser=='state_officer'" value="State transport manage" selected>State transport manager</option>
-            <option *ngIf="loginUser=='state_manager'" value="IVA" selected>IVA</option>
-            <option *ngIf="loginUser=='iva'" value="MoRTH Manager" selected>MoRTH Manager</option>
-          </select>
-          <div *ngIf="submitted && f.sentTo.errors" class="not-valid">
-            <div *ngIf="f.sentTo.errors.required">Sent To is required</div>
+          <div  *ngIf="loginUser!='morth_manager'">
+            <label for="sentto" class="form-label">Sent to <span class="asterisk">*</span></label>
+            <select formControlName="sentTo" class="form-select" name="sentto" id="sentto">
+              <!-- <option value="" selected>Choose...</option> -->
+              <option *ngIf="loginUser=='state_officer'" value="State transport manager" selected>State transport manager</option>
+              <option *ngIf="loginUser=='state_manager'" value="IVA" selected>IVA</option>
+              <option *ngIf="loginUser=='iva'" value="MoRTH Manager" selected>MoRTH Manager</option>
+            </select>
+            <div *ngIf="submitted && f.sentTo.errors" class="not-valid">
+              <div *ngIf="f.sentTo.errors.required">Sent To is required</div>
+            </div>
           </div>
+          
         </div>
         <div class="d-flex gap-2 col-2 mx-auto">
           <button class="btn btn-primary" type="button" *ngIf="loginUser=='state_officer' || currentUrl == '/new-proposal'" (click)="submit()">Submit</button>
@@ -117,7 +147,7 @@
           <button class="btn btn-success" type="button" *ngIf="loginUser=='state_manager' && currentUrl != '/new-proposal'" (click)="onSendToIVA()">Sent to IVA</button>
           <button class="btn btn-success" type="button" *ngIf="loginUser=='iva' && currentUrl != '/new-proposal'" (click)="onSendToMorthManager()">Sent to Morth Manager</button>
           <button class="btn btn-warning" type="button" *ngIf="(loginUser=='state_manager' || loginUser=='morth_manager' || loginUser=='iva') && currentUrl != '/new-proposal' ">Send for modification</button>
-          <button class="btn btn-danger" type="button"  *ngIf="(loginUser=='state_manager' || loginUser=='morth_manager') && currentUrl != '/new-proposal'">Reject</button>
+          <button class="btn btn-danger" type="button"  *ngIf="(loginUser=='state_manager' || loginUser=='iva') && currentUrl != '/new-proposal'">Reject</button>
           <button class="btn btn-secondary" type="button" (click)="onCancel()">Cancel</button>
         </div>
         
