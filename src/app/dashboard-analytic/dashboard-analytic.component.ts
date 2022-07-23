@@ -132,7 +132,7 @@ export class DashboardAnalyticComponent implements OnInit {
   };
   chartOption5:EChartsOption = {
     title: {
-        text: 'KPIs wise expenditure',
+        text: 'KPIs wise Expenditure',
         // subtext: 'eCharts for the win!',
         left: 'center'
     },
@@ -149,7 +149,7 @@ export class DashboardAnalyticComponent implements OnInit {
     },
     series: [
         {
-          name: "Movies by category",  
+          name: "KPIs wise Expenditure",  
           type: 'pie',
             radius: '65%',
             center: ['50%', '50%'],
@@ -177,16 +177,9 @@ export class DashboardAnalyticComponent implements OnInit {
     ]
   };
   chartOption11: any = {
-    color: '#6f42c1',
+    color: '#6239ac9c',
     dataset: {
-      source: [
-        ['amount', 'product'],
-        [10,  'Traning of officials'],
-        [15, 'Black spot mitigation'],
-        [5,'Corrective measure'],
-        [25, 'Implement IRAD'],
-        [40, 'IRR/RSA']
-      ]
+      source: this.getChartOption11Source()
     },
     grid: { containLabel: true },
     xAxis: { name: 'amount',
@@ -223,16 +216,9 @@ export class DashboardAnalyticComponent implements OnInit {
   };
 
   chartOption21: any = {
-    color: '#198754',
+    color: '#16ac67',
     dataset: {
-      source: [
-        ['amount', 'product'],
-        [10,  'Traning of officials'],
-        [15, 'Black spot mitigation'],
-        [5,'Corrective measure'],
-        [25, 'Implement IRAD'],
-        [40, 'IRR/RSA']
-      ]
+      source: this.getChartOption21Source()
     },
     grid: { containLabel: true },
     xAxis: { name: 'amount',
@@ -268,16 +254,9 @@ export class DashboardAnalyticComponent implements OnInit {
     ]
   };
   chartOption31: any = {
-    color: '#d63384',
+    color: '#d63384c7',
     dataset: {
-      source: [
-        ['amount', 'product'],
-        [10,  'Traning of officials'],
-        [15, 'Black spot mitigation'],
-        [5,'Corrective measure'],
-        [25, 'Implement IRAD'],
-        [40, 'IRR/RSA']
-      ]
+      source: this.getChartOption31Source()
     },
     grid: { containLabel: true },
     xAxis: { name: 'amount',
@@ -313,16 +292,9 @@ export class DashboardAnalyticComponent implements OnInit {
     ]
   };
   chartOption41: any = {
-    color: '#ffc107',
+    color: '#efc138d6',
     dataset: {
-      source: [
-        ['amount', 'product'],
-        [10,  'Traning of officials'],
-        [15, 'Black spot mitigation'],
-        [5,'Corrective measure'],
-        [25, 'Implement IRAD'],
-        [40, 'IRR/RSA']
-      ]
+      source: this.getChartOption41Source()
     },
     grid: { containLabel: true },
     xAxis: { name: 'amount',
@@ -357,6 +329,99 @@ export class DashboardAnalyticComponent implements OnInit {
       }
     ]
   };
+
+  getChartOption11Source () {
+    let lUser = localStorage.getItem('loginUser');
+    if(lUser == 'state_officer' || lUser == 'state_manager') {
+      return [
+        ['amount', 'product'],
+        [5,  'Traning of officials'],
+        [10, 'Black spot mitigation'],
+        [5,'Corrective measure'],
+        [12, 'Implement IRAD'],
+        [17, 'IRR/RSA']
+      ];
+    }else {
+      return [
+        ['amount', 'product'],
+        [15,  'Traning of officials'],
+        [20, 'Black spot mitigation'],
+        [25,'Corrective measure'],
+        [30, 'Implement IRAD'],
+        [35, 'IRR/RSA']
+      ];
+    }
+    
+  }
+
+  getChartOption21Source () {
+    let lUser = localStorage.getItem('loginUser');
+    if(lUser == 'state_officer' || lUser == 'state_manager') {
+      return [
+        ['amount', 'product'],
+        [3,  'Traning of officials'],
+        [7, 'Black spot mitigation'],
+        [5,'Corrective measure'],
+        [10, 'Implement IRAD'],
+        [15, 'IRR/RSA']
+      ];
+    }else {
+      return [
+        ['amount', 'product'],
+        [10,  'Traning of officials'],
+        [15, 'Black spot mitigation'],
+        [18,'Corrective measure'],
+        [16, 'Implement IRAD'],
+        [20, 'IRR/RSA']
+      ];
+    }
+  }
+
+  getChartOption31Source () {
+    let lUser = localStorage.getItem('loginUser');
+    if(lUser == 'state_officer' || lUser == 'state_manager') {
+      return [
+        ['amount', 'product'],
+        [6,  'Traning of officials'],
+        [8, 'Black spot mitigation'],
+        [10,'Corrective measure'],
+        [5, 'Implement IRAD'],
+        [15, 'IRR/RSA']
+      ];
+    }else {
+      return [
+        ['amount', 'product'],
+        [10,  'Traning of officials'],
+        [15, 'Black spot mitigation'],
+        [18,'Corrective measure'],
+        [16, 'Implement IRAD'],
+        [20, 'IRR/RSA']
+      ];
+    }
+  }
+
+  getChartOption41Source () {
+    let lUser = localStorage.getItem('loginUser');
+    if(lUser == 'state_officer' || lUser == 'state_manager') {
+      return [
+        ['amount', 'product'],
+        [7,  'Traning of officials'],
+        [13, 'Black spot mitigation'],
+        [10,'Corrective measure'],
+        [5, 'Implement IRAD'],
+        [15, 'IRR/RSA']
+      ];
+    }else {
+      return [
+        ['amount', 'product'],
+        [10,  'Traning of officials'],
+        [15, 'Black spot mitigation'],
+        [18,'Corrective measure'],
+        [16, 'Implement IRAD'],
+        [20, 'IRR/RSA']
+      ];
+    }
+  }
 
   getChart1Data() {
     let lUser = localStorage.getItem('loginUser');
