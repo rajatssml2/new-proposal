@@ -20,6 +20,7 @@ import { NgxEchartsModule } from 'ngx-echarts';
 // import { LoaderComponent } from './loader/loader.component';
 import { DashboardAnalyticComponent } from './dashboard-analytic/dashboard-analytic.component';
 import { AgGridModule } from 'ag-grid-angular';
+import { AnalyticComponent } from './analytic/analytic.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { AgGridModule } from 'ag-grid-angular';
     FooterPageComponent,
     NewComponent,
     LandingPageComponent,
-    DashboardAnalyticComponent
+    DashboardAnalyticComponent,
+    AnalyticComponent
   ],
   imports: [
     BrowserModule,

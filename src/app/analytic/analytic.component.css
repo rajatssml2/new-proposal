@@ -1,0 +1,42 @@
+.navbar-dark .navbar-brand {
+    color: black !important;
+    font-size: 20px !important;
+}
+.nav-link-custom {
+    color: black !important;
+    font-size: 16px !important;
+    height: 50px;
+}
+.nav-link-custom.active {
+    background: green;
+    font-size: 16px !important;
+}
+.nav-link-custom:hover {
+    background: green;
+}
+.fixed-top {
+    padding: 0;
+    padding-left: 20px;
+}
+.analytic-body {
+    top: 53px;
+    position: relative;
+    /* padding: 20px; */
+ }
+ .background-custom {
+    background: #e3e9ef;
+ }
+ .marginTopForFormCustomClass {
+    padding: 20px;
+    border: 1px solid #e3e9ef;
+    border-radius: 5px;
+ }
+ .NoteCustomClass {
+    text-align: start;
+    /* margin-bottom: 1%; */
+    font-weight: bold;
+    color: #d08700;
+    font-size: 95%;
+    padding-left: 1%;
+    font-style: italic;
+ }
