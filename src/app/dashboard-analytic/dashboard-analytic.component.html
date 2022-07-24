@@ -29,9 +29,14 @@
         </select>
       </div>
 
-      <i class="fa fa-arrow-left" aria-hidden="true" style="cursor: pointer;"  *ngIf="isChartDrill" (click)="onChartEvent1($event, 'chartClick')">Back</i>
+      <i class="fa fa-arrow-left" aria-hidden="true" style="cursor: pointer;"  *ngIf="isChartDrill && !isChartDril2" (click)="onChartEvent1($event, 'chartClick')">Back</i>
+      <i class="fa fa-arrow-left" aria-hidden="true" style="cursor: pointer;"  *ngIf="isChartDrill && isChartDril2" (click)="onDrillChart11($event, 'chartClick')">Back</i>
+
       <div echarts [options]="chartOption" class="demo-chart" *ngIf="!isChartDrill" (chartClick)="onChartEvent1($event, 'chartClick')"></div>
-      <div echarts [options]="chartOption11" class="demo-chart" *ngIf="isChartDrill" ></div>
+      <div echarts [options]="chartOption11" class="demo-chart" *ngIf="isChartDrill && !isChartDril2" ></div>
+      <div echarts [options]="chartOption111" class="demo-chart" *ngIf="isChartDril2" ></div>
+      <div *ngIf="isChartDrill && !isChartDril2" style="float: right;margin-bottom: 10px;"><button class="btn btn-secondary" (click)="onDrillChart11($event, 'chartClick')" style="font-size: 18px;" *ngIf="isChartDrill">View monthly progress</button></div>
+      
 
     </div>
     <div class="col-sm-6" style="border: 1px solid;">
@@ -54,10 +59,12 @@
           <option value="West Bengal">West Bengal</option>
         </select>
       </div>
-      <i class="fa fa-arrow-left" aria-hidden="true" style="cursor: pointer;"  *ngIf="isChartDrill21" (click)="onChartEvent21($event, 'chartClick')">Back</i>
+      <i class="fa fa-arrow-left" aria-hidden="true" style="cursor: pointer;"  *ngIf="isChartDrill21  && !isChartDril22" (click)="onChartEvent21($event, 'chartClick')">Back</i>
+      <i class="fa fa-arrow-left" aria-hidden="true" style="cursor: pointer;"  *ngIf="isChartDrill21 && isChartDril22" (click)="onDrillChart21($event, 'chartClick')">Back</i>
       <div echarts [options]="chartOption2" class="demo-chart" *ngIf="!isChartDrill21" (chartClick)="onChartEvent21($event, 'chartClick')"></div>
-      <div echarts [options]="chartOption21" class="demo-chart" *ngIf="isChartDrill21" ></div>
-
+      <div echarts [options]="chartOption21" class="demo-chart" *ngIf="isChartDrill21 && !isChartDril22" ></div>
+      <div echarts [options]="chartOption211" class="demo-chart" *ngIf="isChartDril22" ></div>
+      <div *ngIf="isChartDrill21 && !isChartDril22" style="float: right;margin-bottom: 10px;"><button class="btn btn-secondary" (click)="onDrillChart21($event, 'chartClick')" style="font-size: 18px;" *ngIf="isChartDrill21">View monthly progress</button></div>
     </div>
 
     <div class="col-sm-6" style="border: 1px solid;">
@@ -79,9 +86,12 @@
           <option value="West Bengal">West Bengal</option>
         </select>
       </div>
-      <i class="fa fa-arrow-left" aria-hidden="true" style="cursor: pointer;"  *ngIf="isChartDrill31" (click)="onChartEvent31($event, 'chartClick')">Back</i>
+      <i class="fa fa-arrow-left" aria-hidden="true" style="cursor: pointer;"  *ngIf="isChartDrill31 && !isChartDril33" (click)="onChartEvent31($event, 'chartClick')">Back</i>
+      <i class="fa fa-arrow-left" aria-hidden="true" style="cursor: pointer;"  *ngIf="isChartDrill31 && isChartDril33" (click)="onDrillChart31($event, 'chartClick')">Back</i>
       <div echarts [options]="chartOption3" class="demo-chart" *ngIf="!isChartDrill31" (chartClick)="onChartEvent31($event, 'chartClick')"></div>
-      <div echarts [options]="chartOption31" class="demo-chart" *ngIf="isChartDrill31" ></div>
+      <div echarts [options]="chartOption31" class="demo-chart" *ngIf="isChartDrill31 && !isChartDril33" ></div>
+      <div echarts [options]="chartOption311" class="demo-chart" *ngIf="isChartDril33" ></div>
+      <div *ngIf="isChartDrill31 && !isChartDril33" style="float: right;margin-bottom: 10px;"><button class="btn btn-secondary" (click)="onDrillChart31($event, 'chartClick')" style="font-size: 18px;" *ngIf="isChartDrill31">View monthly progress</button></div>
     </div>
     <div class="col-sm-6" style="border: 1px solid;">
       <div *ngIf="loginUser=='iva' || loginUser=='morth_manager'">
@@ -102,9 +112,13 @@
           <option value="West Bengal">West Bengal</option>
         </select>
       </div>
-      <i class="fa fa-arrow-left" aria-hidden="true" style="cursor: pointer;"  *ngIf="isChartDrill41" (click)="onChartEvent41($event, 'chartClick')">Back</i>
+      <i class="fa fa-arrow-left" aria-hidden="true" style="cursor: pointer;"  *ngIf="isChartDrill41 && !isChartDril44" (click)="onChartEvent41($event, 'chartClick')">Back</i>
+      <i class="fa fa-arrow-left" aria-hidden="true" style="cursor: pointer;"  *ngIf="isChartDrill41 && isChartDril44" (click)="onDrillChart41($event, 'chartClick')">Back</i>
       <div echarts [options]="chartOption4" class="demo-chart" *ngIf="!isChartDrill41" (chartClick)="onChartEvent41($event, 'chartClick')"></div>
-      <div echarts [options]="chartOption41" class="demo-chart" *ngIf="isChartDrill41" ></div>
+      <div echarts [options]="chartOption41" class="demo-chart" *ngIf="isChartDrill41 && !isChartDril44" ></div>
+
+      <div echarts [options]="chartOption411" class="demo-chart" *ngIf="isChartDril44" ></div>
+      <div *ngIf="isChartDrill41 && !isChartDril44" style="float: right;margin-bottom: 10px;"><button class="btn btn-secondary" (click)="onDrillChart41($event, 'chartClick')" style="font-size: 18px;" *ngIf="isChartDrill41">View monthly progress</button></div>
     </div>
 
   </div>

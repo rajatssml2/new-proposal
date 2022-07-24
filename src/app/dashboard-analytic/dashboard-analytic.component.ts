@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart, ChartConfiguration } from 'chart.js';
 import { EChartsOption } from 'echarts';
+type BarLabelOption = NonNullable<echarts.BarSeriesOption['label']>;
+
 
 @Component({
   selector: 'app-dashboard-analytic',
@@ -8,16 +10,126 @@ import { EChartsOption } from 'echarts';
   styleUrls: ['./dashboard-analytic.component.css']
 })
 export class DashboardAnalyticComponent implements OnInit {
+  
   title = 'ng2-charts-demo';
   isChartDrill = false;
   isChartDrill21 = false;
   isChartDrill31 = false;
   isChartDrill41 = false;
+  isChartDril2 = false;
+  isChartDril21= false;
+  isChartDril22 = false;
+  isChartDril33 = false;
+  isChartDril44 = false;
   loginUser: any = '';
+  labelOption: any = {
+    // show: true,
+    // position: 'top' as BarLabelOption['position'],
+    // distance: app.config.distance as BarLabelOption['distance'],
+    // align: app.config.align as BarLabelOption['align'],
+    // verticalAlign: app.config.verticalAlign as BarLabelOption['verticalAlign'],
+    // rotate: 90 as BarLabelOption['rotate'],
+    // formatter: '{c}Cr  {name|{a}}',
+    // fontSize: 12,
+    // rich: {
+    //   name: {}
+    // }
+  };
+  labelOption2:any = {
+    show: true,
+    position: 'right' as BarLabelOption['position'],
+    // distance: app.config.distance as BarLabelOption['distance'],
+    // align: app.config.align as BarLabelOption['align'],
+    // verticalAlign: app.config.verticalAlign as BarLabelOption['verticalAlign'],
+    rotate: 0 as BarLabelOption['rotate'],
+    // formatter: '{c}Cr',
+    fontSize: 12,
+    rich: {
+      name: {}
+    }
+  }
+
   chartOption: any = {
-    color: '#7596e1',
+    // color: '#7596e1',
     title: {
-      text: ' Road Engineerning ',
+      text: 'Road Engineerning',
+      left: 'center'
+    },
+    responsive: true,
+    
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'shadow'
+      }
+    },
+    xAxis: {
+      type: 'category',
+      name: 'Year',
+      data: ['2020', '2021', '2022'],
+    },
+    yAxis: {
+      type: 'value',
+      axisLabel : {
+        formatter: '{value}Cr'
+      },
+      name: 'Value',
+      // nameLocation: 'top',
+      // nameGap: 50
+    },
+   
+    series: [
+        {
+          name: 'Fund Claimed',
+          type: 'bar',
+          barGap: 0,
+          label: this.labelOption,
+          emphasis: {
+            focus: 'series'
+          },
+          data: [1, 2, 3],
+          itemStyle: {
+            fillColor: "rgba(220,220,220,0.5)", 
+            strokeColor: "rgba(220,220,220,0.8)", 
+            highlightFill: "rgba(220,220,220,0.75)",
+            highlightStroke: "rgba(220,220,220,1)",
+            borderType: 'dashed',
+          }
+        },
+        {
+          name: 'Fund Disbursed',
+          type: 'bar',
+          label: this.labelOption,
+          emphasis: {
+            focus: 'series'
+          },
+          data: [.8, 1, 2.8]
+        },
+        {
+          name: 'Fund Available',
+          type: 'bar',
+          label: this.labelOption,
+          emphasis: {
+            focus: 'series'
+          },
+          data: [.2, .3, 1]
+        }
+      ],
+      legend: {
+        display: true,
+        position: 'bottom',
+        y: 350
+      },
+      // {
+      //   data: this.getChart1Data(),
+      //   type: 'bar',
+      // },
+  };
+
+  chartOption2:any = {
+    // color: '#498c4e',
+    title: {
+      text: 'Vehicle safety and driver training',
       // subtext: 'eCharts for the win!',
       left: 'center'
     },
@@ -37,43 +149,50 @@ export class DashboardAnalyticComponent implements OnInit {
     },
     series: [
       {
-        data: this.getChart1Data(),
+        name: 'Fund Claimed',
         type: 'bar',
+        barGap: 0,
+        label: this.labelOption,
+        emphasis: {
+          focus: 'series'
+        },
+        data: [5, 7, 10],
+        itemStyle: {
+          fillColor: "rgba(220,220,220,0.5)", 
+          strokeColor: "rgba(220,220,220,0.8)", 
+          highlightFill: "rgba(220,220,220,0.75)",
+          highlightStroke: "rgba(220,220,220,1)",
+          borderType: 'dashed',
+        }
       },
-    ],
-  };
-
-  chartOption2:EChartsOption = {
-    color: '#498c4e',
-    title: {
-      text: 'Vehicle safety and driver training',
-      // subtext: 'eCharts for the win!',
-      left: 'center'
-    },
-    xAxis: {
-      type: 'category',
-      name: 'Year',
-      data: ['2019','2020', '2021', '2022'],
-    },
-    yAxis: {
-      type: 'value',
-      axisLabel : {
-        formatter: '{value}Cr'
-      },
-      name: 'Value',
-      // nameLocation: 'top',
-      // nameGap: 50
-    },
-    series: [
       {
-        data: this.getChart2Data(),
+        name: 'Fund Disbursed',
         type: 'bar',
+        label: this.labelOption,
+        emphasis: {
+          focus: 'series'
+        },
+        data: [4, 5, 8]
       },
+      {
+        name: 'Fund Available',
+        type: 'bar',
+        label: this.labelOption,
+        emphasis: {
+          focus: 'series'
+        },
+        data: [1, 1.5, 2]
+      }
     ],
+    legend: {
+      display: true,
+      position: 'bottom',
+      y: 350
+    },
   };
 
-  chartOption3:EChartsOption = {
-    color: '#d77c80',
+  chartOption3:any = {
+    // color: '#498c4e',
     title: {
       text: 'Enforcement of rules',
       // subtext: 'eCharts for the win!',
@@ -82,7 +201,7 @@ export class DashboardAnalyticComponent implements OnInit {
     xAxis: {
       type: 'category',
       name: 'Year',
-      data: ['2019','2020', '2021', '2022'],
+      data: ['2020', '2021', '2022'],
     },
     yAxis: {
       type: 'value',
@@ -95,13 +214,49 @@ export class DashboardAnalyticComponent implements OnInit {
     },
     series: [
       {
-        data: this.getChart3Data(),
+        name: 'Fund Claimed',
         type: 'bar',
+        barGap: 0,
+        label: this.labelOption,
+        emphasis: {
+          focus: 'series'
+        },
+        data: [10, 20, 30],
+        itemStyle: {
+          fillColor: "rgba(220,220,220,0.5)", 
+          strokeColor: "rgba(220,220,220,0.8)", 
+          highlightFill: "rgba(220,220,220,0.75)",
+          highlightStroke: "rgba(220,220,220,1)",
+          borderType: 'dashed',
+        }
       },
+      {
+        name: 'Fund Disbursed',
+        type: 'bar',
+        label: this.labelOption,
+        emphasis: {
+          focus: 'series'
+        },
+        data: [8, 17, 28]
+      },
+      {
+        name: 'Fund Available',
+        type: 'bar',
+        label: this.labelOption,
+        emphasis: {
+          focus: 'series'
+        },
+        data: [1, 1.5, 2]
+      }
     ],
+    legend: {
+      display: true,
+      position: 'bottom',
+      y: 350
+    },
   };
-  chartOption4:EChartsOption = {
-    color: '#d1cb86',
+  chartOption4:any = {
+    // color: '#498c4e',
     title: {
       text: 'Post crash care',
       // subtext: 'eCharts for the win!',
@@ -110,8 +265,7 @@ export class DashboardAnalyticComponent implements OnInit {
     xAxis: {
       type: 'category',
       name: 'Year',
-      data: ['2019','2020', '2021', '2022'],
-      axisLine: { onZero: false }
+      data: ['2020', '2021', '2022'],
     },
     yAxis: {
       type: 'value',
@@ -119,16 +273,51 @@ export class DashboardAnalyticComponent implements OnInit {
         formatter: '{value}Cr'
       },
       name: 'Value',
-      axisLine: { onZero: false }
       // nameLocation: 'top',
       // nameGap: 50
     },
     series: [
       {
-        data: this.getChart4Data(),
+        name: 'Fund Claimed',
         type: 'bar',
+        barGap: 0,
+        label: this.labelOption,
+        emphasis: {
+          focus: 'series'
+        },
+        data: [7, 12, 23],
+        itemStyle: {
+          fillColor: "rgba(220,220,220,0.5)", 
+          strokeColor: "rgba(220,220,220,0.8)", 
+          highlightFill: "rgba(220,220,220,0.75)",
+          highlightStroke: "rgba(220,220,220,1)",
+          borderType: 'dashed',
+        }
       },
+      {
+        name: 'Fund Disbursed',
+        type: 'bar',
+        label: this.labelOption,
+        emphasis: {
+          focus: 'series'
+        },
+        data: [6, 10, 20]
+      },
+      {
+        name: 'Fund Available',
+        type: 'bar',
+        label: this.labelOption,
+        emphasis: {
+          focus: 'series'
+        },
+        data: [1, 2, 3]
+      }
     ],
+    legend: {
+      display: true,
+      position: 'bottom',
+      y: 350
+    },
   };
   chartOption5:EChartsOption = {
     title: {
@@ -177,178 +366,422 @@ export class DashboardAnalyticComponent implements OnInit {
     ]
   };
   chartOption11: any = {
-    color: '#6239ac9c',
-    dataset: {
-      source: this.getChartOption11Source()
-    },
     grid: { containLabel: true },
     xAxis: { name: 'amount',
     axisLabel : {
       formatter: '{value}Cr'
     }, 
     },
-    yAxis: { type: 'category',
+    yAxis: {
+      type: 'category',
+      data: ['Traning of officials', 'Black spot mitigation', 'Corrective measure', 'Implement IRAD', 'IRR/RSA'],
       name: 'Parameters'
     },
-    // visualMap: {
-    //   orient: 'horizontal',
-    //   left: 'center',
-    //   min: 10,
-    //   max: 100,
-    //   text: ['High Score', 'Low Score'],
-    //   // Map the score column to color
-    //   dimension: 0,
-    //   inRange: {
-    //     color: ['#65B581', '#FFCE34', '#FD665F']
-    //   }
-    // },
     series: [
       {
+        name: 'Fund Claimed',
         type: 'bar',
-        encode: {
-          // Map the "amount" column to X axis.
-          x: 'amount',
-          // Map the "product" column to Y axis
-          y: 'product'
-        }
+        barGap: 0,
+        data: [1, 2, 1.3, 3.5, 3],
+        label: this.labelOption2
+      },
+      {
+        name: 'Fund Disbursed',
+        type: 'bar',
+        data: [.8, 1.6, 1, 3.2, 2.7],
+        label: this.labelOption2
+      },
+      {
+        name: 'Fund Available',
+        type: 'bar',
+        data: [.1, .5, .2, .1, .5],
+        label: this.labelOption2
+      }
+      // {
+      //   type: 'bar',
+      //   encode: {
+      //     // Map the "amount" column to X axis.
+      //     x: 'amount',
+      //     // Map the "product" column to Y axis
+      //     y: 'product'
+      //   }
+      // }
+    ],
+    legend: {
+      display: true,
+      position: 'bottom',
+      y: 350
+    },
+  };
+
+  chartOption21: any = {
+    
+    grid: { containLabel: true },
+    xAxis: { name: 'amount',
+    axisLabel : {
+      formatter: '{value}Cr'
+    }
+    },
+    yAxis: {
+      type: 'category',
+      data: ['Vehicle witness centre', 'Driver training centre'],
+      name: 'Parameters',
+      
+    },
+    series: [
+      {
+        name: 'Fund Claimed',
+        type: 'bar',
+        barGap: 0,
+        data: [1, 2],
+        label: this.labelOption2
+      },
+      {
+        name: 'Fund Disbursed',
+        type: 'bar',
+        data: [.8, 1.6],
+        label: this.labelOption2
+      },
+      {
+        name: 'Fund Available',
+        type: 'bar',
+        data: [.1, .5],
+        label: this.labelOption2
+      }
+      // {
+      //   type: 'bar',
+      //   encode: {
+      //     // Map the "amount" column to X axis.
+      //     x: 'amount',
+      //     // Map the "product" column to Y axis
+      //     y: 'product'
+      //   }
+      // }
+    ],
+    legend: {
+      display: true,
+      position: 'bottom',
+      y: 350
+    },
+  
+  };
+  chartOption31: any = {
+    
+    grid: { containLabel: true },
+    xAxis: { name: 'amount',
+    axisLabel : {
+      formatter: '{value}Cr'
+    }
+    },
+    yAxis: {
+      type: 'category',
+      data: ['Rules enforcement', 'E-device/IPS component'],
+      name: 'Parameters',
+      
+    },
+    series: [
+      {
+        name: 'Fund Claimed',
+        type: 'bar',
+        barGap: 0,
+        data: [15, 20],
+        label: this.labelOption2
+      },
+      {
+        name: 'Fund Disbursed',
+        type: 'bar',
+        data: [14, 17],
+        label: this.labelOption2
+      },
+      {
+        name: 'Fund Available',
+        type: 'bar',
+        data: [1, 3],
+        label: this.labelOption2
+      }
+    ],
+    legend: {
+      display: true,
+      position: 'bottom',
+      y: 350
+    },
+  
+  };
+  chartOption41: any = {
+    
+    grid: { containLabel: true },
+    xAxis: { name: 'amount',
+    axisLabel : {
+      formatter: '{value}Cr'
+    }
+    },
+    yAxis: {
+      type: 'category',
+      data: ['GPS Enablement', 'Ambulance Procurement'],
+      name: 'Parameters',
+      
+    },
+    series: [
+      {
+        name: 'Fund Claimed',
+        type: 'bar',
+        barGap: 0,
+        data: [10, 12],
+        label: this.labelOption2
+      },
+      {
+        name: 'Fund Disbursed',
+        type: 'bar',
+        data: [9, 10],
+        label: this.labelOption2
+      },
+      {
+        name: 'Fund Available',
+        type: 'bar',
+        data: [1, 2],
+        label: this.labelOption2
+      }
+    ],
+    legend: {
+      display: true,
+      position: 'bottom',
+      y: 350
+    },
+  
+  };
+
+  chartOption111: any = {
+    // title: {
+    //   text: 'Stacked Line'
+    // },
+    tooltip: {
+      trigger: 'axis'
+    },
+    legend: {
+      data: ['Traning of officials', 'Black spot mitigation', 'Corrective measure', 'Implement IRAD', 'IRR/RSA']
+    },
+    grid: {
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
+      containLabel: true
+    },
+    toolbox: {
+      feature: {
+        saveAsImage: {}
+      }
+    },
+    xAxis: {
+      type: 'category',
+      boundaryGap: false,
+      data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
+    },
+    yAxis: {
+      type: 'value',
+      axisLabel : {
+        formatter: '{value}Cr'
+      },
+    },
+    series: [
+      {
+        name: 'Traning of officials',
+        type: 'line',
+        stack: 'Total',
+        data: [.3, .2, .3, .1, .2, 0, .5, .1, .4, 0, .2, .6]
+      },
+      {
+        name: 'Black spot mitigation',
+        type: 'line',
+        stack: 'Total',
+        data: [.1, .2, .3, .1, .2, 0, .5, .1, .4, 0, .2, .6]
+      },
+      {
+        name: 'Corrective measure',
+        type: 'line',
+        stack: 'Total',
+        data: [.1, .2, 0, .1, .4, 0, .2, .1, .4, .5, .2, .8]
+      },
+      {
+        name: 'Implement IRAD',
+        type: 'line',
+        stack: 'Total',
+        data: [.2, .1, 0, .1, .2, 0, .5, .1, .4, 0, .2, .6]
+      },
+      {
+        name: 'IRR/RSA',
+        type: 'line',
+        stack: 'Total',
+        data: [1, .8, .3, .2, .6, .8, 0, .2, .7, 0, .1, .3]
+      }
+    ]
+  };
+  chartOption211: any = {
+    // title: {
+    //   text: 'Stacked Line'
+    // },
+    tooltip: {
+      trigger: 'axis'
+    },
+    legend: {
+      data: ['Vehicle witness centre', 'Driver training centre']
+    },
+    grid: {
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
+      containLabel: true
+    },
+    toolbox: {
+      feature: {
+        saveAsImage: {}
+      }
+    },
+    
+    xAxis: {
+      type: 'category',
+      boundaryGap: false,
+      data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
+    },
+    yAxis: {
+      type: 'value',
+      axisLabel : {
+        formatter: '{value}Cr'
+      }
+    },
+    series: [
+      {
+        name: 'Vehicle witness centre',
+        type: 'line',
+        stack: 'Total',
+        data: [.3, .2, .3, .1, .2, 0, .5, .1, .4, 0, .2, .6]
+      },
+      {
+        name: 'Driver training centre',
+        type: 'line',
+        stack: 'Total',
+        data: [.1, .2, .3, .1, .2, 0, .5, .1, .4, 0, .2, .6]
       }
     ]
   };
 
-  chartOption21: any = {
-    color: '#16ac67',
-    dataset: {
-      source: this.getChartOption21Source()
-    },
-    grid: { containLabel: true },
-    xAxis: { name: 'amount',
-    axisLabel : {
-      formatter: '{value}Cr'
-    }, 
-    },
-    yAxis: { type: 'category',
-      name: 'Parameters'
-    },
-    // visualMap: {
-    //   orient: 'horizontal',
-    //   left: 'center',
-    //   min: 10,
-    //   max: 100,
-    //   text: ['High Score', 'Low Score'],
-    //   // Map the score column to color
-    //   dimension: 0,
-    //   inRange: {
-    //     color: ['#65B581', '#FFCE34', '#FD665F']
-    //   }
+  chartOption311: any = {
+    // title: {
+    //   text: 'Stacked Line'
     // },
+    tooltip: {
+      trigger: 'axis'
+    },
+    legend: {
+      data: ['Rules enforcement', 'E-device/IPS component']
+    },
+    grid: {
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
+      containLabel: true
+    },
+    toolbox: {
+      // feature: {
+      //   saveAsImage: {}
+      // }
+    },
+    
+    xAxis: {
+      type: 'category',
+      boundaryGap: false,
+      data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
+    },
+    yAxis: {
+      type: 'value',
+      axisLabel : {
+        formatter: '{value}Cr'
+      }
+    },
     series: [
       {
-        type: 'bar',
-        encode: {
-          // Map the "amount" column to X axis.
-          x: 'amount',
-          // Map the "product" column to Y axis
-          y: 'product'
-        }
+        name: 'Rules enforcement',
+        type: 'line',
+        stack: 'Total',
+        data: [.3, .2, .3, .1, .2, 0, .5, .1, .4, 0, .2, .6]
+      },
+      {
+        name: 'E-device/IPS component',
+        type: 'line',
+        stack: 'Total',
+        data: [.1, .2, .3, .1, .2, 0, .5, .1, .4, 0, .2, .6]
       }
     ]
   };
-  chartOption31: any = {
-    color: '#d63384c7',
-    dataset: {
-      source: this.getChartOption31Source()
-    },
-    grid: { containLabel: true },
-    xAxis: { name: 'amount',
-    axisLabel : {
-      formatter: '{value}Cr'
-    }, 
-    },
-    yAxis: { type: 'category',
-      name: 'Parameters'
-    },
-    // visualMap: {
-    //   orient: 'horizontal',
-    //   left: 'center',
-    //   min: 10,
-    //   max: 100,
-    //   text: ['High Score', 'Low Score'],
-    //   // Map the score column to color
-    //   dimension: 0,
-    //   inRange: {
-    //     color: ['#65B581', '#FFCE34', '#FD665F']
-    //   }
+  chartOption411: any = {
+    // title: {
+    //   text: 'Stacked Line'
     // },
+    tooltip: {
+      trigger: 'axis'
+    },
+    legend: {
+      display: true,
+      data: ['GPS Enablement', 'Ambulance Procurement']
+    },
+    grid: {
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
+      containLabel: true
+    },
+    toolbox: {
+      // feature: {
+      //   saveAsImage: {}
+      // }
+    },
+    
+    xAxis: {
+      type: 'category',
+      boundaryGap: false,
+      data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
+    },
+    yAxis: {
+      type: 'value',
+      axisLabel : {
+        formatter: '{value}Cr'
+      }
+    },
     series: [
       {
-        type: 'bar',
-        encode: {
-          // Map the "amount" column to X axis.
-          x: 'amount',
-          // Map the "product" column to Y axis
-          y: 'product'
-        }
+        name: 'GPS Enablement',
+        type: 'line',
+        stack: 'Total',
+        data: [4, 1, 3, 1, 2, 2, 5, 0, 4, 0, 2, 6]
+      },
+      {
+        name: 'Ambulance Procurement',
+        type: 'line',
+        stack: 'Total',
+        data: [1, 2, 3, 1, 2, 0, 5, 6, 4, 0, 2, 6]
       }
     ]
   };
-  chartOption41: any = {
-    color: '#efc138d6',
-    dataset: {
-      source: this.getChartOption41Source()
-    },
-    grid: { containLabel: true },
-    xAxis: { name: 'amount',
-    axisLabel : {
-      formatter: '{value}Cr'
-    }, 
-    },
-    yAxis: { type: 'category',
-      name: 'Parameters'
-    },
-    // visualMap: {
-    //   orient: 'horizontal',
-    //   left: 'center',
-    //   min: 10,
-    //   max: 100,
-    //   text: ['High Score', 'Low Score'],
-    //   // Map the score column to color
-    //   dimension: 0,
-    //   inRange: {
-    //     color: ['#65B581', '#FFCE34', '#FD665F']
-    //   }
-    // },
-    series: [
-      {
-        type: 'bar',
-        encode: {
-          // Map the "amount" column to X axis.
-          x: 'amount',
-          // Map the "product" column to Y axis
-          y: 'product'
-        }
-      }
-    ]
-  };
+  
 
   getChartOption11Source () {
     let lUser = localStorage.getItem('loginUser');
     if(lUser == 'state_officer' || lUser == 'state_manager') {
       return [
         ['amount', 'product'],
-        [5,  'Traning of officials'],
-        [10, 'Black spot mitigation'],
-        [5,'Corrective measure'],
-        [12, 'Implement IRAD'],
-        [17, 'IRR/RSA']
+        [5,10,14,  'Traning of officials'],
+        [10,12,14, 'Black spot mitigation'],
+        [5,7,3, 'Corrective measure'],
+        [12,10,23, 'Implement IRAD'],
+        [17,12,10, 'IRR/RSA']
       ];
     }else {
       return [
         ['amount', 'product'],
-        [15,  'Traning of officials'],
-        [20, 'Black spot mitigation'],
-        [25,'Corrective measure'],
-        [30, 'Implement IRAD'],
-        [35, 'IRR/RSA']
+        [15,20,13,  'Traning of officials'],
+        [20,12,14, 'Black spot mitigation'],
+        [25,10,13,'Corrective measure'],
+        [30,23,14, 'Implement IRAD'],
+        [35,10,23, 'IRR/RSA']
       ];
     }
     
@@ -474,6 +907,18 @@ export class DashboardAnalyticComponent implements OnInit {
   }
   onChartEvent41(event: any, val: any) {
     this.isChartDrill41 = !this.isChartDrill41;
+  }
+  onDrillChart11(event: any, val: any) {
+    this.isChartDril2 = !this.isChartDril2;
+  }
+  onDrillChart21(event: any, val: any) {
+    this.isChartDril22 = !this.isChartDril22;
+  }
+  onDrillChart31(event: any, val: any) {
+    this.isChartDril33 = !this.isChartDril33;
+  }
+  onDrillChart41(event: any, val: any) {
+    this.isChartDril44 = !this.isChartDril44;
   }
 
   ngAfterViewInit() {
