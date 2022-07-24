@@ -36,6 +36,8 @@ export class NewComponent implements OnInit {
   loginUser:any='';
   currentUrl: any = ''
   submitted = false;
+  ivaFileName: any;
+  ivaFileSource: any;
   
   // rowData: any;
   gridApi: any;  
@@ -59,11 +61,11 @@ export class NewComponent implements OnInit {
     this.columnDefs = [
       {
         field: 'milestone',
-        cellEditor: 'agSelectCellEditor',
+        // cellEditor: 'agSelectCellEditor',
         editable: true,
-        cellEditorParams: {
-          values: ['Milestone 1', 'Milestone 2', 'Milestone 3', 'Milestone 4', 'Milestone 5','Milestone 6','Milestone 7','Milestone 8','Milestone 9','Milestone 10'],
-        },
+        // cellEditorParams: {
+        //   values: ['Milestone 1', 'Milestone 2', 'Milestone 3', 'Milestone 4', 'Milestone 5','Milestone 6','Milestone 7','Milestone 8','Milestone 9','Milestone 10'],
+        // },
       },
       { field: 'percentage', headerName: "Percentage %", editable: true, aggFunc: "sum",valueParser: "Number(newValue)"},
       {
@@ -204,7 +206,7 @@ export class NewComponent implements OnInit {
         });
         this.rowData = this.getRowData(val[1].milestone)
         this.categoryData = val[1].categoryData;
-        this.isDownloadIconShow = true;
+        
         this.fileSrc = val[0].fileSource;
         this.isReadOnly = true;
         // this.proposalForm.controls.category.disable();
@@ -216,6 +218,8 @@ export class NewComponent implements OnInit {
         if(this.loginUser == 'morth_manager') {
            this.proposalForm.controls.sentTo.disable();
            this.proposalForm.controls.remarks.disable();
+           this.ivaFileName = val[0].ivaFileName;
+           this.ivaFileSource = val[0].ivaFileSource;
         }
       }
   }
@@ -226,6 +230,10 @@ export class NewComponent implements OnInit {
     // FileSaver.saveAs(blob, 'sample');
     let base64String = fileSrc;
     this.downloadPdf(base64String, fileName);
+  }
+  onIVADownloadFile() {
+    let base64String = this.ivaFileSource;
+    this.downloadPdf(base64String, this.ivaFileName);
   }
   downloadPdf(base64String: any, fileName: any) {
     const source = base64String;
@@ -239,13 +247,10 @@ export class NewComponent implements OnInit {
     if (event.target.files.length > 0) {
       const reader = new FileReader();
       reader.addEventListener("load", ()=>{
-        this.proposalForm.patchValue({
-
-          fileSource: reader.result
-  
-        });
-        this.isDownloadIconShow = true;
-        this.fileSrc = reader.result;
+        
+        this.ivaFileName = event.target.files[0].name;
+        this.ivaFileSource = reader.result;
+        this.isDownloadIconShow = !this.isDownloadIconShow;
       })
 
       reader.readAsDataURL(event.target.files[0]);
@@ -395,12 +400,18 @@ export class NewComponent implements OnInit {
     this.submitted = true;
     console.log(this.proposalForm)
     if(!this.proposalForm.valid) return;
+    if(!this.ivaFileName || !this.ivaFileSource ) {
+      Swal.fire('Error', 'Please upload a file', 'error')
+      return;
+    }
 
     let val:any = localStorage.getItem('proposalData');
     val = JSON.parse(val);
     val[0].status = 'Verified by IVA';
     val[0].remarks = this.proposalForm.value.remarks;
     val[0].sentTo = this.proposalForm.value.sentTo;
+    val[0].ivaFileName = this.ivaFileName;
+    val[0].ivaFileSource = this.ivaFileSource;
     localStorage.setItem("proposalData", JSON.stringify(val))
     Swal.fire({
       icon: 'success',

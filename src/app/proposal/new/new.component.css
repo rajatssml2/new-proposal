@@ -5,6 +5,10 @@
     right: 10px;
     color: chocolate;
 }
+.download-proposal-icon2 {
+    color: chocolate;
+    cursor: pointer;
+}
 .asterisk {
     color: red;
 }
