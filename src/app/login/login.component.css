@@ -85,3 +85,19 @@ margin-left: 4px;
     width: 50px;
     border-radius: 10px;
 }
+.grnt-mng-sec {
+    width: 50%;
+    position: absolute;
+    top: 250px;
+    text-align: center;
+}
+.grnt-mng-sec h5{
+    color: #ffc312;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.login-container-main {
+    width: 50%;
+    float: right;
+}

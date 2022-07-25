@@ -3600,3 +3600,11 @@ table.table-cstm tr:nth-child(odd) {
     width: 100%;
     z-index: 999;
   }
+  .grant-mng-sys {
+    border: 2px solid #60a8f4;
+    border-radius: 5px;
+    padding: 3px;
+    font-weight: 700;
+    color: #ffc312;
+    font-size: 18px;
+  }

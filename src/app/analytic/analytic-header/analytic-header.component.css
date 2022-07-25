@@ -1,0 +1,20 @@
+.navbar-dark .navbar-brand {
+    color: black !important;
+    font-size: 20px !important;
+}
+.nav-link-custom {
+    color: black !important;
+    font-size: 16px !important;
+    height: 50px;
+}
+.nav-link-custom.active {
+    background: green;
+    font-size: 16px !important;
+}
+.nav-link-custom:hover {
+    background: green;
+}
+.fixed-top {
+    padding: 0;
+    padding-left: 20px;
+}

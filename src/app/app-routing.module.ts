@@ -5,8 +5,10 @@ import { DashboardAnalyticComponent } from './dashboard-analytic/dashboard-analy
 import { HomeComponent } from './home/home.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LoginComponent } from './login/login.component';
+import { MapViewComponent } from './analytic/map-view/map-view.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { AuthGuard } from './_services/auth.guard';
+import { AnalyticHomeComponent } from './analytic/analytic-home/analytic-home.component';
 
 const routes: Routes = [
   {
@@ -24,6 +26,24 @@ const routes: Routes = [
   {
     path: 'analytic',
     component: AnalyticComponent
+  },
+  {
+    path: 'map-view',
+    component: MapViewComponent
+  },
+  {
+    path: '',
+    component: AnalyticComponent,
+    children: [
+      {
+        path: 'analytic-home',
+        component: AnalyticHomeComponent
+      },
+      {
+        path: 'map-view',
+        component: MapViewComponent
+      }
+    ]
   },
   {
     path: '',

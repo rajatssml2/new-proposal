@@ -16,10 +16,12 @@
           <label for="fundType" class="form-label">Fund Type <span class="asterisk">*</span></label>
           <select formControlName="fundType" class="form-select" name="fundType" id="fundType" [disabled]="isReadOnly">
             <option value="">Choose...</option>
-            <option value="Road Engineering fund">Road Engineering fund</option>
-            <option value="Vehicle safety & Driver training fund">Vehicle safety & Driver training fund</option>
+            <option value="Road Engineering fund">Road Engineering Fund</option>
+            <option value="Vehicle safety & Driver training fund">Vehicle Safety & Driver Training Fund</option>
             <option value="Enforcement Fund">Enforcement Fund</option>
-            <option value="Post crash care fund">Post crash care fund</option>
+            <option value="Post crash care fund">Post Crash Care Fund</option>
+            <option value="Post crash care fund">Challenge Fund</option>
+            
           </select>
           <div *ngIf="submitted && f.fundType.errors" class="not-valid">
             <div *ngIf="f.fundType.errors.required">Fund Type is required</div>
@@ -120,7 +122,12 @@
           </div> -->
           
         </div>
-        
+        <div class="col-12" *ngIf="loginUser=='iva'">
+          <label for="upload" class="form-label">Upload Verification Report <span class="asterisk">*</span></label>
+          <input type="file" id="upload" (change)="onFileChange($event)" class="form-control" id="customFile" />
+          <span *ngIf="isDownloadIconShow" class="download-proposal-icon" (click)="onIVADownloadFile()"> <i class="fa fa-download"></i> </span>
+          
+        </div>
         <div class="col-6">
           <label for="remarks" class="form-label">Remarks</label>
           <input formControlName="remarks" type="text" class="form-control" id="remarks" placeholder="Remarks ....">
@@ -139,7 +146,7 @@
             </div>
           </div>
           <div *ngIf="loginUser=='morth_manager'">
-            <label for="upload" class="form-label">Download File</label>
+            <label for="upload" class="form-label">Download Verification Report</label>
             <div>
               <span  class="download-proposal-icon2" (click)="onIVADownloadFile()">{{ivaFileName}} <i class="fa fa-download"></i> </span>
             </div>
@@ -148,12 +155,7 @@
           </div>
           
         </div>
-        <div class="col-12" *ngIf="loginUser=='iva'">
-          <label for="upload" class="form-label">Upload <span class="asterisk">*</span></label>
-          <input type="file" id="upload" (change)="onFileChange($event)" class="form-control" id="customFile" />
-          <span *ngIf="isDownloadIconShow" class="download-proposal-icon" (click)="onIVADownloadFile()"> <i class="fa fa-download"></i> </span>
-          
-        </div>
+        
         
         
         <div class="d-flex gap-2 col-2 mx-auto">

@@ -21,7 +21,9 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { DashboardAnalyticComponent } from './dashboard-analytic/dashboard-analytic.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { AnalyticComponent } from './analytic/analytic.component';
-
+import { MapViewComponent } from './analytic/map-view/map-view.component';
+import { AnalyticHeaderComponent } from './analytic/analytic-header/analytic-header.component';
+import { AnalyticHomeComponent } from './analytic/analytic-home/analytic-home.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +36,10 @@ import { AnalyticComponent } from './analytic/analytic.component';
     NewComponent,
     LandingPageComponent,
     DashboardAnalyticComponent,
-    AnalyticComponent
+    AnalyticComponent,
+    MapViewComponent,
+    AnalyticHeaderComponent,
+    AnalyticHomeComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +56,9 @@ import { AnalyticComponent } from './analytic/analytic.component';
   ],
   exports: [
     HeaderPageComponent,
-    FooterPageComponent
+    FooterPageComponent,
+    AnalyticHeaderComponent
+
   ],
   providers: [],
   bootstrap: [AppComponent],

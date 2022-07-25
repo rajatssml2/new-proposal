@@ -1,0 +1,23 @@
+
+.analytic-body {
+    top: 53px;
+    position: relative;
+    /* padding: 20px; */
+ }
+ .background-custom {
+    background: #e3e9ef;
+ }
+ .marginTopForFormCustomClass {
+    padding: 20px;
+    border: 1px solid #e3e9ef;
+    border-radius: 5px;
+ }
+ .NoteCustomClass {
+    text-align: start;
+    /* margin-bottom: 1%; */
+    font-weight: bold;
+    color: #d08700;
+    font-size: 95%;
+    padding-left: 1%;
+    font-style: italic;
+ }
