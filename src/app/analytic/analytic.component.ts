@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-analytic',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./analytic.component.css']
 })
 export class AnalyticComponent implements OnInit {
+  routeName: any;
 
-  constructor() { }
+  constructor(public router: Router) { this.routeName =  this.router.url;
+     }
 
   ngOnInit(): void {
+    console.log("this.routeName=",this.routeName)
   }
 
 }

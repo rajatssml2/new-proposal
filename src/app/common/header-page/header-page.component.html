@@ -90,6 +90,7 @@
               <div class="logo-text-line">
                 <span class="logo-hind">सड़क परिवहन और राजमार्ग मंत्रालय</span><span class="logo-eng">Ministry of Road
                   Transport and Highways</span>
+                  <span class="logo-eng" style="line-height: 30px;">Grant Management System</span>
               </div>
             </div>
           </a>
@@ -97,7 +98,7 @@
         <div class="header-info">
           <ul>
             <li>
-              <a [routerLink]="'analytic-home'" target="_blank" rel="noopener noreferrer">
+              <a [routerLink]="'analytic/analytic-home'" target="_blank" rel="noopener noreferrer">
                 <img style="height: 70px; width: 150px;" title="analytic" src="../../../assets/images/analytics-dashboard.png"></a>
             </li>
             <!-- <li>
@@ -732,8 +733,8 @@
               <div class="" *ngIf="isLoggedIn=='true'" style="margin-left: 10px; cursor: pointer;" (click)="onClickBell()">
                 <i class="fa fa-bell" aria-hidden="true"></i>
               </div>
-              <div class="grant-mng-sys" *ngIf="isLoggedIn=='false'">
-                Grant Management System 
+              <div class="grant-mng-sys1" *ngIf="isLoggedIn=='false'">
+                <!-- Grant Management System  -->
                 <a href="javascript:void(0)" class="btn btn-primary" [routerLink]="'login'">
                   Login
                 </a>

@@ -7,11 +7,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                <li class="nav-item">
-                    <a class="nav-link active nav-link-custom" aria-current="page" routerLink="">Home</a>
+                <li class="nav-item" >
+                    <a class="nav-link nav-link-custom" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" aria-current="page" [routerLink]="'analytic-home'">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link nav-link-custom" [routerLink]="'map-view'">Map View</a>
+                <li class="nav-item" >
+                    <a class="nav-link nav-link-custom" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="'map-view'">Map View</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link nav-link-custom" href="#">Table View</a>

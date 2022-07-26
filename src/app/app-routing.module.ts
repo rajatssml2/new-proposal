@@ -32,7 +32,7 @@ const routes: Routes = [
     component: MapViewComponent
   },
   {
-    path: '',
+    path: 'analytic',
     component: AnalyticComponent,
     children: [
       {

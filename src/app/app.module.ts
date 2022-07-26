@@ -23,7 +23,16 @@ import { AgGridModule } from 'ag-grid-angular';
 import { AnalyticComponent } from './analytic/analytic.component';
 import { MapViewComponent } from './analytic/map-view/map-view.component';
 import { AnalyticHeaderComponent } from './analytic/analytic-header/analytic-header.component';
-import { AnalyticHomeComponent } from './analytic/analytic-home/analytic-home.component'
+import { AnalyticHomeComponent } from './analytic/analytic-home/analytic-home.component';
+import { ChartModule, HIGHCHARTS_MODULES } from 'angular-highcharts';
+// import highmaps from 'highcharts/modules/map.src';
+// import more from 'highcharts/highcharts-more.src';
+// export function highchartsModules() {
+//   // apply Highcharts Modules to this array
+//   console.log('====',more,highmaps)
+//   return [more, highmaps];
+// }
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +61,8 @@ import { AnalyticHomeComponent } from './analytic/analytic-home/analytic-home.co
     
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts')
-    })
+    }),
+    ChartModule
   ],
   exports: [
     HeaderPageComponent,
@@ -60,7 +70,9 @@ import { AnalyticHomeComponent } from './analytic/analytic-home/analytic-home.co
     AnalyticHeaderComponent
 
   ],
-  providers: [],
+  providers: [
+    // { provide: HIGHCHARTS_MODULES, useFactory: highchartsModules } // add as factory to your providers
+  ],
   bootstrap: [AppComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

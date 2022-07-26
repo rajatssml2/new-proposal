@@ -334,7 +334,7 @@ export class DashboardAnalyticComponent implements OnInit {
         // top: 'middle',
         bottom: 10,
         left: 'center',
-        data: ['Enforcement of rules', 'Vehicle safety / driving training', 'Road engineering', 'Post crash care']
+        data: ['Enforcement of rules', 'Vehicle safety & driving training', 'Road engineering', 'Post crash care']
     },
     series: [
         {
@@ -345,7 +345,7 @@ export class DashboardAnalyticComponent implements OnInit {
             selectedMode: 'single',
             data: [
                 {value: 20, name: 'Enforcement of rules'},
-                {value: 25, name: 'Vehicle safety / driving training'},
+                {value: 25, name: 'Vehicle safety & driving training'},
                 {value: 40, name: 'Road engineering'},
                 {value: 15, name: 'Post crash care'}
             ],
@@ -374,7 +374,7 @@ export class DashboardAnalyticComponent implements OnInit {
     },
     yAxis: {
       type: 'category',
-      data: ['Traning of officials', 'Black spot mitigation', 'Corrective measure', 'Implement IRAD', 'IRR/RSA'],
+      data: ['Training of officials', 'Black spot mitigation', 'Corrective measure', 'Implement IRAD', 'IRR/RSA'],
       name: 'Parameters'
     },
     series: [
@@ -424,7 +424,7 @@ export class DashboardAnalyticComponent implements OnInit {
     },
     yAxis: {
       type: 'category',
-      data: ['Vehicle witness centre', 'Driver training centre'],
+      data: ['Vehicle fitness centre', 'Driver training centre'],
       name: 'Parameters',
       
     },
@@ -558,7 +558,7 @@ export class DashboardAnalyticComponent implements OnInit {
       trigger: 'axis'
     },
     legend: {
-      data: ['Traning of officials', 'Black spot mitigation', 'Corrective measure', 'Implement IRAD', 'IRR/RSA']
+      data: ['Training of officials', 'Black spot mitigation', 'Corrective measure', 'Implement IRAD', 'IRR/RSA']
     },
     grid: {
       left: '3%',
@@ -584,7 +584,7 @@ export class DashboardAnalyticComponent implements OnInit {
     },
     series: [
       {
-        name: 'Traning of officials',
+        name: 'Training of officials',
         type: 'line',
         stack: 'Total',
         data: [.3, .2, .3, .1, .2, 0, .5, .1, .4, 0, .2, .6]
@@ -623,7 +623,7 @@ export class DashboardAnalyticComponent implements OnInit {
       trigger: 'axis'
     },
     legend: {
-      data: ['Vehicle witness centre', 'Driver training centre']
+      data: ['Vehicle fitness centre', 'Driver training centre']
     },
     grid: {
       left: '3%',
@@ -650,7 +650,7 @@ export class DashboardAnalyticComponent implements OnInit {
     },
     series: [
       {
-        name: 'Vehicle witness centre',
+        name: 'Vehicle fitness centre',
         type: 'line',
         stack: 'Total',
         data: [.3, .2, .3, .1, .2, 0, .5, .1, .4, 0, .2, .6]
@@ -768,7 +768,7 @@ export class DashboardAnalyticComponent implements OnInit {
     if(lUser == 'state_officer' || lUser == 'state_manager') {
       return [
         ['amount', 'product'],
-        [5,10,14,  'Traning of officials'],
+        [5,10,14,  'Training of officials'],
         [10,12,14, 'Black spot mitigation'],
         [5,7,3, 'Corrective measure'],
         [12,10,23, 'Implement IRAD'],
@@ -777,7 +777,7 @@ export class DashboardAnalyticComponent implements OnInit {
     }else {
       return [
         ['amount', 'product'],
-        [15,20,13,  'Traning of officials'],
+        [15,20,13,  'Training of officials'],
         [20,12,14, 'Black spot mitigation'],
         [25,10,13,'Corrective measure'],
         [30,23,14, 'Implement IRAD'],
@@ -792,7 +792,7 @@ export class DashboardAnalyticComponent implements OnInit {
     if(lUser == 'state_officer' || lUser == 'state_manager') {
       return [
         ['amount', 'product'],
-        [3,  'Traning of officials'],
+        [3,  'Training of officials'],
         [7, 'Black spot mitigation'],
         [5,'Corrective measure'],
         [10, 'Implement IRAD'],
@@ -801,7 +801,7 @@ export class DashboardAnalyticComponent implements OnInit {
     }else {
       return [
         ['amount', 'product'],
-        [10,  'Traning of officials'],
+        [10,  'Training of officials'],
         [15, 'Black spot mitigation'],
         [18,'Corrective measure'],
         [16, 'Implement IRAD'],
@@ -815,7 +815,7 @@ export class DashboardAnalyticComponent implements OnInit {
     if(lUser == 'state_officer' || lUser == 'state_manager') {
       return [
         ['amount', 'product'],
-        [6,  'Traning of officials'],
+        [6,  'Training of officials'],
         [8, 'Black spot mitigation'],
         [10,'Corrective measure'],
         [5, 'Implement IRAD'],
@@ -824,7 +824,7 @@ export class DashboardAnalyticComponent implements OnInit {
     }else {
       return [
         ['amount', 'product'],
-        [10,  'Traning of officials'],
+        [10,  'Training of officials'],
         [15, 'Black spot mitigation'],
         [18,'Corrective measure'],
         [16, 'Implement IRAD'],
@@ -838,7 +838,7 @@ export class DashboardAnalyticComponent implements OnInit {
     if(lUser == 'state_officer' || lUser == 'state_manager') {
       return [
         ['amount', 'product'],
-        [7,  'Traning of officials'],
+        [7,  'Training of officials'],
         [13, 'Black spot mitigation'],
         [10,'Corrective measure'],
         [5, 'Implement IRAD'],
@@ -847,7 +847,7 @@ export class DashboardAnalyticComponent implements OnInit {
     }else {
       return [
         ['amount', 'product'],
-        [10,  'Traning of officials'],
+        [10,  'Training of officials'],
         [15, 'Black spot mitigation'],
         [18,'Corrective measure'],
         [16, 'Implement IRAD'],
