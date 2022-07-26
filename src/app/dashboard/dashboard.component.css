@@ -22,11 +22,33 @@
 }
 
 .card-text-dash {
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 16px;
+    /* font-weight: 600; */
     color: black;
     text-align: center;
+    margin: 0;
 }
 .small-box-dash .inner {
     text-align: center;
 }
+
+.top-das {
+    display: inline-flex;
+    box-shadow: 0px 0px 5px 0px grey;
+    background: white;
+    border-radius: 10px;
+    padding: 10px;
+    width: 97%;
+    margin-left: 20px;
+  }
+  .proposal-val {
+    position: absolute;
+    bottom: 10px;
+    left: 35%;
+  }
+  .demo-chart1 {
+    height: 270px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 3px 0px grey;
+    background: #ebdfc2ab;
+  }

@@ -13261,7 +13261,7 @@ body .print-content {
 	-webkit-border-radius: 2px;
 	-moz-border-radius: 2px;
 	border-radius: 8px;
-	margin-bottom: 15px
+	/* margin-bottom: 15px */
 }
 
 .small-box>.inner {

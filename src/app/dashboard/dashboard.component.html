@@ -4,13 +4,18 @@
       <img src="../../assets/images/bihar-road-map.jpg" alt="">
     </div>
   </div> -->
+  <div class="top-das">
     <div class="col-md-6">
       <div class="row">
         <div class="col-md-6">
           <div class="small-box small-box-dash bg-aqua">
             <div class="inner">
-              <h4>Road Engineering</h4>
-              <p class="card-text-dash">5Cr</p>
+              <h4 style="font-weight: 600;">Road Engineering</h4>
+              <div class="proposal-val">
+                <p class="card-text-dash">Proposal: 6</p>
+                <p class="card-text-dash">Value: INR 5Cr</p>
+              </div>
+              
             </div>
             <div class="icon">
               <i class="fa fa-inr"></i>
@@ -20,19 +25,27 @@
         <div class="col-md-6">
           <div class="small-box small-box-dash bg-yellow">
             <div class="inner">
-              <h4>Vehicle safety and driver training</h4>
-              <p class="card-text-dash">4Cr</p>
+              <h4 style="font-weight: 600;">Vehicle Safety & Driver Training</h4>
+              <div class="proposal-val">
+                <p class="card-text-dash">Proposal: 5</p>
+                <p class="card-text-dash">Value: INR 4Cr</p>
+              </div>
+              
             </div>
             <div class="icon">
               <i class="fa fa-inr"></i>
             </div>
           </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6" style="margin-top: 10px;">
           <div class="small-box small-box-dash bg-pink">
             <div class="inner">
-              <h4>Enforcement of rules</h4>
-              <p class="card-text-dash">3Cr</p>
+              <h4 style="font-weight: 600;">Enforcement of rules</h4>
+              <div class="proposal-val">
+                <p class="card-text-dash">Proposal: 4</p>
+                <p class="card-text-dash">Value: INR 3Cr</p>
+              </div>
+              
               <!-- <a href="javascript:void(0)" (click)="openList()">
                 
               </a> -->
@@ -42,11 +55,15 @@
             </div>
           </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6" style="margin-top: 10px;">
           <div class="small-box small-box-dash bg-teal">
             <div class="inner">
-              <h4>Post crash care</h4>
-              <p class="card-text-dash">2Cr</p>
+              <h4 style="font-weight: 600;">Post-Crash Care</h4>
+              <div class="proposal-val">
+                <p class="card-text-dash">Proposal: 3</p>
+                <p class="card-text-dash">Value: INR 2Cr</p>
+              </div>
+              
               <!-- <a href="javascript:void(0)" (click)="openList()">
                 
               </a> -->
@@ -60,13 +77,19 @@
       
     </div>
     <div class="col-md-6">
-      <div class="small-box small-box-dash">
-        <div class="inner">
-          <img [src]="(loginUser=='state_officer' || loginUser=='state_manager') ? '../../assets/images/bihar-road-map.jpg' : '../../assets/images/highway1.jpg'" alt="" style="width: 100%; height: 240%;" height="100%" width="100%">
+      <div echarts [options]="liveChartOption" class="demo-chart1">
+        
+      </div>
+      <!-- <div class="small-box small-box-dash">
+        <div class="">
+          <img [src]="(loginUser=='state_officer' || loginUser=='state_manager') ? '../../assets/images/bihar-road-map.jpg' : '../../assets/images/highway1.jpg'" alt="" style="width: 100%; height: 270px; border-radius: 10px; " height="100%" width="100%">
         </div>
   
-      </div>
+      </div> -->
+      
     </div>
+  </div>
+    
   
 
   

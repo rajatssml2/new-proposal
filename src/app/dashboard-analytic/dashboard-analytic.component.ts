@@ -22,6 +22,11 @@ export class DashboardAnalyticComponent implements OnInit {
   isChartDril22 = false;
   isChartDril33 = false;
   isChartDril44 = false;
+  isChartDrill112 = false;
+  isChartDrill113 = false;
+  isChartDrill114 = false;
+  isChartDrill115 = false;
+
   loginUser: any = '';
   labelOption: any = {
     // show: true,
@@ -67,7 +72,7 @@ export class DashboardAnalyticComponent implements OnInit {
     xAxis: {
       type: 'category',
       name: 'Year',
-      data: ['2020', '2021', '2022'],
+      data: ['2019-20', '2020-21', '2021-22'],
     },
     yAxis: {
       type: 'value',
@@ -81,39 +86,35 @@ export class DashboardAnalyticComponent implements OnInit {
    
     series: [
         {
-          name: 'Fund Claimed',
+          name: 'Funds Allocated',
           type: 'bar',
           barGap: 0,
           label: this.labelOption,
+          color: '#6610f2',
           emphasis: {
             focus: 'series'
           },
-          data: [1, 2, 3],
-          itemStyle: {
-            fillColor: "rgba(220,220,220,0.5)", 
-            strokeColor: "rgba(220,220,220,0.8)", 
-            highlightFill: "rgba(220,220,220,0.75)",
-            highlightStroke: "rgba(220,220,220,1)",
-            borderType: 'dashed',
-          }
+          data: [1, 2, 3]
         },
         {
-          name: 'Fund Disbursed',
+          name: 'Funds Claimed',
           type: 'bar',
+          label: this.labelOption,
+          color: '#fd7e14',
+          emphasis: {
+            focus: 'series'
+          },
+          data: [.8, 1.8, 2.8]
+        },
+        {
+          name: 'Funds Received',
+          type: 'bar',
+          color: '#adb5bd',
           label: this.labelOption,
           emphasis: {
             focus: 'series'
           },
-          data: [.8, 1, 2.8]
-        },
-        {
-          name: 'Fund Available',
-          type: 'bar',
-          label: this.labelOption,
-          emphasis: {
-            focus: 'series'
-          },
-          data: [.2, .3, 1]
+          data: [.6, 1.7, 2.4]
         }
       ],
       legend: {
@@ -130,14 +131,20 @@ export class DashboardAnalyticComponent implements OnInit {
   chartOption2:any = {
     // color: '#498c4e',
     title: {
-      text: 'Vehicle safety and driver training',
+      text: 'Vehicle Safety & Driver Training',
       // subtext: 'eCharts for the win!',
       left: 'center'
+    },
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'shadow'
+      }
     },
     xAxis: {
       type: 'category',
       name: 'Year',
-      data: ['2020', '2021', '2022'],
+      data: ['2019-20', '2020-21', '2021-22'],
     },
     yAxis: {
       type: 'value',
@@ -150,8 +157,9 @@ export class DashboardAnalyticComponent implements OnInit {
     },
     series: [
       {
-        name: 'Fund Claimed',
+        name: 'Funds Allocated',
         type: 'bar',
+        color: '#6610f2',
         barGap: 0,
         label: this.labelOption,
         emphasis: {
@@ -167,22 +175,24 @@ export class DashboardAnalyticComponent implements OnInit {
         }
       },
       {
-        name: 'Fund Disbursed',
+        name: 'Funds Claimed',
         type: 'bar',
         label: this.labelOption,
+        color: '#fd7e14',
         emphasis: {
           focus: 'series'
         },
         data: [4, 5, 8]
       },
       {
-        name: 'Fund Available',
+        name: 'Funds Received',
         type: 'bar',
         label: this.labelOption,
+        color: '#adb5bd',
         emphasis: {
           focus: 'series'
         },
-        data: [1, 1.5, 2]
+        data: [3, 5, 7]
       }
     ],
     legend: {
@@ -195,14 +205,20 @@ export class DashboardAnalyticComponent implements OnInit {
   chartOption3:any = {
     // color: '#498c4e',
     title: {
-      text: 'Enforcement of rules',
+      text: 'Enforcement Of Rules',
       // subtext: 'eCharts for the win!',
       left: 'center'
+    },
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'shadow'
+      }
     },
     xAxis: {
       type: 'category',
       name: 'Year',
-      data: ['2020', '2021', '2022'],
+      data: ['2019-20', '2020-21', '2021-22'],
     },
     yAxis: {
       type: 'value',
@@ -215,10 +231,11 @@ export class DashboardAnalyticComponent implements OnInit {
     },
     series: [
       {
-        name: 'Fund Claimed',
+        name: 'Funds Allocated',
         type: 'bar',
         barGap: 0,
         label: this.labelOption,
+        color: '#6610f2',
         emphasis: {
           focus: 'series'
         },
@@ -232,22 +249,24 @@ export class DashboardAnalyticComponent implements OnInit {
         }
       },
       {
-        name: 'Fund Disbursed',
+        name: 'Funds Claimed',
         type: 'bar',
         label: this.labelOption,
+        color: '#fd7e14',
         emphasis: {
           focus: 'series'
         },
         data: [8, 17, 28]
       },
       {
-        name: 'Fund Available',
+        name: 'Funds Received',
         type: 'bar',
         label: this.labelOption,
+        color: '#adb5bd',
         emphasis: {
           focus: 'series'
         },
-        data: [1, 1.5, 2]
+        data: [6, 16, 26]
       }
     ],
     legend: {
@@ -259,14 +278,20 @@ export class DashboardAnalyticComponent implements OnInit {
   chartOption4:any = {
     // color: '#498c4e',
     title: {
-      text: 'Post crash care',
+      text: 'Post Crash Care',
       // subtext: 'eCharts for the win!',
       left: 'center'
+    },
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'shadow'
+      }
     },
     xAxis: {
       type: 'category',
       name: 'Year',
-      data: ['2020', '2021', '2022'],
+      data: ['2019-20', '2020-21', '2021-22'],
     },
     yAxis: {
       type: 'value',
@@ -279,10 +304,11 @@ export class DashboardAnalyticComponent implements OnInit {
     },
     series: [
       {
-        name: 'Fund Claimed',
+        name: 'Funds Allocated',
         type: 'bar',
         barGap: 0,
         label: this.labelOption,
+        color: '#6610f2',
         emphasis: {
           focus: 'series'
         },
@@ -296,22 +322,24 @@ export class DashboardAnalyticComponent implements OnInit {
         }
       },
       {
-        name: 'Fund Disbursed',
+        name: 'Funds Claimed',
         type: 'bar',
         label: this.labelOption,
+        color: '#fd7e14',
         emphasis: {
           focus: 'series'
         },
         data: [6, 10, 20]
       },
       {
-        name: 'Fund Available',
+        name: 'Funds Received',
         type: 'bar',
         label: this.labelOption,
+        color: '#adb5bd',
         emphasis: {
           focus: 'series'
         },
-        data: [1, 2, 3]
+        data: [5, 9, 19]
       }
     ],
     legend: {
@@ -368,6 +396,12 @@ export class DashboardAnalyticComponent implements OnInit {
   };
   chartOption11: any = {
     grid: { containLabel: true },
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'shadow'
+      }
+    },
     xAxis: { name: 'amount',
     axisLabel : {
       formatter: '{value}Cr'
@@ -380,23 +414,26 @@ export class DashboardAnalyticComponent implements OnInit {
     },
     series: [
       {
-        name: 'Fund Claimed',
+        name: 'Funds Allocated',
         type: 'bar',
         barGap: 0,
         data: [1, 2, 1.3, 3.5, 3],
-        label: this.labelOption2
+        label: this.labelOption2,
+        color: '#6610f2'
       },
       {
-        name: 'Fund Disbursed',
+        name: 'Funds Claimed',
         type: 'bar',
         data: [.8, 1.6, 1, 3.2, 2.7],
-        label: this.labelOption2
+        label: this.labelOption2,
+        color: '#fd7e14'
       },
       {
-        name: 'Fund Available',
+        name: 'Funds Received',
         type: 'bar',
-        data: [.1, .5, .2, .1, .5],
-        label: this.labelOption2
+        data: [.6, 1.5, .9, 3.1, 2.5],
+        label: this.labelOption2,
+        color: '#adb5bd'
       }
       // {
       //   type: 'bar',
@@ -418,6 +455,12 @@ export class DashboardAnalyticComponent implements OnInit {
   chartOption21: any = {
     
     grid: { containLabel: true },
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'shadow'
+      }
+    },
     xAxis: { name: 'amount',
     axisLabel : {
       formatter: '{value}Cr'
@@ -431,23 +474,26 @@ export class DashboardAnalyticComponent implements OnInit {
     },
     series: [
       {
-        name: 'Fund Claimed',
+        name: 'Funds Allocated',
         type: 'bar',
         barGap: 0,
         data: [1, 2],
-        label: this.labelOption2
+        label: this.labelOption2,
+        color: '#6610f2'
       },
       {
-        name: 'Fund Disbursed',
+        name: 'Funds Claimed',
         type: 'bar',
         data: [.8, 1.6],
-        label: this.labelOption2
+        label: this.labelOption2,
+        color: '#fd7e14'
       },
       {
-        name: 'Fund Available',
+        name: 'Funds Received',
         type: 'bar',
-        data: [.1, .5],
-        label: this.labelOption2
+        data: [.6, 1.5],
+        label: this.labelOption2,
+        color: '#adb5bd'
       }
       // {
       //   type: 'bar',
@@ -469,6 +515,12 @@ export class DashboardAnalyticComponent implements OnInit {
   chartOption31: any = {
     
     grid: { containLabel: true },
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'shadow'
+      }
+    },
     xAxis: { name: 'amount',
     axisLabel : {
       formatter: '{value}Cr'
@@ -482,23 +534,26 @@ export class DashboardAnalyticComponent implements OnInit {
     },
     series: [
       {
-        name: 'Fund Claimed',
+        name: 'Funds Allocated',
         type: 'bar',
         barGap: 0,
         data: [15, 20],
-        label: this.labelOption2
+        label: this.labelOption2,
+        color: '#6610f2'
       },
       {
-        name: 'Fund Disbursed',
+        name: 'Funds Claimed',
         type: 'bar',
         data: [14, 17],
-        label: this.labelOption2
+        label: this.labelOption2,
+        color: '#fd7e14'
       },
       {
-        name: 'Fund Available',
+        name: 'Funds Received',
         type: 'bar',
-        data: [1, 3],
-        label: this.labelOption2
+        data: [12, 16],
+        label: this.labelOption2,
+        color: '#adb5bd'
       }
     ],
     legend: {
@@ -511,6 +566,12 @@ export class DashboardAnalyticComponent implements OnInit {
   chartOption41: any = {
     
     grid: { containLabel: true },
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'shadow'
+      }
+    },
     xAxis: { name: 'amount',
     axisLabel : {
       formatter: '{value}Cr'
@@ -524,23 +585,26 @@ export class DashboardAnalyticComponent implements OnInit {
     },
     series: [
       {
-        name: 'Fund Claimed',
+        name: 'Funds Allocated',
         type: 'bar',
         barGap: 0,
         data: [10, 12],
-        label: this.labelOption2
+        label: this.labelOption2,
+        color: '#6610f2'
       },
       {
-        name: 'Fund Disbursed',
+        name: 'Funds Claimed',
         type: 'bar',
         data: [9, 10],
-        label: this.labelOption2
+        label: this.labelOption2,
+        color: '#fd7e14'
       },
       {
-        name: 'Fund Available',
+        name: 'Funds Received',
         type: 'bar',
-        data: [1, 2],
-        label: this.labelOption2
+        data: [8, 9],
+        label: this.labelOption2,
+        color: '#adb5bd'
       }
     ],
     legend: {
@@ -556,7 +620,10 @@ export class DashboardAnalyticComponent implements OnInit {
     //   text: 'Stacked Line'
     // },
     tooltip: {
-      trigger: 'axis'
+      trigger: 'axis',
+      axisPointer: {
+        type: 'shadow'
+      }
     },
     legend: {
       data: ['Training of officials', 'Black spot mitigation', 'Corrective measure', 'Implement IRAD', 'IRR/RSA']
@@ -762,6 +829,283 @@ export class DashboardAnalyticComponent implements OnInit {
       }
     ]
   };
+
+  chartOption112: any = {
+    // color: '#7596e1',
+    title: {
+      text: 'Road Engineerning',
+      left: 'center'
+    },
+    responsive: true,
+    
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'shadow'
+      }
+    },
+    xAxis: {
+      type: 'category',
+      name: 'Parameters',
+      axisLabel: {
+        interval: 0,
+        rotate: 30 //If the label names are too long you can manage this by rotating the label.
+      },
+      data: ['Training of officials', 'Black spot mitigation', 'Corrective measure', 'Implement IRAD', 'IRR/RSA'],
+    
+    },
+    yAxis: {
+      type: 'value',
+      axisLabel : {
+        formatter: '{value}Cr'
+      },
+      name: 'Value',
+      // nameLocation: 'top',
+      // nameGap: 50
+    },
+   
+    series: [
+        {
+          name: 'Target',
+          type: 'bar',
+          barGap: 0,
+          label: this.labelOption,
+          color: '#6610f2',
+          emphasis: {
+            focus: 'series'
+          },
+          data: [5, 2, 3, 1, 7]
+        },
+        {
+          name: 'Achieved',
+          type: 'bar',
+          label: this.labelOption,
+          color: '#fd7e14',
+          emphasis: {
+            focus: 'series'
+          },
+          data: [3, 1, 2.2, .6, 6]
+        }
+      ],
+      legend: {
+        orient: 'vertical',
+        x: 'right',
+        // display: true,
+        // position: 'bottom',
+        // y: 350
+      },
+      // {
+      //   data: this.getChart1Data(),
+      //   type: 'bar',
+      // },
+  };
+  chartOption113: any = {
+    // color: '#7596e1',
+    // title: {
+    //   text: 'Road Engineerning',
+    //   left: 'center'
+    // },
+    responsive: true,
+    
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'shadow'
+      }
+    },
+    xAxis: {
+      type: 'category',
+      name: 'Parameters',
+      axisLabel: {
+        interval: 0,
+        rotate: 30 //If the label names are too long you can manage this by rotating the label.
+      },
+      data: ['Vehicle fitness centre', 'Driver training centre'],
+    
+    },
+    yAxis: {
+      type: 'value',
+      axisLabel : {
+        formatter: '{value}Cr'
+      },
+      name: 'Value',
+      // nameLocation: 'top',
+      // nameGap: 50
+    },
+   
+    series: [
+        {
+          name: 'Target',
+          type: 'bar',
+          barGap: 0,
+          label: this.labelOption,
+          color: '#6610f2',
+          emphasis: {
+            focus: 'series'
+          },
+          data: [2, 3]
+        },
+        {
+          name: 'Achieved',
+          type: 'bar',
+          label: this.labelOption,
+          color: '#fd7e14',
+          emphasis: {
+            focus: 'series'
+          },
+          data: [1, 2.3]
+        }
+      ],
+      legend: {
+        orient: 'vertical',
+        x: 'right',
+        // display: true,
+        // position: 'bottom',
+        // y: 350
+      },
+      // {
+      //   data: this.getChart1Data(),
+      //   type: 'bar',
+      // },
+  };
+  chartOption114: any = {
+    // color: '#7596e1',
+    // title: {
+    //   text: 'Road Engineerning',
+    //   left: 'center'
+    // },
+    responsive: true,
+    
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'shadow'
+      }
+    },
+    xAxis: {
+      type: 'category',
+      name: 'Parameters',
+      axisLabel: {
+        interval: 0,
+        rotate: 30 //If the label names are too long you can manage this by rotating the label.
+      },
+      data: ['Rules enforcement', 'E-device/IPS component'],
+    
+    },
+    yAxis: {
+      type: 'value',
+      axisLabel : {
+        formatter: '{value}Cr'
+      },
+      name: 'Value',
+      // nameLocation: 'top',
+      // nameGap: 50
+    },
+   
+    series: [
+        {
+          name: 'Target',
+          type: 'bar',
+          barGap: 0,
+          label: this.labelOption,
+          color: '#6610f2',
+          emphasis: {
+            focus: 'series'
+          },
+          data: [2, 3]
+        },
+        {
+          name: 'Achieved',
+          type: 'bar',
+          label: this.labelOption,
+          color: '#fd7e14',
+          emphasis: {
+            focus: 'series'
+          },
+          data: [1.5, 2.6]
+        }
+      ],
+      legend: {
+        orient: 'vertical',
+        x: 'right',
+        // display: true,
+        // position: 'bottom',
+        // y: 350
+      },
+      // {
+      //   data: this.getChart1Data(),
+      //   type: 'bar',
+      // },
+  };
+  chartOption115: any = {
+    // color: '#7596e1',
+    // title: {
+    //   text: 'Road Engineerning',
+    //   left: 'center'
+    // },
+    responsive: true,
+    
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'shadow'
+      }
+    },
+    xAxis: {
+      type: 'category',
+      name: 'Parameters',
+      axisLabel: {
+        interval: 0,
+        rotate: 30 //If the label names are too long you can manage this by rotating the label.
+      },
+      data: ['GPS Enablement', 'Ambulance Procurement'],
+    
+    },
+    yAxis: {
+      type: 'value',
+      axisLabel : {
+        formatter: '{value}Cr'
+      },
+      name: 'Value',
+      // nameLocation: 'top',
+      // nameGap: 50
+    },
+   
+    series: [
+        {
+          name: 'Target',
+          type: 'bar',
+          barGap: 0,
+          label: this.labelOption,
+          color: '#6610f2',
+          emphasis: {
+            focus: 'series'
+          },
+          data: [2.6, 4]
+        },
+        {
+          name: 'Achieved',
+          type: 'bar',
+          label: this.labelOption,
+          color: '#fd7e14',
+          emphasis: {
+            focus: 'series'
+          },
+          data: [2.5, 3.6]
+        }
+      ],
+      legend: {
+        orient: 'vertical',
+        x: 'right',
+        // display: true,
+        // position: 'bottom',
+        // y: 350
+      },
+      // {
+      //   data: this.getChart1Data(),
+      //   type: 'bar',
+      // },
+  };
   
 
   getChartOption11Source () {
@@ -921,6 +1265,20 @@ export class DashboardAnalyticComponent implements OnInit {
   onDrillChart41(event: any, val: any) {
     this.isChartDril44 = !this.isChartDril44;
   }
+  onChartEvent112(event: any, val: any) {
+    this.isChartDrill112 = !this.isChartDrill112;
+  }
+  onChartEvent113(event: any, val: any) {
+    this.isChartDrill113 = !this.isChartDrill113;
+  }
+
+  onChartEvent114(event: any, val: any) {
+    this.isChartDrill114 = !this.isChartDrill114;
+  }
+  onChartEvent115(event: any, val: any) {
+    this.isChartDrill115 = !this.isChartDrill115;
+  }
+
 
   ngAfterViewInit() {
     setTimeout(() => {

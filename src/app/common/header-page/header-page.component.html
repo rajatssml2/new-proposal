@@ -654,8 +654,20 @@
      
               <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 nav-ul">
                 <li><a [routerLink]="['/dashboard']" class="nav-link px-2 link-dark">Home</a></li>
-                <li><a href="#" class="nav-link px-2 link-dark">About us</a></li>
-                <li><a href="#" class="nav-link px-2 link-dark">Contact us</a></li>
+                <!-- <li><a href="#" class="nav-link px-2 link-dark">About us</a></li>
+                <li><a href="#" class="nav-link px-2 link-dark">Contact us</a></li> -->
+                <li *ngIf="isLoggedIn=='true'">
+                  <div class="dropdown">
+                      <a class=" nav-link px-2 link-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                          Annual Action Plans
+                      </a>
+                    
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <li><a class="dropdown-item" >Create New</a></li>
+                        <li><a class="dropdown-item">Past Plans</a></li>
+                      </ul>
+                    </div>
+              </li>
                 <li *ngIf="isLoggedIn=='true'">
                     <div class="dropdown">
                         <a class=" nav-link px-2 link-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
@@ -668,22 +680,11 @@
                         </ul>
                       </div>
                 </li>
-                <li *ngIf="isLoggedIn=='true'">
-                  <div class="dropdown">
-                      <a class=" nav-link px-2 link-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                          Reports
-                      </a>
-                    
-                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <li><a class="dropdown-item" >Static report</a></li>
-                        <li><a class="dropdown-item">Dynamic report</a></li>
-                      </ul>
-                    </div>
-              </li>
+                
               <li *ngIf="isLoggedIn=='true'">
                 <div class="dropdown">
                     <a class=" nav-link px-2 link-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                        Contracts
+                        Disbursement
                     </a>
                   
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -695,7 +696,7 @@
             <li *ngIf="isLoggedIn=='true'">
               <div class="dropdown">
                   <a class=" nav-link px-2 link-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                      Fund Management
+                      Quries
                   </a>
                 
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -714,7 +715,7 @@
               </ul>
               <div *ngIf="loginUser=='state_officer' || loginUser=='state_manager'">
                 <a class=" nav-link px-2 link-dark" style="color: white; font-size: 20px;" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                  State: Bihar
+                  {{loginUserName}} | Bihar
               </a>
               </div>
         
