@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Chart, ChartConfiguration } from 'chart.js';
 import { EChartsOption } from 'echarts';
 type BarLabelOption = NonNullable<echarts.BarSeriesOption['label']>;
+import config from '../../assets/congif';
 
 
 @Component({
@@ -10,7 +11,7 @@ type BarLabelOption = NonNullable<echarts.BarSeriesOption['label']>;
   styleUrls: ['./dashboard-analytic.component.css']
 })
 export class DashboardAnalyticComponent implements OnInit {
-  
+  stateOpeions:any = config.state;
   title = 'ng2-charts-demo';
   isChartDrill = false;
   isChartDrill21 = false;

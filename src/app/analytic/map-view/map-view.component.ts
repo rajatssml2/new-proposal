@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MapChart } from 'angular-highcharts';
 import indiaMap from '../../../assets/indiaMap';
+import config from '../../../assets/congif';
 
 @Component({
   selector: 'app-map-view',
@@ -10,6 +11,7 @@ import indiaMap from '../../../assets/indiaMap';
 export class MapViewComponent implements OnInit {
 
   public mapChart: any;
+  stateOpeions:any = config.state;
 
   constructor() { }
   

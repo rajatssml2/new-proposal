@@ -6,18 +6,7 @@
                     <label for="state">State</label>
                     <select class="form-select" name="state" id="state">
                         <option value="" selected>All State</option>
-                        <option value="Andhra Pradesh">Andhra Pradesh</option>
-                        <option value="Asam">Asam</option>
-                        <option value="Bihar">Bihar</option>
-                        <option value="Gujrat">Gujrat</option>
-                        <option value="Haryana">Haryana</option>
-                        <option value="Karnataka">Karnataka</option>
-                        <option value="Madhya Pradesh">Madhya Pradesh</option>
-                        <option value="Rajasthan">Rajasthan</option>
-                        <option value="Tamil Nadu">Tamil Nadu</option>
-                        <option value="Telangana">Telangana</option>
-                        <option value="Uttar Pradesh">Uttar Pradesh</option>
-                        <option value="West Bengal">West Bengal</option>
+                        <option *ngFor="let option of stateOpeions" [value]="option">{{option}}</option>
                     </select>
                 </div>
                 <div class="col">

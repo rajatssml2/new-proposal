@@ -14,18 +14,7 @@
         <label for="state">Select State</label>
         <select  class="form-select" name="state" id="state">
           <option value="All" selected>All</option>
-          <option value="Andhra Pradesh">Andhra Pradesh</option>
-          <option value="Asam">Asam</option>
-          <option value="Bihar">Bihar</option>
-          <option value="Gujrat">Gujrat</option>
-          <option value="Haryana">Haryana</option>
-          <option value="Karnataka">Karnataka</option>
-          <option value="Madhya Pradesh">Madhya Pradesh</option>
-          <option value="Rajasthan">Rajasthan</option>
-          <option value="Tamil Nadu">Tamil Nadu</option>
-          <option value="Telangana">Telangana</option>
-          <option value="Uttar Pradesh">Uttar Pradesh</option>
-          <option value="West Bengal">West Bengal</option>
+          <option *ngFor="let option of stateOpeions" [value]="option">{{option}}</option>
         </select>
       </div>
 
@@ -45,18 +34,7 @@
         <label for="state">Select State</label>
         <select  class="form-select" name="state" id="state">
           <option value="All" selected>All</option>
-          <option value="Andhra Pradesh">Andhra Pradesh</option>
-          <option value="Asam">Asam</option>
-          <option value="Bihar">Bihar</option>
-          <option value="Gujrat">Gujrat</option>
-          <option value="Haryana">Haryana</option>
-          <option value="Karnataka">Karnataka</option>
-          <option value="Madhya Pradesh">Madhya Pradesh</option>
-          <option value="Rajasthan">Rajasthan</option>
-          <option value="Tamil Nadu">Tamil Nadu</option>
-          <option value="Telangana">Telangana</option>
-          <option value="Uttar Pradesh">Uttar Pradesh</option>
-          <option value="West Bengal">West Bengal</option>
+          <option *ngFor="let option of stateOpeions" [value]="option">{{option}}</option>
         </select>
       </div>
       <i class="fa fa-arrow-left" aria-hidden="true" style="cursor: pointer;"  *ngIf="isChartDrill21  && !isChartDril22" (click)="onChartEvent21($event, 'chartClick')">Back</i>
@@ -72,18 +50,7 @@
         <label for="state">Select State</label>
         <select  class="form-select" name="state" id="state">
           <option value="All" selected>All</option>
-          <option value="Andhra Pradesh">Andhra Pradesh</option>
-          <option value="Asam">Asam</option>
-          <option value="Bihar">Bihar</option>
-          <option value="Gujrat">Gujrat</option>
-          <option value="Haryana">Haryana</option>
-          <option value="Karnataka">Karnataka</option>
-          <option value="Madhya Pradesh">Madhya Pradesh</option>
-          <option value="Rajasthan">Rajasthan</option>
-          <option value="Tamil Nadu">Tamil Nadu</option>
-          <option value="Telangana">Telangana</option>
-          <option value="Uttar Pradesh">Uttar Pradesh</option>
-          <option value="West Bengal">West Bengal</option>
+          <option *ngFor="let option of stateOpeions" [value]="option">{{option}}</option>
         </select>
       </div>
       <i class="fa fa-arrow-left" aria-hidden="true" style="cursor: pointer;"  *ngIf="isChartDrill31 && !isChartDril33" (click)="onChartEvent31($event, 'chartClick')">Back</i>
@@ -98,18 +65,7 @@
         <label for="state">Select State</label>
         <select  class="form-select" name="state" id="state">
           <option value="All" selected>All</option>
-          <option value="Andhra Pradesh">Andhra Pradesh</option>
-          <option value="Asam">Asam</option>
-          <option value="Bihar">Bihar</option>
-          <option value="Gujrat">Gujrat</option>
-          <option value="Haryana">Haryana</option>
-          <option value="Karnataka">Karnataka</option>
-          <option value="Madhya Pradesh">Madhya Pradesh</option>
-          <option value="Rajasthan">Rajasthan</option>
-          <option value="Tamil Nadu">Tamil Nadu</option>
-          <option value="Telangana">Telangana</option>
-          <option value="Uttar Pradesh">Uttar Pradesh</option>
-          <option value="West Bengal">West Bengal</option>
+          <option *ngFor="let option of stateOpeions" [value]="option">{{option}}</option>
         </select>
       </div>
       <i class="fa fa-arrow-left" aria-hidden="true" style="cursor: pointer;"  *ngIf="isChartDrill41 && !isChartDril44" (click)="onChartEvent41($event, 'chartClick')">Back</i>
