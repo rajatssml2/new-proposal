@@ -11,11 +11,14 @@
           <div class="small-box small-box-dash bg-aqua">
             <div class="inner">
               <h4 style="font-weight: 600;">Road Engineering</h4>
-              <div class="proposal-val">
+              <div class="proposal-val" *ngIf="loginUser=='state_officer' || loginUser=='state_manager'">
                 <p class="card-text-dash">Proposal: 6</p>
                 <p class="card-text-dash">Value: INR 5Cr</p>
               </div>
-              
+              <div class="proposal-val" *ngIf="loginUser=='iva' || loginUser=='morth_manager'">
+                <p class="card-text-dash">Proposal: 85</p>
+                <p class="card-text-dash">Value: INR 75Cr</p>
+              </div>
             </div>
             <div class="icon">
               <i class="fa fa-inr"></i>
@@ -26,11 +29,14 @@
           <div class="small-box small-box-dash bg-yellow">
             <div class="inner">
               <h4 style="font-weight: 600;">Vehicle Safety & Driver Training</h4>
-              <div class="proposal-val">
+              <div class="proposal-val" *ngIf="loginUser=='state_officer' || loginUser=='state_manager'">
                 <p class="card-text-dash">Proposal: 5</p>
                 <p class="card-text-dash">Value: INR 4Cr</p>
               </div>
-              
+              <div class="proposal-val" *ngIf="loginUser=='iva' || loginUser=='morth_manager'">
+                <p class="card-text-dash">Proposal: 68</p>
+                <p class="card-text-dash">Value: INR 62Cr</p>
+              </div>
             </div>
             <div class="icon">
               <i class="fa fa-inr"></i>
@@ -40,12 +46,15 @@
         <div class="col-md-6" style="margin-top: 10px;">
           <div class="small-box small-box-dash bg-pink">
             <div class="inner">
-              <h4 style="font-weight: 600;">Enforcement of rules</h4>
-              <div class="proposal-val">
+              <h4 style="font-weight: 600;">Enforcement</h4>
+              <div class="proposal-val" *ngIf="loginUser=='state_officer' || loginUser=='state_manager'">
                 <p class="card-text-dash">Proposal: 4</p>
                 <p class="card-text-dash">Value: INR 3Cr</p>
               </div>
-              
+              <div class="proposal-val" *ngIf="loginUser=='iva' || loginUser=='morth_manager'">
+                <p class="card-text-dash">Proposal: 65</p>
+                <p class="card-text-dash">Value: INR 54Cr</p>
+              </div>
               <!-- <a href="javascript:void(0)" (click)="openList()">
                 
               </a> -->
@@ -59,11 +68,14 @@
           <div class="small-box small-box-dash bg-teal">
             <div class="inner">
               <h4 style="font-weight: 600;">Post-Crash Care</h4>
-              <div class="proposal-val">
+              <div class="proposal-val" *ngIf="loginUser=='state_officer' || loginUser=='state_manager'">
                 <p class="card-text-dash">Proposal: 3</p>
                 <p class="card-text-dash">Value: INR 2Cr</p>
               </div>
-              
+              <div class="proposal-val" *ngIf="loginUser=='iva' || loginUser=='morth_manager'">
+                <p class="card-text-dash">Proposal: 54</p>
+                <p class="card-text-dash">Value: INR 38Cr</p>
+              </div>
               <!-- <a href="javascript:void(0)" (click)="openList()">
                 
               </a> -->

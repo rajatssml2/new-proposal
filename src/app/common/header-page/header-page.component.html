@@ -98,6 +98,11 @@
         <div class="header-info">
           <ul>
             <li>
+              <a class="btn btn-primary" style="color: white !important; width: 100px;height: 65px;">
+                <p style="margin: 0;">Innovation</p> <p> Lab</p> 
+              </a>
+            </li>
+            <li>
               <a [routerLink]="'analytic/analytic-home'" target="_blank" rel="noopener noreferrer">
                 <img style="height: 70px; width: 150px;" title="analytic" src="../../../assets/images/analytics-dashboard.png"></a>
             </li>
@@ -651,83 +656,142 @@
               </div>
             </div> -->
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-     
+
               <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 nav-ul">
                 <li><a [routerLink]="['/dashboard']" class="nav-link px-2 link-dark">Home</a></li>
                 <!-- <li><a href="#" class="nav-link px-2 link-dark">About us</a></li>
-                <li><a href="#" class="nav-link px-2 link-dark">Contact us</a></li> -->
-                <li *ngIf="isLoggedIn=='true'">
+                    <li><a href="#" class="nav-link px-2 link-dark">Contact us</a></li> -->
+                <li *ngIf="isLoggedIn=='true' && (loginUser=='state_officer' || loginUser=='state_manager')">
                   <div class="dropdown">
-                      <a class=" nav-link px-2 link-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                          Annual Action Plans
-                      </a>
-                    
-                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <li><a class="dropdown-item" >Create New</a></li>
-                        <li><a class="dropdown-item">Past Plans</a></li>
-                      </ul>
-                    </div>
-              </li>
-                <li *ngIf="isLoggedIn=='true'">
-                    <div class="dropdown">
-                        <a class=" nav-link px-2 link-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                            Proposal
-                        </a>
-                      
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                          <li><a class="dropdown-item" [routerLink]="['/new-proposal']" *ngIf="loginUser!='iva' || loginUser!='morth_manager'">New proposal</a></li>
-                          <li><a class="dropdown-item" *ngIf="loginUser!='state_officer'" [routerLink]="['/proposal-list']">View proposal</a></li>
-                        </ul>
-                      </div>
-                </li>
-                
-              <li *ngIf="isLoggedIn=='true'">
-                <div class="dropdown">
-                    <a class=" nav-link px-2 link-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                        Disbursement
+                    <a class=" nav-link px-2 link-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                      data-bs-toggle="dropdown" aria-expanded="false">
+                      Annual Action Plans
                     </a>
-                  
+    
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                      <li><a class="dropdown-item">Create New</a></li>
+                      <li><a class="dropdown-item">Past Plans</a></li>
+                    </ul>
+                  </div>
+                </li>
+                <li *ngIf="isLoggedIn=='true' && (loginUser=='iva' || loginUser=='morth_manager')">
+                  <div class="dropdown">
+                    <a class=" nav-link px-2 link-dark dropdown-toggle" href="javascript:void(0)" role="button"
+                      id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                      Worklist
+                    </a>
+    
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                      <!-- <li><a class="dropdown-item" >Create New</a></li>
+                          <li><a class="dropdown-item">Past Plans</a></li> -->
+                    </ul>
+                  </div>
+                </li>
+                <li *ngIf="isLoggedIn=='true' && (loginUser=='iva' || loginUser=='morth_manager')">
+                  <div class="dropdown">
+                    <a class=" nav-link px-2 link-dark dropdown-toggle" href="javascript:void(0)" role="button"
+                      id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                      Fund Managemen
+                    </a>
+    
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                      <li><a class="dropdown-item">Action Plan Approval</a></li>
+                      <li><a class="dropdown-item" [routerLink]="['/proposal-list']">Proposal Approval</a></li>
+                      <li><a class="dropdown-item">Disbursement Approval</a></li>
+                    </ul>
+                  </div>
+                </li>
+                <li *ngIf="isLoggedIn=='true' && (loginUser=='iva' || loginUser=='morth_manager')">
+                  <div class="dropdown">
+                    <a class=" nav-link px-2 link-dark dropdown-toggle" href="javascript:void(0)" role="button"
+                      id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                      Reports
+                    </a>
+    
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                      <!-- <li><a class="dropdown-item" >Action Plan Approval</a></li>
+                      <li><a class="dropdown-item">Proposal Approval</a></li>
+                      <li><a class="dropdown-item">Disbursement Approval</a></li> -->
+                    </ul>
+                  </div>
+                </li>
+    
+                <li *ngIf="isLoggedIn=='true' && (loginUser=='state_officer' || loginUser=='state_manager')">
+                  <div class="dropdown">
+                    <a class=" nav-link px-2 link-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                      data-bs-toggle="dropdown" aria-expanded="false">
+                      Proposal
+                    </a>
+    
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                      <li><a class="dropdown-item" [routerLink]="['/new-proposal']"
+                          *ngIf="loginUser!='iva' || loginUser!='morth_manager'">New proposal</a></li>
+                      <li><a class="dropdown-item" *ngIf="loginUser!='state_officer'" [routerLink]="['/proposal-list']">View
+                          proposal</a></li>
+                    </ul>
+                  </div>
+                </li>
+    
+                <li *ngIf="isLoggedIn=='true' && (loginUser=='state_officer' || loginUser=='state_manager')">
+                  <div class="dropdown">
+                    <a class=" nav-link px-2 link-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                      data-bs-toggle="dropdown" aria-expanded="false">
+                      Disbursement
+                    </a>
+    
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                       <li><a class="dropdown-item">Manage vendor</a></li>
                       <li><a class="dropdown-item">View vendor</a></li>
                     </ul>
                   </div>
-            </li>
-            <li *ngIf="isLoggedIn=='true'">
-              <div class="dropdown">
-                  <a class=" nav-link px-2 link-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                      Quries
-                  </a>
-                
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <li><a class="dropdown-item">Manage fund</a></li>
-                    <li><a class="dropdown-item">View history</a></li>
-                  </ul>
-                </div>
-          </li>
-                  <!-- <li *ngIf="isLoggedIn=='true'">
-                    <div class="">
-                        <a class=" nav-link px-2 link-dark" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                            State: Bihar
-                        </a>
-                      </div>
-                  </li> -->
+                </li>
+                <li *ngIf="isLoggedIn=='true'">
+                  <div class="dropdown">
+                    <a class=" nav-link px-2 link-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                      data-bs-toggle="dropdown" aria-expanded="false">
+                      Queries
+                    </a>
+    
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                      <!-- <li><a class="dropdown-item">Manage fund</a></li>
+                      <li><a class="dropdown-item">View history</a></li> -->
+                    </ul>
+                  </div>
+                </li>
+                <!-- <li *ngIf="isLoggedIn=='true'">
+                        <div class="">
+                            <a class=" nav-link px-2 link-dark" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                State: Bihar
+                            </a>
+                          </div>
+                      </li> -->
               </ul>
               <div *ngIf="loginUser=='state_officer' || loginUser=='state_manager'">
-                <a class=" nav-link px-2 link-dark" style="color: white; font-size: 20px;" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class=" nav-link px-2 link-dark" style="color: white; font-size: 20px;" href="#" role="button"
+                  id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                   {{loginUserName}} | Bihar
-              </a>
+                </a>
               </div>
-        
+              <div *ngIf="loginUser=='morth_manager'|| loginUser=='iva'">
+                <a class=" nav-link px-2 link-dark" style="color: white; font-size: 20px;" href="#" role="button"
+                  id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                  {{loginUserName}}
+                </a>
+              </div>
+    
               <div class="dropdown text-end" *ngIf="isLoggedIn=='true'">
-                <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="true">
+                <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
+                  data-bs-toggle="dropdown" aria-expanded="true">
                   <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
                 </a>
-                <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" data-popper-placement="bottom-start" style="position: absolute; inset: 0px auto auto 0px; margin: 7px; transform: translate(-36px, 34px);">
+                <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" data-popper-placement="bottom-start"
+                  style="position: absolute; inset: 0px auto auto 0px; margin: 7px; transform: translate(-36px, 34px);">
                   <li><a class="dropdown-item" href="javascript:void(0)">{{loginUserName}}</a></li>
                   <li><a class="dropdown-item" href="#">Settings</a></li>
                   <li><a class="dropdown-item" href="#">Profile</a></li>
-                  <li><hr class="dropdown-divider"></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
                   <li><a class="dropdown-item" href="javascript:void(0)" (click)="onLogOut()">Sign out</a></li>
                 </ul>
               </div>
@@ -739,7 +803,7 @@
                 <a href="javascript:void(0)" class="btn btn-primary" [routerLink]="'login'">
                   Login
                 </a>
-                
+    
               </div>
             </div>
             <div class="modal fade" id="mySearch" tabindex="-1" role="dialog" aria-hidden="true">

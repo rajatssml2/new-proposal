@@ -205,7 +205,7 @@ export class DashboardAnalyticComponent implements OnInit {
   chartOption3:any = {
     // color: '#498c4e',
     title: {
-      text: 'Enforcement Of Rules',
+      text: 'Enforcement',
       // subtext: 'eCharts for the win!',
       left: 'center'
     },
@@ -363,7 +363,7 @@ export class DashboardAnalyticComponent implements OnInit {
         // top: 'middle',
         bottom: 10,
         left: 'center',
-        data: ['Enforcement of rules', 'Vehicle safety & driving training', 'Road engineering', 'Post crash care']
+        data: ['Enforcement', 'Vehicle safety & driving training', 'Road engineering', 'Post crash care']
     },
     series: [
         {
@@ -373,7 +373,7 @@ export class DashboardAnalyticComponent implements OnInit {
             center: ['50%', '50%'],
             selectedMode: 'single',
             data: [
-                {value: 20, name: 'Enforcement of rules'},
+                {value: 20, name: 'Enforcement'},
                 {value: 25, name: 'Vehicle safety & driving training'},
                 {value: 40, name: 'Road engineering'},
                 {value: 15, name: 'Post crash care'}
@@ -402,7 +402,7 @@ export class DashboardAnalyticComponent implements OnInit {
         type: 'shadow'
       }
     },
-    xAxis: { name: 'amount',
+    xAxis: { name: 'Amount',
     axisLabel : {
       formatter: '{value}Cr'
     }, 
@@ -438,8 +438,8 @@ export class DashboardAnalyticComponent implements OnInit {
       // {
       //   type: 'bar',
       //   encode: {
-      //     // Map the "amount" column to X axis.
-      //     x: 'amount',
+      //     // Map the "Amount" column to X axis.
+      //     x: 'Amount',
       //     // Map the "product" column to Y axis
       //     y: 'product'
       //   }
@@ -461,7 +461,7 @@ export class DashboardAnalyticComponent implements OnInit {
         type: 'shadow'
       }
     },
-    xAxis: { name: 'amount',
+    xAxis: { name: 'Amount',
     axisLabel : {
       formatter: '{value}Cr'
     }
@@ -498,8 +498,8 @@ export class DashboardAnalyticComponent implements OnInit {
       // {
       //   type: 'bar',
       //   encode: {
-      //     // Map the "amount" column to X axis.
-      //     x: 'amount',
+      //     // Map the "Amount" column to X axis.
+      //     x: 'Amount',
       //     // Map the "product" column to Y axis
       //     y: 'product'
       //   }
@@ -521,7 +521,7 @@ export class DashboardAnalyticComponent implements OnInit {
         type: 'shadow'
       }
     },
-    xAxis: { name: 'amount',
+    xAxis: { name: 'Amount',
     axisLabel : {
       formatter: '{value}Cr'
     }
@@ -572,7 +572,7 @@ export class DashboardAnalyticComponent implements OnInit {
         type: 'shadow'
       }
     },
-    xAxis: { name: 'amount',
+    xAxis: { name: 'Amount',
     axisLabel : {
       formatter: '{value}Cr'
     }
@@ -1112,7 +1112,7 @@ export class DashboardAnalyticComponent implements OnInit {
     let lUser = localStorage.getItem('loginUser');
     if(lUser == 'state_officer' || lUser == 'state_manager') {
       return [
-        ['amount', 'product'],
+        ['Amount', 'product'],
         [5,10,14,  'Training of officials'],
         [10,12,14, 'Black spot mitigation'],
         [5,7,3, 'Corrective measure'],
@@ -1121,7 +1121,7 @@ export class DashboardAnalyticComponent implements OnInit {
       ];
     }else {
       return [
-        ['amount', 'product'],
+        ['Amount', 'product'],
         [15,20,13,  'Training of officials'],
         [20,12,14, 'Black spot mitigation'],
         [25,10,13,'Corrective measure'],
@@ -1136,7 +1136,7 @@ export class DashboardAnalyticComponent implements OnInit {
     let lUser = localStorage.getItem('loginUser');
     if(lUser == 'state_officer' || lUser == 'state_manager') {
       return [
-        ['amount', 'product'],
+        ['Amount', 'product'],
         [3,  'Training of officials'],
         [7, 'Black spot mitigation'],
         [5,'Corrective measure'],
@@ -1145,7 +1145,7 @@ export class DashboardAnalyticComponent implements OnInit {
       ];
     }else {
       return [
-        ['amount', 'product'],
+        ['Amount', 'product'],
         [10,  'Training of officials'],
         [15, 'Black spot mitigation'],
         [18,'Corrective measure'],
@@ -1159,7 +1159,7 @@ export class DashboardAnalyticComponent implements OnInit {
     let lUser = localStorage.getItem('loginUser');
     if(lUser == 'state_officer' || lUser == 'state_manager') {
       return [
-        ['amount', 'product'],
+        ['Amount', 'product'],
         [6,  'Training of officials'],
         [8, 'Black spot mitigation'],
         [10,'Corrective measure'],
@@ -1168,7 +1168,7 @@ export class DashboardAnalyticComponent implements OnInit {
       ];
     }else {
       return [
-        ['amount', 'product'],
+        ['Amount', 'product'],
         [10,  'Training of officials'],
         [15, 'Black spot mitigation'],
         [18,'Corrective measure'],
@@ -1182,7 +1182,7 @@ export class DashboardAnalyticComponent implements OnInit {
     let lUser = localStorage.getItem('loginUser');
     if(lUser == 'state_officer' || lUser == 'state_manager') {
       return [
-        ['amount', 'product'],
+        ['Amount', 'product'],
         [7,  'Training of officials'],
         [13, 'Black spot mitigation'],
         [10,'Corrective measure'],
@@ -1191,7 +1191,7 @@ export class DashboardAnalyticComponent implements OnInit {
       ];
     }else {
       return [
-        ['amount', 'product'],
+        ['Amount', 'product'],
         [10,  'Training of officials'],
         [15, 'Black spot mitigation'],
         [18,'Corrective measure'],

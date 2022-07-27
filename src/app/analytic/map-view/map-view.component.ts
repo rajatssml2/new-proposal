@@ -139,9 +139,9 @@ export class MapViewComponent implements OnInit {
         type: 'shadow'
       }
     },
-    xAxis: { name: 'Values',
+    xAxis: { name: 'Number Of Proposals',
     axisLabel : {
-      formatter: '{value}Cr'
+      // formatter: '{value}Cr'
     }
     },
     yAxis: {
