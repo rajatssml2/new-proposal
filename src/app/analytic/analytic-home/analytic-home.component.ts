@@ -7,9 +7,15 @@ import config from '../../../assets/congif';
 })
 export class AnalyticHomeComponent implements OnInit {
   stateOpeions:any = config.state;
+  stateSelected = false;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onSelectState() {
+    this.stateSelected = true;
   }
 
 }

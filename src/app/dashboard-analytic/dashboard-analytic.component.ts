@@ -58,7 +58,7 @@ export class DashboardAnalyticComponent implements OnInit {
   chartOption: any = {
     // color: '#7596e1',
     title: {
-      text: 'Road Engineerning',
+      text: 'Road Engineering',
       left: 'center'
     },
     responsive: true,
@@ -278,7 +278,7 @@ export class DashboardAnalyticComponent implements OnInit {
   chartOption4:any = {
     // color: '#498c4e',
     title: {
-      text: 'Post Crash Care',
+      text: 'Post-Crash Care',
       // subtext: 'eCharts for the win!',
       left: 'center'
     },
@@ -350,7 +350,7 @@ export class DashboardAnalyticComponent implements OnInit {
   };
   chartOption5:EChartsOption = {
     title: {
-        text: 'KPIs wise Expenditure',
+        text: 'KPIs Wise Expenditure',
         // subtext: 'eCharts for the win!',
         left: 'center'
     },
@@ -363,20 +363,20 @@ export class DashboardAnalyticComponent implements OnInit {
         // top: 'middle',
         bottom: 10,
         left: 'center',
-        data: ['Enforcement', 'Vehicle safety & driving training', 'Road engineering', 'Post crash care']
+        data: ['Enforcement', 'Vehicle Safety & Driving Training', 'Road Engineering', 'Post-Crash Care']
     },
     series: [
         {
-          name: "KPIs wise Expenditure",  
+          name: "KPIs Wise Expenditure",  
           type: 'pie',
             radius: '65%',
             center: ['50%', '50%'],
             selectedMode: 'single',
             data: [
                 {value: 20, name: 'Enforcement'},
-                {value: 25, name: 'Vehicle safety & driving training'},
-                {value: 40, name: 'Road engineering'},
-                {value: 15, name: 'Post crash care'}
+                {value: 25, name: 'Vehicle Safety & Driving Training'},
+                {value: 40, name: 'Road Engineering'},
+                {value: 15, name: 'Post-Crash Care'}
             ],
             emphasis: {
                 itemStyle: {

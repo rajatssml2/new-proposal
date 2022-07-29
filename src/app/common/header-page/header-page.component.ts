@@ -37,7 +37,7 @@ export class HeaderPageComponent implements OnInit {
     } else if(this.loginUser=='iva') {
       this.loginUserName = 'IVA'
     } else if(this.loginUser=='morth_manager') {
-      this.loginUserName = 'Morth Manager'
+      this.loginUserName = 'MoRTH Manager'
     }
     console.log("isLogin=",this.isLoggedIn)
   }

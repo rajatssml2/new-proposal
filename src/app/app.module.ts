@@ -25,6 +25,7 @@ import { MapViewComponent } from './analytic/map-view/map-view.component';
 import { AnalyticHeaderComponent } from './analytic/analytic-header/analytic-header.component';
 import { AnalyticHomeComponent } from './analytic/analytic-home/analytic-home.component';
 import { ChartModule, HIGHCHARTS_MODULES } from 'angular-highcharts';
+import { HomeMapComponent } from './analytic/analytic-home/home-map/home-map.component';
 // import highmaps from 'highcharts/modules/map.src';
 // import more from 'highcharts/highcharts-more.src';
 // export function highchartsModules() {
@@ -48,7 +49,8 @@ import { ChartModule, HIGHCHARTS_MODULES } from 'angular-highcharts';
     AnalyticComponent,
     MapViewComponent,
     AnalyticHeaderComponent,
-    AnalyticHomeComponent
+    AnalyticHomeComponent,
+    HomeMapComponent
   ],
   imports: [
     BrowserModule,

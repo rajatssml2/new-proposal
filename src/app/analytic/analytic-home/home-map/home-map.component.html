@@ -1,0 +1,19 @@
+<div class="jumbotron">
+    <div *ngIf="!stateSelected" echarts [options]="stateChartOption" class="demo-chart"></div>
+    <div *ngIf="stateSelected">
+        <img src="../../../../assets/images/statewiseTreeImg.jpeg" alt="">
+    </div>
+</div>
+
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-sm-6">
+            <div echarts [options]="yearByYearOption" class="demo-chart"></div>
+        </div>
+        <div class="col-sm-6">
+            <div echarts [options]="disbursedAmtOption" class="demo-chart"></div>
+        </div>
+
+    </div>
+    
+</div>

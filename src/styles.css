@@ -9440,7 +9440,7 @@ p.url-design strong a {
 }
 
 .header-info {
-	float: right;
+	/* float: right; */
 	padding: 3px 0;
 }
 
@@ -13294,7 +13294,7 @@ body .print-content {
 }
 
 .small-box p {
-	font-size: 18px;
+	font-size: 16px;
 	text-align: left
 }
 

@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col">
                     <label for="state">State</label>
-                    <select class="form-select" name="state" id="state">
+                    <select class="form-select" name="state" id="state" (change)="onSelectState()">
                         <option value="" selected>All State</option>
                         <option *ngFor="let option of stateOpeions" [value]="option">{{option}}</option>
                     </select>
@@ -63,6 +63,8 @@
 
 
     <div class="col-md-12" id="divLoadIndexPage">
+        <app-home-map *ngIf="!stateSelected"></app-home-map>
+        <app-home-map *ngIf="stateSelected" [stateSelected]="stateSelected"></app-home-map>
 
         <div class="NoteCustomClass">Note: The data displayed is upto 2022-2023</div>
 
@@ -91,25 +93,8 @@
                                 <div class="icon">
                                     <i class="fa fa-road"></i>
                                 </div>
-                                <!-- <a class="small-box-footer" href="#"
-                                onclick="LoadPage('/StateProfile/StateProfile/LoadFilters');">More Info <i
-                                    class="fa fa-arrow-circle-right"></i></a> -->
                             </div>
-                        </div><!-- ./col -->
-                        <!-- <div class="col-md-2 ">
-                        <div class="small-box bg-green">
-                            <div class="inner">
-                                <h3>119,418</h3>
-                                <p>New connectivity Works</p>
-                            </div>
-                            <div class="icon">
-                                <i class="fa fa-connectdevelop"></i>
-                            </div>
-                           <a class="small-box-footer" href="#"
-                                onclick="LoadPage('/StateProfile/StateProfile/LoadFilters');">More Info <i
-                                    class="fa fa-arrow-circle-right"></i></a> 
                         </div>
-                    </div>-->
                         <div class="col-md-2 ">
                             <!-- small box -->
                             <div class="small-box bg-yellow">
@@ -120,40 +105,20 @@
                                 <div class="icon">
                                     <i class="fa fa-spinner"></i>
                                 </div>
-                                <!-- <a class="small-box-footer" href="#"
-                                onclick="LoadPage('/StateProfile/StateProfile/LoadFilters');">More Info <i
-                                    class="fa fa-arrow-circle-right"></i></a> -->
                             </div>
                         </div><!-- ./col -->
                         <div class="col-md-2 ">
                             <!-- small box -->
                             <div class="small-box bg-red">
                                 <div class="inner">
-                                    <h3>780Cr</h3>
-                                    <p>Fund disbursed till date </p>
+                                    <h3>780 Cr</h3>
+                                    <p>Funds disbursed till date </p>
                                 </div>
                                 <div class="icon">
                                     <i class="fa fa-inr"></i>
                                 </div>
-                                <!-- <a class="small-box-footer" href="#"
-                                onclick="LoadPage('/StateProfile/StateProfile/LoadFilters');">More Info <i
-                                    class="fa fa-arrow-circle-right"></i></a> -->
                             </div>
-                        </div><!-- ./col -->
-                        <!-- <div class="col-md-2 ">
-                        <div class="small-box bg-olive">
-                            <div class="inner">
-                                <h3>712,056 <sup style="font-size: 20px">Km.</sup></h3>
-                                <p>Completed Length (Kms)</p>
-                            </div>
-                            <div class="icon">
-                                <i class="fa fa-arrows-h"></i>
-                            </div>
-                            <a class="small-box-footer" href="#"
-                                onclick="LoadPage('/StateProfile/StateProfile/LoadFilters');">More Info <i
-                                    class="fa fa-arrow-circle-right"></i></a>
                         </div>
-                    </div> -->
                         <div class="col-md-2 ">
                             <!-- small box -->
                             <div class="small-box bg-teal">
@@ -164,9 +129,6 @@
                                 <div class="icon">
                                     <i class="fa fa-align-right"></i>
                                 </div>
-                                <!-- <a class="small-box-footer" href="#"
-                                onclick="LoadPage('/StateProfile/StateProfile/LoadFilters');">More Info <i
-                                    class="fa fa-arrow-circle-right"></i></a> -->
                             </div>
                         </div><!-- ./col -->
                         <div class="col-md-2 ">
@@ -174,14 +136,11 @@
                             <div class="small-box bg-purple">
                                 <div class="inner">
                                     <h3>17%</h3>
-                                    <p>Fatal accident reduced from last year</p>
+                                    <p>Fatal accidents reduced from last year</p>
                                 </div>
                                 <div class="icon">
                                     <i class="fa fa-exclamation-triangle"></i>
                                 </div>
-                                <!-- <a class="small-box-footer" href="#"
-                                onclick="LoadPage('/Feedback/QueryFeedBack/StatewiseFeedbackReport');">More Info <i
-                                    class="fa fa-arrow-circle-right"></i></a> -->
                             </div>
                         </div>
                     </div>
