@@ -26,6 +26,13 @@ export class DashboardAnalyticComponent implements OnInit {
   isChartDrill113 = false;
   isChartDrill114 = false;
   isChartDrill115 = false;
+  fundAllocatedColor= '#005587';
+  fundClaimedColor= '#86BC25'
+  // '#ed8b00c7';
+  fundReceivedColor= '#97999B';
+  colorPalette = ['#005587', '#FFCD00', '#86BC25', '#ED8B00'];
+  targetColor = '#005587';
+  achivedColor = '#86BC25';
 
   loginUser: any = '';
   labelOption: any = {
@@ -54,7 +61,19 @@ export class DashboardAnalyticComponent implements OnInit {
       name: {}
     }
   }
-
+  labelOption3:any = {
+    show: true,
+    position: 'right' as BarLabelOption['position'],
+    // distance: app.config.distance as BarLabelOption['distance'],
+    // align: app.config.align as BarLabelOption['align'],
+    // verticalAlign: app.config.verticalAlign as BarLabelOption['verticalAlign'],
+    rotate: 0 as BarLabelOption['rotate'],
+    // formatter: '{c}Cr',
+    fontSize: 12,
+    rich: {
+      name: {}
+    }
+  }
   chartOption: any = {
     // color: '#7596e1',
     title: {
@@ -90,7 +109,7 @@ export class DashboardAnalyticComponent implements OnInit {
           type: 'bar',
           barGap: 0,
           label: this.labelOption,
-          color: '#6610f2',
+          color: this.fundAllocatedColor,
           emphasis: {
             focus: 'series'
           },
@@ -100,7 +119,7 @@ export class DashboardAnalyticComponent implements OnInit {
           name: 'Funds Claimed',
           type: 'bar',
           label: this.labelOption,
-          color: '#fd7e14',
+          color: this.fundClaimedColor,
           emphasis: {
             focus: 'series'
           },
@@ -109,7 +128,7 @@ export class DashboardAnalyticComponent implements OnInit {
         {
           name: 'Funds Received',
           type: 'bar',
-          color: '#adb5bd',
+          color: this.fundReceivedColor,
           label: this.labelOption,
           emphasis: {
             focus: 'series'
@@ -159,7 +178,7 @@ export class DashboardAnalyticComponent implements OnInit {
       {
         name: 'Funds Allocated',
         type: 'bar',
-        color: '#6610f2',
+        color: this.fundAllocatedColor,
         barGap: 0,
         label: this.labelOption,
         emphasis: {
@@ -178,7 +197,7 @@ export class DashboardAnalyticComponent implements OnInit {
         name: 'Funds Claimed',
         type: 'bar',
         label: this.labelOption,
-        color: '#fd7e14',
+        color: this.fundClaimedColor,
         emphasis: {
           focus: 'series'
         },
@@ -188,7 +207,7 @@ export class DashboardAnalyticComponent implements OnInit {
         name: 'Funds Received',
         type: 'bar',
         label: this.labelOption,
-        color: '#adb5bd',
+        color: this.fundReceivedColor,
         emphasis: {
           focus: 'series'
         },
@@ -235,7 +254,7 @@ export class DashboardAnalyticComponent implements OnInit {
         type: 'bar',
         barGap: 0,
         label: this.labelOption,
-        color: '#6610f2',
+        color: this.fundAllocatedColor,
         emphasis: {
           focus: 'series'
         },
@@ -252,7 +271,7 @@ export class DashboardAnalyticComponent implements OnInit {
         name: 'Funds Claimed',
         type: 'bar',
         label: this.labelOption,
-        color: '#fd7e14',
+        color: this.fundClaimedColor,
         emphasis: {
           focus: 'series'
         },
@@ -262,7 +281,7 @@ export class DashboardAnalyticComponent implements OnInit {
         name: 'Funds Received',
         type: 'bar',
         label: this.labelOption,
-        color: '#adb5bd',
+        color: this.fundReceivedColor,
         emphasis: {
           focus: 'series'
         },
@@ -308,7 +327,7 @@ export class DashboardAnalyticComponent implements OnInit {
         type: 'bar',
         barGap: 0,
         label: this.labelOption,
-        color: '#6610f2',
+        color: this.fundAllocatedColor,
         emphasis: {
           focus: 'series'
         },
@@ -325,7 +344,7 @@ export class DashboardAnalyticComponent implements OnInit {
         name: 'Funds Claimed',
         type: 'bar',
         label: this.labelOption,
-        color: '#fd7e14',
+        color: this.fundClaimedColor,
         emphasis: {
           focus: 'series'
         },
@@ -335,7 +354,7 @@ export class DashboardAnalyticComponent implements OnInit {
         name: 'Funds Received',
         type: 'bar',
         label: this.labelOption,
-        color: '#adb5bd',
+        color: this.fundReceivedColor,
         emphasis: {
           focus: 'series'
         },
@@ -372,6 +391,7 @@ export class DashboardAnalyticComponent implements OnInit {
             radius: '65%',
             center: ['50%', '50%'],
             selectedMode: 'single',
+            color: this.colorPalette,
             data: [
                 {value: 20, name: 'Enforcement'},
                 {value: 25, name: 'Vehicle Safety & Driving Training'},
@@ -419,21 +439,21 @@ export class DashboardAnalyticComponent implements OnInit {
         barGap: 0,
         data: [1, 2, 1.3, 3.5, 3],
         label: this.labelOption2,
-        color: '#6610f2'
+        color: this.fundAllocatedColor
       },
       {
         name: 'Funds Claimed',
         type: 'bar',
         data: [.8, 1.6, 1, 3.2, 2.7],
         label: this.labelOption2,
-        color: '#fd7e14'
+        color: this.fundClaimedColor
       },
       {
         name: 'Funds Received',
         type: 'bar',
         data: [.6, 1.5, .9, 3.1, 2.5],
         label: this.labelOption2,
-        color: '#adb5bd'
+        color: this.fundReceivedColor
       }
       // {
       //   type: 'bar',
@@ -479,21 +499,21 @@ export class DashboardAnalyticComponent implements OnInit {
         barGap: 0,
         data: [1, 2],
         label: this.labelOption2,
-        color: '#6610f2'
+        color: this.fundAllocatedColor
       },
       {
         name: 'Funds Claimed',
         type: 'bar',
         data: [.8, 1.6],
         label: this.labelOption2,
-        color: '#fd7e14'
+        color: this.fundClaimedColor
       },
       {
         name: 'Funds Received',
         type: 'bar',
         data: [.6, 1.5],
         label: this.labelOption2,
-        color: '#adb5bd'
+        color: this.fundReceivedColor
       }
       // {
       //   type: 'bar',
@@ -539,21 +559,21 @@ export class DashboardAnalyticComponent implements OnInit {
         barGap: 0,
         data: [15, 20],
         label: this.labelOption2,
-        color: '#6610f2'
+        color: this.fundAllocatedColor
       },
       {
         name: 'Funds Claimed',
         type: 'bar',
         data: [14, 17],
         label: this.labelOption2,
-        color: '#fd7e14'
+        color: this.fundClaimedColor
       },
       {
         name: 'Funds Received',
         type: 'bar',
         data: [12, 16],
         label: this.labelOption2,
-        color: '#adb5bd'
+        color: this.fundReceivedColor
       }
     ],
     legend: {
@@ -590,21 +610,21 @@ export class DashboardAnalyticComponent implements OnInit {
         barGap: 0,
         data: [10, 12],
         label: this.labelOption2,
-        color: '#6610f2'
+        color: this.fundAllocatedColor
       },
       {
         name: 'Funds Claimed',
         type: 'bar',
         data: [9, 10],
         label: this.labelOption2,
-        color: '#fd7e14'
+        color: this.fundClaimedColor
       },
       {
         name: 'Funds Received',
         type: 'bar',
         data: [8, 9],
         label: this.labelOption2,
-        color: '#adb5bd'
+        color: this.fundReceivedColor
       }
     ],
     legend: {
@@ -847,6 +867,7 @@ export class DashboardAnalyticComponent implements OnInit {
     xAxis: {
       type: 'category',
       name: 'Parameters',
+      position: 'bottom',
       axisLabel: {
         interval: 0,
         rotate: 30 //If the label names are too long you can manage this by rotating the label.
@@ -870,7 +891,7 @@ export class DashboardAnalyticComponent implements OnInit {
           type: 'bar',
           barGap: 0,
           label: this.labelOption,
-          color: '#6610f2',
+          color: this.targetColor,
           emphasis: {
             focus: 'series'
           },
@@ -880,7 +901,7 @@ export class DashboardAnalyticComponent implements OnInit {
           name: 'Achieved',
           type: 'bar',
           label: this.labelOption,
-          color: '#fd7e14',
+          color: this.achivedColor,
           emphasis: {
             focus: 'series'
           },
@@ -918,7 +939,7 @@ export class DashboardAnalyticComponent implements OnInit {
       name: 'Parameters',
       axisLabel: {
         interval: 0,
-        rotate: 30 //If the label names are too long you can manage this by rotating the label.
+        rotate: 360 //If the label names are too long you can manage this by rotating the label.
       },
       data: ['Vehicle fitness centre', 'Driver training centre'],
     
@@ -939,7 +960,7 @@ export class DashboardAnalyticComponent implements OnInit {
           type: 'bar',
           barGap: 0,
           label: this.labelOption,
-          color: '#6610f2',
+          color: this.targetColor,
           emphasis: {
             focus: 'series'
           },
@@ -949,7 +970,7 @@ export class DashboardAnalyticComponent implements OnInit {
           name: 'Achieved',
           type: 'bar',
           label: this.labelOption,
-          color: '#fd7e14',
+          color: this.achivedColor,
           emphasis: {
             focus: 'series'
           },
@@ -987,7 +1008,7 @@ export class DashboardAnalyticComponent implements OnInit {
       name: 'Parameters',
       axisLabel: {
         interval: 0,
-        rotate: 30 //If the label names are too long you can manage this by rotating the label.
+        rotate: 360 //If the label names are too long you can manage this by rotating the label.
       },
       data: ['Rules enforcement', 'E-device/IPS component'],
     
@@ -1008,7 +1029,7 @@ export class DashboardAnalyticComponent implements OnInit {
           type: 'bar',
           barGap: 0,
           label: this.labelOption,
-          color: '#6610f2',
+          color: this.targetColor,
           emphasis: {
             focus: 'series'
           },
@@ -1018,7 +1039,7 @@ export class DashboardAnalyticComponent implements OnInit {
           name: 'Achieved',
           type: 'bar',
           label: this.labelOption,
-          color: '#fd7e14',
+          color: this.achivedColor,
           emphasis: {
             focus: 'series'
           },
@@ -1056,7 +1077,7 @@ export class DashboardAnalyticComponent implements OnInit {
       name: 'Parameters',
       axisLabel: {
         interval: 0,
-        rotate: 30 //If the label names are too long you can manage this by rotating the label.
+        rotate: 360 //If the label names are too long you can manage this by rotating the label.
       },
       data: ['GPS Enablement', 'Ambulance Procurement'],
     
@@ -1077,7 +1098,7 @@ export class DashboardAnalyticComponent implements OnInit {
           type: 'bar',
           barGap: 0,
           label: this.labelOption,
-          color: '#6610f2',
+          color: this.targetColor,
           emphasis: {
             focus: 'series'
           },
@@ -1087,7 +1108,7 @@ export class DashboardAnalyticComponent implements OnInit {
           name: 'Achieved',
           type: 'bar',
           label: this.labelOption,
-          color: '#fd7e14',
+          color: this.achivedColor,
           emphasis: {
             focus: 'series'
           },

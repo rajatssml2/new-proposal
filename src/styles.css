@@ -8269,7 +8269,7 @@ ol.comment-list li.comment .comment-respond .comment-form p {
 .top-bar {
 	/* color : #000; */
 	font-weight: 600;
-	padding: 0;
+	padding: 0px 30px 0px 20px;
 	border-bottom: 1px solid #ccc;
 	background-color: #FBFBFB;
 }
@@ -9440,8 +9440,8 @@ p.url-design strong a {
 }
 
 .header-info {
-	/* float: right; */
-	padding: 3px 0;
+	float: right;
+	/* padding: 3px 0; */
 }
 
 .header-info>ul {
@@ -13374,11 +13374,11 @@ body .print-content {
 }
 
 .bg-yellow {
-	background-color: #f39c12 !important
+	background-color: #ED8B00 !important
 }
 
 .bg-aqua {
-	background-color: #00c0ef !important
+	background-color: #6FC2B4 !important
 }
 
 .bg-blue {
@@ -13398,7 +13398,7 @@ body .print-content {
 }
 
 .bg-teal {
-	background-color: #39cccc !important
+	background-color: #00ABAB !important
 }
 
 .bg-olive {
@@ -13418,7 +13418,7 @@ body .print-content {
 }
 
 .bg-purple {
-	background-color: #932ab6 !important
+	background-color: #00A3E0 !important
 }
 
 .bg-maroon {

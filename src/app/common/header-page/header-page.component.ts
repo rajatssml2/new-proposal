@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./header-page.component.css']
 })
 export class HeaderPageComponent implements OnInit {
+  currentUrl = '';
   isLoggedIn = 'false'
   isSticky=false;
   loginUser: any = '';
@@ -18,7 +19,10 @@ export class HeaderPageComponent implements OnInit {
     this.isSticky = window.pageYOffset >= 110;
   }
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router) {
+    this.currentUrl = this.router.url;
+    console.log("this.currentUrl==",this.currentUrl)
+   }
 
   ngOnInit(): void {
     let isLogin = localStorage.getItem('isLoggedIn');

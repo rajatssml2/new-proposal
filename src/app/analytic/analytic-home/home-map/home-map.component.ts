@@ -77,7 +77,7 @@ labelOption2: any = {
           name: 'State',
           
         },
-        color: '#0b35ea',
+        color: '#005587',
         series: [{
           type: 'bar',
           data: this.getBarData(),
@@ -137,7 +137,7 @@ labelOption2: any = {
         // name: 'State',
         
       },
-      color: '#dc3545',
+      color: '#86BC25',
       series: [{
         type: 'bar',
         data: this.getDataloadYearByYearChart(),
@@ -179,7 +179,7 @@ labelOption2: any = {
         // name: 'State',
         
       },
-      color: '#dc3545',
+      color: '#86BC25',
       series: [{
         type: 'bar',
         data: this.getDataAmtChart(),

@@ -51,7 +51,7 @@ export class DashboardComponent implements OnInit {
       },
       {
         value: 1200,
-        itemStyle: { color: 'green' },
+        itemStyle: { color: '#26890D' },
       }];
 
     if(this.loginUser == 'iva' || this.loginUser == 'morth_manager') {
@@ -74,7 +74,7 @@ export class DashboardComponent implements OnInit {
         },
         {
           value: 34000,
-          itemStyle: { color: 'green' }
+          itemStyle: { color: '#26890D' }
         }]
     }
     this.liveChartOption = {
@@ -85,7 +85,7 @@ export class DashboardComponent implements OnInit {
         left: 'center'
       },
       responsive: true,
-      color: '#b55419',
+      color: '#86BC25',
       tooltip: {
         trigger: 'axis',
         axisPointer: {

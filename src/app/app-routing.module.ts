@@ -9,6 +9,7 @@ import { MapViewComponent } from './analytic/map-view/map-view.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { AuthGuard } from './_services/auth.guard';
 import { AnalyticHomeComponent } from './analytic/analytic-home/analytic-home.component';
+import { InnovationLabHomeComponent } from './innovation-lab/innovation-lab-home/innovation-lab-home.component';
 
 const routes: Routes = [
   {
@@ -19,10 +20,7 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent
   },
-  {
-    path: 'dashboard-analytic',
-    component: DashboardAnalyticComponent
-  },
+  
   {
     path: 'analytic',
     component: AnalyticComponent
@@ -31,6 +29,7 @@ const routes: Routes = [
     path: 'map-view',
     component: MapViewComponent
   },
+  
   {
     path: 'analytic',
     component: AnalyticComponent,
@@ -60,9 +59,17 @@ const routes: Routes = [
       {
         path: '',
         loadChildren: () => import('./proposal/proposal.module').then(m => m.ProposalModule)
+      },
+      {
+        path: 'innovation-lab',
+        component: InnovationLabHomeComponent
+      },
+      {
+        path: 'dashboard-analytic',
+        component: DashboardAnalyticComponent
       }
     ],
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   { path: '**', pathMatch: 'full', 
         component: PagenotfoundComponent },
