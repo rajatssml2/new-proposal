@@ -55,7 +55,7 @@ labelOption2: any = {
     } else {
       this.stateChartOption = {
         title:{
-          text: 'Disbursed Amount and First KPI by State',
+          text: 'Disbursed Amount by State',
           left: 'center'
         },
         barCategoryGap: 3,
@@ -114,7 +114,7 @@ labelOption2: any = {
   loadYearByYearChart() {
     this.yearByYearOption = {
       title:{
-        text:  this.stateSelected ? 'Count of Sr. No. by Year' : 'Applications by Year by Year',
+        text:  'Applications by Year',
         left: 'center'
       },
       barCategoryGap: 3,
@@ -133,7 +133,7 @@ labelOption2: any = {
       },
       yAxis: {
         type: 'category',
-        data: ['2021','2022','2023', '2024', '2025'],
+        data: ['2018-19','2019-20','2020-21', '2021-22', '2022-23'],
         // name: 'State',
         
       },
@@ -154,7 +154,7 @@ labelOption2: any = {
   loadDisbursedAmtChart() {
     this.disbursedAmtOption = {
       title:{
-        text: this.stateSelected ? 'Count of Sr. No. by KPIs' : 'Disbursed Amount by KPIs',
+        text: 'Disbursed Amount by KPIs',
         left: 'center'
       },
       barCategoryGap: 3,

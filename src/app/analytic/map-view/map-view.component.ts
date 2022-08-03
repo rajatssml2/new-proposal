@@ -23,20 +23,20 @@ export class MapViewComponent implements OnInit {
   public mapChart: any;
   stateOpeions:any = config.state;
   data1: (string | number)[][] =[
-    ['andhra pradesh', 292],
-    ['assam', 117],
-    ['bihar', 2010],
-    ['gujarat', 2111],
-    ['haryana', 283], 
-    ['karnataka', 12],
-    ['madhya pradesh', 1100],
-    ['maharashtra', 3033],
-    ['odisha', 1242],
-    ['rajasthan', 221],
-    ['tamil nadu', 252],
-    ['telangana', 3440], 
+    ['andhra pradesh', 82],
+    ['assam', 105],
+    ['bihar', 92],
+    ['gujarat', 70],
+    ['haryana', 106], 
+    ['karnataka', 100],
+    ['madhya pradesh', 94],
+    ['maharashtra', 102],
+    ['odisha', 73],
+    ['rajasthan', 68],
+    ['tamil nadu', 29],
+    ['telangana', 101], 
      ['uttar pradesh', 11], 
-     ['west bengal', 1898]
+     ['west bengal', 29]
 ];
 
   constructor() { }
@@ -79,7 +79,7 @@ export class MapViewComponent implements OnInit {
         enabled: true
       },
       title: {
-        text: 'State Wise Proposals',
+        text: 'State Wise Applications',
         // align: 'left',
         // y: 340 //  this to move y-coordinate of title to desired location
       },
@@ -139,7 +139,7 @@ export class MapViewComponent implements OnInit {
         type: 'shadow'
       }
     },
-    xAxis: { name: 'Number Of Proposals',
+    xAxis: { name: 'Number Of Applications',
     axisLabel : {
       // formatter: '{value}Cr'
     }
